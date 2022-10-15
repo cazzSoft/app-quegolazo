@@ -1,0 +1,168 @@
+﻿@{
+                ViewBag.Title = "Skor - Inicio";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Raw(ViewBag.error ?? "")
+
+@if (ViewBag.error == null)
+{
+    <h2 class="page_title azul">
+        Bienvenido
+        @if (ViewBag.usuario != null)
+        {
+        <strong> @ViewBag.usuario.MIS_Personas.nombre1 </strong>
+        }
+        a ¡Qué Golazo!
+    </h2>
+
+    <div class="page_single layout_fullwidth_padding toolbarpage">
+
+        @if (ViewBag.usuario != null)
+        {
+            <div class="row">
+                <div class="col-100">
+                    <p>
+                        @if (ViewBag.usuario.ranking == 1)
+                        {
+                        <p>No tienes <a href="@Url.Action("Generales","Posiciones")" class="linkBlue external">ranking</a> todavía</p>
+                    }
+                    else
+                    {
+                        <p>
+                            Tu posición en el<a href="@Url.Action("Generales","Posiciones")" class="linkBlue external"> ranking</a> es: @ViewBag.usuario.posicion<br />
+                            @ViewBag.usuario.Rankings.nombre<br />
+                            @*Acertaste @ViewBag.usuario.puntosNuevos puntos la anterior semana*@
+                        </p>
+                        <p class="centrado"><img src="~/images/rankings/@(ViewBag.usuario.ranking).gif" class="imgRanking;"></p>
+                    }
+
+                    </div>
+            </div>
+        }
+        else
+        {
+            <p>Un juego de pronóstico GRATUITO y ENTRETENIDO que te hará vivir intensamente la emoción de cada partido del Mundial de Fútbol 2018 y otros torneos importantes.</p>
+        }
+
+
+        <p><img id="imgBannerRotativo" src="~/images/bannersHome/1.jpg" alt="" /></p>
+
+
+        <div class="row">
+            <div class="col-100">
+                <a href="@Url.Action("Index", "Cartilla",new { id=12})" class="external">
+                <div id="divContador">
+                    <p>El mundial de fútbol empezará en</p>
+                    <span id="clock"></span>
+                    <p style="font-size:18px;">PRONOSTICA YA!!!</p>
+                </div>
+                    </a>
+            </div>
+        </div>
+
+        @if (ViewBag.cartillasAbiertas.Count > 0)
+        {
+            <h5 class="titulo">Cartillas abiertas - Participa: </h5>
+            <ul class="features_list_detailed">
+                @foreach (var cu in ViewBag.cartillasAbiertas)
+                {
+                    <li>
+                        <a href="@Url.Action("Index", "Cartilla", new { id = cu.id })" class="external">
+                            <div class="button-cartilla">
+                                <div class="feat_small_icon">
+                                    <img src="~/images/campannas/iconos/@(cu.id).png" alt="" title="" />
+                                </div>
+                                <div class="feat_small_details">
+                                    <h4>@(cu.nombre)</h4>
+                                </div>
+                                <div style="clear:both;margin-top:50px;">
+                                    <p>@(cu.descripcion)</p>
+                                    <p>Juega hasta: <span style="font-weight:bold;">@(cu.fechaCierre.ToString("dd-MMM"))</span></p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                }
+            </ul>
+        }
+
+        @if (ViewBag.cartillasCerradas.Count > 0)
+        {
+            <h5 class="titulo">Cartillas cerradas - Mira los resultados:</h5>
+            <ul class="features_list_detailed">
+                @foreach (var cu in ViewBag.cartillasCerradas)
+                {
+                    <li>
+                        <a href="@Url.Action("Index", "Cartilla", new { id = cu.id })" class="external">
+                            <div class="button-cartilla_no">
+                                <div class="feat_small_icon">
+                                    <img src="~/images/campannas/iconos/@(cu.id).png" alt="" title="" />
+                                </div>
+                                <div class="feat_small_details">
+                                    <h4>@(cu.nombre)</h4>
+                                </div>
+                                @*<div style="clear:both;margin-top:50px;">
+                                    <p>@(cu.descripcion)</p>
+                                </div>*@
+                            </div>
+                        </a>
+                    </li>
+                }
+            </ul>
+
+            <p class="centrado">
+                <span class="button-wrap">
+                    <a href="@Url.Action("Terminadas", "Cartilla")" class="button button-pill external">Revisa juegos pasados</a>
+                </span>
+            </p>
+        }
+
+        <br /><br />
+        <h5 class="titulo">Ranking ¡Qué Golazo!</h5>
+
+        <ul class="responsive_table">
+            <li class="table_row"><div class="table_section_14" style="width:8%;">Pos.</div><div class="table_section_14" style="width:78%;">Nombre</div><div class="table_section_14" style="width:8%;">Pts.</div></li>
+            @{
+                var contador = 0;
+            }
+            @foreach (var posicion in ViewBag.posiciones)
+            {
+                contador += 1;
+                <li class="table_row">
+                    <div class="table_section_14" style="width:8%;">@posicion.posicion</div>
+                    <div class="table_section_14" style="width:78%;">
+                        @posicion.nombreCompleto
+                        @if (contador == 1)
+                        {
+                            <img style="display:inline; width:24px;" title="El rey de ¡Qué Golazo!" alt="El rey de ¡Qué Golazo!" src='~/images/skor/corona.png' />
+                        }
+
+                    </div>
+                    <div class="table_section_14" style="width:8%;">@posicion.puntos</div>
+                </li>
+            }
+        </ul>
+
+        <p class="centrado">
+            <span class="button-wrap">
+                <a href="@Url.Action("Generales", "Posiciones")" class="button button-pill external">Ver más</a>
+            </span>
+        </p>
+
+
+
+
+    </div>
+
+
+
+
+
+
+    @section js{
+        <script src="~/Scripts/jquery.countdown.min.js"></script>
+        <script src="~/Scripts/skor/Inicio/Index.cshtml.js?ver=1.0.0"></script>
+    }
+
+}

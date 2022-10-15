@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Terminadas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Raw(ViewBag.error ?? "")
+
+<div class="page_single layout_fullwidth_padding toolbarpage">
+
+    <br/><br />
+    <h5><strong>Cartillas terminadas</strong></h5>
+    <ul class="features_list_detailed">
+        @foreach (var cu in ViewBag.cartillas)
+        {
+            <li>
+                <div class="feat_small_icon"><img src="~/images/campannas/iconos/@(cu.id).png" alt="" title="" /></div>
+                <div class="feat_small_details">
+                    <h4><a href="@Url.Action("Index", "Cartilla", new { id = cu.id })" class="external">@(cu.nombre)</a></h4>
+                    <a href="@Url.Action("Index", "Cartilla", new { id = cu.id })" class="external">@(cu.descripcion)</a>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+
+

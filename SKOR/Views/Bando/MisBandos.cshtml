@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "misBandos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int contar = 0;
+}
+
+@Html.Raw(ViewBag.error ?? "")
+
+<h2 class="page_title">Mis Equipos</h2>
+
+<div class="page_single layout_fullwidth_padding toolbarpage">
+    <ul class="simple_list">
+        <li>Participa en Equipos!</li>
+        <li>Juega con tus amigos, colegas, vecinos, etc.</li>
+        <li>Compite contra tus amigos y  contra otros equipos.</li>
+        <li>En cada juego o en el <a href="@Url.Action("Generales", "Posiciones")" class="normal external">Ranking ¡Qué Golazo!</a> puedes filtrar los resultados para ver solo a los miembros del equipo.</li>        
+    </ul>
+
+    <h5>Estas jugando en estos Equipos:</h5>
+    <div class="row">
+        <div class="col-100">
+            @if (ViewBag.bandosUsuario.Count > 0)
+            {
+
+                <ul id="ulTablaBandos" class="responsive_table" data-mostrar="0">
+                    <li class="table_row"><div class="table_section_small">Nr.</div><div class="table_section">Nombre</div><div class="table_section_small"></div></li>
+                    @foreach (var bando in ViewBag.bandosUsuario)
+                    {
+                        contar += 1;
+                        <li class="table_row">
+                            <div class="table_section_small">@contar</div>
+                            <div class="table_section"><a class="external" href="@Url.Action("Ver","Bando",new{id= bando.Bandos.id })">@bando.Bandos.nombre</a></div>
+                            <div class="table_section centrado">
+                                @if (ViewBag.idUsuario == bando.Bandos.idAdmin)
+                                {
+                                    <a href="@Url.Action("Ver","Bando",new{id= bando.Bandos.id })" class="external"><img src="~/images/skor/pen-checkbox.png" /></a>
+                                }
+                                else
+                                {
+                                    <button style="margin: 0 auto;" class="btnSalirGrupo button button-large button-borderless centrado" data-bando="@bando.Bandos.id" data-nombre="@bando.Bandos.nombre"><i class="fa fa-trash-alt fa-xs"></i></button>
+                                }
+                            </div>
+
+                        </li>
+                    }
+                </ul>
+            }
+            else {
+                <p>No eres parte de ningún equipo aún.</p>
+            }
+
+        </div>
+    </div>
+    <br/> <br />
+
+    @*<h5>Únete a un equipo</h5>
+    <div class="row">
+        <div class="col-100">
+            <label>Código:</label>
+            <input type="text" id="txtCodigoBando" name="txtCodigoBando" value="" class="form_input" />
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-100 centrado">
+            <span class="button-wrap">
+                <a href="#" class="button button-pill external">Unirse</a>
+            </span>
+        </div>
+    </div>
+    <br /> <br />*@
+
+    <h5>Crea un Equipo</h5>
+    <div class="row">
+        <div class="col-100">
+            <label>Nombre:</label>
+            <input type="text" id="txtBandoNombre" name="txtBandoNombre" value="" class="form_input" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-100 centrado">
+            <span class="button-wrap">
+                <a id="btnCreaBando" href="#" class="button button-pill external">Crear</a>
+            </span>
+        </div>
+    </div>
+
+</div>
+
+<input type="hidden" id="txtNombreBando" value="@ViewBag.nombreBando" />
+
+@section js{
+    <script src="~/Scripts/skor/Bandos/MisBandos.cshtml.js"></script>
+}

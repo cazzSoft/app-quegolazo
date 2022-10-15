@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Close";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col text-right">
+        <a href="@Url.Action("Index","Home")">Administración de cartillas</a>
+    </div>
+</div>
+
+<br />
+
+<h2>Cierre de cartillas</h2>
+<br/><br />
+<div class="col">
+    <div class="row text-center">
+        <button type="button" id="btnCerrarCartillas" class="btn btn-default califica">Cerrar cartillas</button>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/skorAdmin/Close.js"></script>
+}

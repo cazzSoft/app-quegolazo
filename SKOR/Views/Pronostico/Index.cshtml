@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Pronóstico";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page_title">@ViewBag.cartilla.nombre</h2>
+
+<div class="page_single layout_fullwidth_padding">
+
+    <div class="margin-5">
+        @ViewBag.cartilla.descripcion
+    </div>
+
+    <div class="row">
+        <div class="col-auto">
+            <br/>
+            <p><a href="@Url.Action("Index","InformacionCartilla", new { id= ViewBag.cartilla.id })" class="external button button-block button-rounded button-large">Premios y condiciones</a></p>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-auto center">
+            <center><a href="@(ViewBag.cartilla.urlBanner ?? "#")" target="_blank" class="external"><img src="~/images/campannas/banners/@(ViewBag.cartilla.id).jpg" /></a></center>
+        </div>
+
+    </div>
+    <br />
+    <p><span style="font-weight:bold;">Fecha de cierre:</span> @ViewBag.cartilla.fechaCierre.ToString("dd-MM-yyyy")</p>
+    <br />
+    <span style="font-weight:bold;">Mi pronóstico</span>
+
+    <div class="clearleft">
+    </div>
+
+    <div id="divPron">
+
+        <div class="row">
+
+            <div class="col-auto">
+                cargando....
+
+             
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <br/><br />
+    <div class="row">
+        <div class="col-30">
+            <a href="shop.html" id="btnGrupoAnterior" class="prev_shop button button-fill color-blue">Anterior</a>
+        </div>
+        <div class="col-5"></div>
+        <div class="col-30 centrado">
+            <span class="shop_pagenr color-red text-center" id="lblGrupo">Grupo </span>
+        </div>
+        <div class="col-5"></div>
+        <div class="col-30">
+            <a href="#" id="btnGrupoSiguiente" class="next_shop button button-fill color-blue">Siguiente</a>
+        </div>
+    </div>
+    <br /><br />
+
+    <p style="font-weight:bold;text-align:center;">Para participar debes "Sellar" tu cartilla</p>
+    <p style="font-weight:bold;text-align:center;">Una vez sellada, no podrás hacer cambios a tus pronósticos"</p>
+    <p style="font-weight:bold;text-align:center;">Esta cartilla se puede sellar hasta el @ViewBag.cartilla.fechaCierre.ToString("dd-MMM")</p>
+    <p style="font-weight:bold;text-align:center;">En caso de empate en puntos, ganará quien haya sellado su cartilla antes.</p>
+
+    <div class="block">
+        <p class="row">
+            <a href="#" class="button_full" id="btnSellar">Sellar cartilla</a>
+        </p>
+    </div>
+
+</div>
+    <input type="hidden" id="txtIdCartillaUsuario" value="@ViewBag.idCartillaUsuario" />
+    <input type="hidden" id="txtIdCartilla" value="@ViewBag.cartilla.id" />
+
+    @section js{
+        <script src="~/Scripts/skor/Pronostico/MiPronostico.js?v=1"></script>
+        <script src="~/Scripts/skor/Pronostico/index.cshtml.js?v=1"></script>
+    }

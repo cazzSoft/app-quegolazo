@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuraciones>
+  <!--numero de dias en que caduca un passowrd nuevo-->
+  <parametro key="numDiasCaducidadPWD" valor="90" comentario=""/>
+  <!--verifica claves anteriores registradas para evitar que se repitan-->
+  <parametro key="verificoClavesViejas" valor="true" comentario=""/>
+  <!--tiempo en meses o lapso en que las claves antiguas no pueden ser repetidas-->
+  <parametro key="mesesConsultoPWDAntiguo" valor="6" comentario=""/>
+  <!--número de dias que se recuardan al usuario cuando selecciona recordar en este equipo-->
+  <parametro key="numDiasRecordarUsuario" valor="5" comentario=""/>
+  <!--número de dias en que se pide el cambio de clave al usuario cuando ingresa-->
+  <parametro key="numDiasPorCaducirPWD" valor="5" comentario=""/>
+  <!--Otorga tiempo de validez del usuario en el browser utilizando sesiones con tiempo de expiracion-->
+  <parametro key="pongoUsuarioEnSesion" valor="true" comentario=""/>
+  <!--Verifica si se ha intendao varias veces entrar equivocadamente-->
+  <parametro key="numeroIntentos" valor="3" comentario=""/>
+  <!--Si se desa guardar historial de acceso as sistema-->
+  <parametro key="guardarIngreso" valor="true" comentario=""/>
+  <!--Servidor de correo-->
+  <parametro key="SMTP" valor="localhost" comentario=""/>
+  <!--Mostrar la casilla de verificacion para mostrar-->
+  <parametro key="mostrarRecordar" valor="true" comentario=""/>
+</Configuraciones>

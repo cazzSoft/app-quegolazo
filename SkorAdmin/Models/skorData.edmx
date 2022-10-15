@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="skorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cartillas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idEmpresa" Type="int" />
+          <Property Name="idAdministrador" Type="int" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="fechaCierre" Type="date" />
+          <Property Name="descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="premios" Type="varchar(max)" />
+          <Property Name="condiciones" Type="varchar(max)" />
+          <Property Name="estaCerrada" Type="bit" />
+          <Property Name="urlBanner" Type="varchar" MaxLength="1000" />
+          <Property Name="estaTerminada" Type="bit" />
+          <Property Name="estaActiva" Type="bit" />
+        </EntityType>
+        <EntityType Name="Equipos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idLiga" Type="int" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="rating" Type="int" />
+        </EntityType>
+        <EntityType Name="Partidos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idLiga" Type="int" />
+          <Property Name="idGrupo" Type="int" />
+          <Property Name="nombre" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="idEquipo1" Type="int" />
+          <Property Name="idEquipo2" Type="int" />
+          <Property Name="score1" Type="int" />
+          <Property Name="score2" Type="int" />
+          <Property Name="fecha" Type="date" />
+          <Property Name="descripcion" Type="varchar" MaxLength="150" />
+          <Property Name="fase" Type="varchar" MaxLength="50" />
+          <Property Name="esClasificacion" Type="bit" />
+          <Property Name="idEquipoClasifico" Type="int" />
+          <Property Name="ubicacion" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="PartidosCartilla">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPartido" Type="int" Nullable="false" />
+          <Property Name="idCartilla" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="grupo" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <Association Name="FK_Cartillas_PartidosCartilla">
+          <End Role="Cartillas" Type="Self.Cartillas" Multiplicity="1" />
+          <End Role="PartidosCartilla" Type="Self.PartidosCartilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cartillas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PartidosCartilla">
+              <PropertyRef Name="idCartilla" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipos1_Partidos">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
+          <End Role="Partidos" Type="Self.Partidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partidos">
+              <PropertyRef Name="idEquipo1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipos2_Partidos">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
+          <End Role="Partidos" Type="Self.Partidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partidos">
+              <PropertyRef Name="idEquipo2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Liga_Equipos">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
+          <End Role="Equipos1" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Equipos1">
+              <PropertyRef Name="idLiga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Partidos_PartidosCartilla">
+          <End Role="Partidos" Type="Self.Partidos" Multiplicity="1" />
+          <End Role="PartidosCartilla" Type="Self.PartidosCartilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partidos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PartidosCartilla">
+              <PropertyRef Name="idPartido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_CerrarCartillas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_PROC_CalificaPorPartido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idPartido" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_PROC_RecalculaCartillas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="skorModelStoreContainer">
+          <EntitySet Name="Cartillas" EntityType="Self.Cartillas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipos" EntityType="Self.Equipos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Partidos" EntityType="Self.Partidos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PartidosCartilla" EntityType="Self.PartidosCartilla" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cartillas_PartidosCartilla" Association="Self.FK_Cartillas_PartidosCartilla">
+            <End Role="Cartillas" EntitySet="Cartillas" />
+            <End Role="PartidosCartilla" EntitySet="PartidosCartilla" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipos1_Partidos" Association="Self.FK_Equipos1_Partidos">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Partidos" EntitySet="Partidos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipos2_Partidos" Association="Self.FK_Equipos2_Partidos">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Partidos" EntitySet="Partidos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Liga_Equipos" Association="Self.FK_Liga_Equipos">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Equipos1" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Partidos_PartidosCartilla" Association="Self.FK_Partidos_PartidosCartilla">
+            <End Role="Partidos" EntitySet="Partidos" />
+            <End Role="PartidosCartilla" EntitySet="PartidosCartilla" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="skorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cartillas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idEmpresa" Type="Int32" />
+          <Property Name="idAdministrador" Type="Int32" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fechaCierre" Type="DateTime" Precision="0" />
+          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="premios" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="condiciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="estaCerrada" Type="Boolean" />
+          <Property Name="urlBanner" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="estaTerminada" Type="Boolean" />
+          <Property Name="estaActiva" Type="Boolean" />
+          <NavigationProperty Name="PartidosCartilla" Relationship="Self.FK_Cartillas_PartidosCartilla" FromRole="Cartillas" ToRole="PartidosCartilla" />
+        </EntityType>
+        <EntityType Name="Equipos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idLiga" Type="Int32" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rating" Type="Int32" />
+          <NavigationProperty Name="Partidos" Relationship="Self.FK_Equipos1_Partidos" FromRole="Equipos" ToRole="Partidos" />
+          <NavigationProperty Name="Partidos1" Relationship="Self.FK_Equipos2_Partidos" FromRole="Equipos" ToRole="Partidos" />
+          <NavigationProperty Name="Equipos1" Relationship="Self.FK_Liga_Equipos" FromRole="Equipos" ToRole="Equipos1" />
+          <NavigationProperty Name="Equipos2" Relationship="Self.FK_Liga_Equipos" FromRole="Equipos1" ToRole="Equipos" />
+        </EntityType>
+        <EntityType Name="Partidos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idLiga" Type="Int32" />
+          <Property Name="idGrupo" Type="Int32" />
+          <Property Name="nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idEquipo1" Type="Int32" />
+          <Property Name="idEquipo2" Type="Int32" />
+          <Property Name="score1" Type="Int32" />
+          <Property Name="score2" Type="Int32" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+          <Property Name="descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="fase" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="esClasificacion" Type="Boolean" />
+          <Property Name="idEquipoClasifico" Type="Int32" />
+          <Property Name="ubicacion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Equipos" Relationship="Self.FK_Equipos1_Partidos" FromRole="Partidos" ToRole="Equipos" />
+          <NavigationProperty Name="Equipos1" Relationship="Self.FK_Equipos2_Partidos" FromRole="Partidos" ToRole="Equipos" />
+          <NavigationProperty Name="PartidosCartilla" Relationship="Self.FK_Partidos_PartidosCartilla" FromRole="Partidos" ToRole="PartidosCartilla" />
+        </EntityType>
+        <EntityType Name="PartidosCartilla">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPartido" Type="Int32" Nullable="false" />
+          <Property Name="idCartilla" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="grupo" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cartillas" Relationship="Self.FK_Cartillas_PartidosCartilla" FromRole="PartidosCartilla" ToRole="Cartillas" />
+          <NavigationProperty Name="Partidos" Relationship="Self.FK_Partidos_PartidosCartilla" FromRole="PartidosCartilla" ToRole="Partidos" />
+        </EntityType>
+        <Association Name="FK_Cartillas_PartidosCartilla">
+          <End Role="Cartillas" Type="Self.Cartillas" Multiplicity="1" />
+          <End Role="PartidosCartilla" Type="Self.PartidosCartilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cartillas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PartidosCartilla">
+              <PropertyRef Name="idCartilla" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipos1_Partidos">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
+          <End Role="Partidos" Type="Self.Partidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partidos">
+              <PropertyRef Name="idEquipo1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipos2_Partidos">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
+          <End Role="Partidos" Type="Self.Partidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partidos">
+              <PropertyRef Name="idEquipo2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Liga_Equipos">
+          <End Role="Equipos" Type="Self.Equipos" Multiplicity="0..1" />
+          <End Role="Equipos1" Type="Self.Equipos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Equipos1">
+              <PropertyRef Name="idLiga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Partidos_PartidosCartilla">
+          <End Role="Partidos" Type="Self.Partidos" Multiplicity="1" />
+          <End Role="PartidosCartilla" Type="Self.PartidosCartilla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partidos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PartidosCartilla">
+              <PropertyRef Name="idPartido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="skorEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cartillas" EntityType="Self.Cartillas" />
+          <EntitySet Name="Equipos" EntityType="Self.Equipos" />
+          <EntitySet Name="Partidos" EntityType="Self.Partidos" />
+          <EntitySet Name="PartidosCartilla" EntityType="Self.PartidosCartilla" />
+          <AssociationSet Name="FK_Cartillas_PartidosCartilla" Association="Self.FK_Cartillas_PartidosCartilla">
+            <End Role="Cartillas" EntitySet="Cartillas" />
+            <End Role="PartidosCartilla" EntitySet="PartidosCartilla" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipos1_Partidos" Association="Self.FK_Equipos1_Partidos">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Partidos" EntitySet="Partidos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipos2_Partidos" Association="Self.FK_Equipos2_Partidos">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Partidos" EntitySet="Partidos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Liga_Equipos" Association="Self.FK_Liga_Equipos">
+            <End Role="Equipos" EntitySet="Equipos" />
+            <End Role="Equipos1" EntitySet="Equipos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Partidos_PartidosCartilla" Association="Self.FK_Partidos_PartidosCartilla">
+            <End Role="Partidos" EntitySet="Partidos" />
+            <End Role="PartidosCartilla" EntitySet="PartidosCartilla" />
+          </AssociationSet>
+          <FunctionImport Name="SP_PROC_CalificaPorPartido">
+          <Parameter Name="idPartido" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_PROC_RecalculaCartillas" />
+          <FunctionImport Name="SP_CerrarCartillas" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="skorModelStoreContainer" CdmEntityContainer="skorEntities">
+          <EntitySetMapping Name="Cartillas">
+            <EntityTypeMapping TypeName="skorModel.Cartillas">
+              <MappingFragment StoreEntitySet="Cartillas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idEmpresa" ColumnName="idEmpresa" />
+                <ScalarProperty Name="idAdministrador" ColumnName="idAdministrador" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="fechaCierre" ColumnName="fechaCierre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="premios" ColumnName="premios" />
+                <ScalarProperty Name="condiciones" ColumnName="condiciones" />
+                <ScalarProperty Name="estaCerrada" ColumnName="estaCerrada" />
+                <ScalarProperty Name="urlBanner" ColumnName="urlBanner" />
+                <ScalarProperty Name="estaTerminada" ColumnName="estaTerminada" />
+                <ScalarProperty Name="estaActiva" ColumnName="estaActiva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipos">
+            <EntityTypeMapping TypeName="skorModel.Equipos">
+              <MappingFragment StoreEntitySet="Equipos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idLiga" ColumnName="idLiga" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partidos">
+            <EntityTypeMapping TypeName="skorModel.Partidos">
+              <MappingFragment StoreEntitySet="Partidos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idLiga" ColumnName="idLiga" />
+                <ScalarProperty Name="idGrupo" ColumnName="idGrupo" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="idEquipo1" ColumnName="idEquipo1" />
+                <ScalarProperty Name="idEquipo2" ColumnName="idEquipo2" />
+                <ScalarProperty Name="score1" ColumnName="score1" />
+                <ScalarProperty Name="score2" ColumnName="score2" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fase" ColumnName="fase" />
+                <ScalarProperty Name="esClasificacion" ColumnName="esClasificacion" />
+                <ScalarProperty Name="idEquipoClasifico" ColumnName="idEquipoClasifico" />
+                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartidosCartilla">
+            <EntityTypeMapping TypeName="skorModel.PartidosCartilla">
+              <MappingFragment StoreEntitySet="PartidosCartilla">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idPartido" ColumnName="idPartido" />
+                <ScalarProperty Name="idCartilla" ColumnName="idCartilla" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="grupo" ColumnName="grupo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_PROC_CalificaPorPartido" FunctionName="skorModel.Store.SP_PROC_CalificaPorPartido" />
+          <FunctionImportMapping FunctionImportName="SP_PROC_RecalculaCartillas" FunctionName="skorModel.Store.SP_PROC_RecalculaCartillas" />
+          <FunctionImportMapping FunctionImportName="SP_CerrarCartillas" FunctionName="skorModel.Store.SP_CerrarCartillas" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

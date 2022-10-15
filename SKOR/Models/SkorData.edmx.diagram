@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4287a90e126e4b81b5be7045083c1f88" Name="Diagram1">
+        <EntityTypeShape EntityType="skorModel.AvancesFase" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="skorModel.Cartillas" Width="1.5" PointX="6" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="skorModel.CartillasUsuario" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="skorModel.Empresas" Width="1.5" PointX="3.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="skorModel.Equipos" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="skorModel.Grupos" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="skorModel.Ligas" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="skorModel.MIS_Personas" Width="1.5" PointX="1" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="skorModel.Partidos" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="skorModel.PartidosCartilla" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="skorModel.Pronosticos" Width="1.5" PointX="10.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="skorModel.USR_usuarios" Width="1.5" PointX="3.375" PointY="13.375" IsExpanded="true" />
+        <AssociationConnector Association="skorModel.FK_Partidos_AvancesFase" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_Cartillas_CartillasUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_Cartillas_PartidosCartilla" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_Empresas_Cartillas" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_Usuarios_Cartillas" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_CartillasUsuario_Pronosticos" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_Usuarios_CartillasUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_Equipos1_Partidos" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_Equipos1_Pronosticos" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_Equipos2_Partidos" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_Equipos2_Pronosticos" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_Liga_Equipos" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_Grupos_Partidos" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_Ligas_Partidos" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_USR_usuarios_MIS_Personas" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_Partidos_PartidosCartilla" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_Partidos_Pronosticos" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_PartidosCartilla_Pronosticos" ManuallyRouted="false" />
+        <AssociationConnector Association="skorModel.FK_Usuarios_Pronosticos" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="skorModel.Bandos" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="skorModel.UsuariosBandos" Width="1.5" PointX="6.625" PointY="9.25" />
+        <AssociationConnector Association="skorModel.FK_Bandos_UsuariosBandos" />
+        <AssociationConnector Association="skorModel.FK_Usuarios_UsuariosBandos" />
+        <AssociationConnector Association="skorModel.FK_Bandos_USR_usuarios" />
+        <EntityTypeShape EntityType="skorModel.Rankings" Width="1.5" PointX="1.125" PointY="19.125" />
+        <AssociationConnector Association="skorModel.FK_USR_usuarios_Rankings" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

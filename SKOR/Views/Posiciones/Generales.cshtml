@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Ranking ¡Qué Golazo!";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="page_single layout_fullwidth_padding">
+    <br />
+    <h3>Ranking ¡Qué Golazo!</h3>
+
+    <p>
+        Para el ranking Qué Golazo se suman los puntos obtenidos en todos los juegos.<br>
+		EL rey de Qué Golazo es quien haya acumulado más puntos, en la clasificación general.
+    </p>
+    <p>
+        Si logras convertirte en el rey de #QuéGolazo hasta el 10 de junio ganarás una TV JVC de 32".		
+    </p>
+
+    <p><img id="imgBannerRotativo" src="~/images/bannersHome/1.jpg" alt="" /></p>
+
+
+    <div class="buttons-row">
+        <a href="#tabIndividual" class="tab-link active button">Individual</a>
+        <a href="#tabGrupos" class="tab-link button">Por Equipos</a>
+    </div>
+
+    <div class="tabs-animated-wrap">
+        <div class="tabs">
+            <div id="tabIndividual" class="tab active">
+                @if (ViewBag.bandos.Count > 0)
+                {
+                    <div class="row">
+                        <div class="col-100">
+                            <label>Ver posiciones en:</label>
+                            <select id="slcBandosPosiciones" class="form_select">
+                                <option value="0">Clasificación general</option>
+                                @foreach (var bando in ViewBag.bandos)
+                                {
+                                    <option value="@bando.id">@bando.nombre</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-100">
+                            <p class="centrado"><img style="display:none;" id="imgBannerBando" src="~/images/bannersHome/1.jpg" onerror="this.style.display='none';" /></p>
+                        </div>
+                    </div>
+                }
+                <br /><br />
+                <div class="row">
+                    <div class="col-100">
+                        <ul id="ulTablaPosiciones" class="responsive_table" data-mostrar="0">
+                            <li class="table_row"><div class="table_section"></div></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="centrado">
+                    <span class="button-wrap">
+                        <a id="hrfVermas" href="#" class="button button-pill">Ver más</a>
+                    </span>
+                </p>
+            </div><!--Fin tab individual-->
+
+            <div id="tabGrupos" class="tab">
+                <br /><br />
+                <div class="row">
+                    <div class="col-100">
+                        <ul id="ulTablaPosicionesGrupos" class="responsive_table" data-mostrar="0">
+                            <li class="table_row"><div class="table_section"></div></li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="centrado">
+                    <span class="button-wrap">
+                        <a id="hrfVermasGrupos" href="#" class="button button-pill">Ver más</a>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+</div>
+
+    @section js{
+        <script src="~/Scripts/skor/Posiciones/General.cshtml.js"></script>
+    }

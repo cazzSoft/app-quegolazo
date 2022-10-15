@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section css{
+<link href="~/Content/signin.css" rel="stylesheet" />
+}
+
+
+<form class="form-signin" action="" method="post">
+    <h2 class="form-signin-heading">Login</h2>
+    <label for="inputEmail" class="sr-only">Usuario</label>
+    <input type="text" id="txtUsuario" name="txtUsuario" class="form-control" placeholder="Usuario" required autofocus>
+    <label for="inputPassword" class="sr-only">Contraseña</label>
+    <input type="password" id="txtPassword" name="txtPassword" class="form-control" placeholder="Contraseña" required>
+    <div class="checkbox">
+        <label>
+            <input  type="checkbox" value="remember-me"> Remember me
+        </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form>

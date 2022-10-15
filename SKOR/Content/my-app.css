@@ -1,0 +1,183 @@
+.centrado {
+    text-align:center !important;
+}
+.centrado img{
+    margin:0 auto;
+}
+.linea {
+    display: inline !important;
+}
+.ico-50 {
+    width:50px;
+}
+.ico-32 {
+    width: 32px;
+}
+
+.whatsapp {
+    padding-left: 40px;
+    background-image: url("../images/skor/whatsapp_logo.png");
+    background-repeat: no-repeat;
+    width: auto;
+    min-height:32px;
+    display: inline-block;
+    /*letter-spacing:3px;*/
+    line-height:32px;
+}
+
+/*------------------------------------------------*/
+
+.circle-text {
+    width: 50%;
+    display:inline-block;
+    padding:12px 0 0 0;
+}
+
+    .circle-text:after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 0;
+        padding-bottom: 100%;
+        background: #4679BD;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+    }
+
+    .circle-text div {
+        float: left;
+        width: 100%;
+        padding-top: 50%;
+        line-height: 1em;
+        margin-top: -0.5em;
+        text-align: center;
+        color: white;
+        font-weight:bold;
+        font-size:15px;
+    }
+
+    /*=======================================================*/
+
+
+.like-footer {
+    background-color: #484848;
+    min-height: 20px;
+    color: #fff;
+    padding:20px;
+    margin-top:20px;
+}
+    .like-footer img {
+        display: inline-block !important;
+        margin-left:20px;
+    }
+
+
+#imgBannerRotativo {
+    margin:0 auto;
+}
+
+.linkBlue {
+    color: #1a7db6;
+}
+
+.info {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    font-size: 18px;
+    color: blue;
+}
+
+/*=====================================================================*/
+.fb-share-button {
+    margin: 0 auto;
+}
+
+.myPosition {
+    font-weight: bold;
+    color: #4679bd;
+}
+
+
+.table_section_5 {
+    width: 18%;
+    float: left;
+    padding: 0 0 0 2%;
+    text-align: center;
+    display: block;
+}
+
+
+.button-cartilla {
+    border: 1px solid #e3e3e3;
+    display: inline-block;
+    padding: 10px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(white));
+    background: linear-gradient(#f2f2f2, white);
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+h5.titulo {
+    font-weight: bold;
+    color: #4679BD;
+}
+.azul {
+    color: #4679BD;
+}
+
+
+a.normal:link {
+    color: #0000EE !important;
+    text-decoration: underline !important;
+    cursor: auto !important;
+}
+a.normal:visited {
+    color: #551A8B !important;
+    text-decoration: underline !important;
+    cursor: auto !important;
+}
+a.normal:link:active {
+    color: #0000EE;
+    text-decoration: underline;
+    cursor: auto;
+}
+a.normal:visited:active {
+    color: #551A8B;
+    text-decoration: underline;
+    cursor: auto;
+}
+
+.logoEquipo {
+    width:20px;
+}
+
+
+#divContador {
+    /*
+    min-height: 50px;
+    background-color: antiquewhite;*/
+    width: 100%;
+    text-align: center;
+    padding: 10px 0px 10px 0px;
+    border: 1px solid #e3e3e3;
+    display: inline-block;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(white));
+    background: linear-gradient(#f2f2f2, white);
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+    margin: 5px 0px 20px 0px;
+}
+
+    #divContador p {
+        font-weight: bold;
+        color: #4679BD;
+    }
+    #divContador #clock {
+        font-size: 32px;
+    }
+
+.imgRanking {
+    max-width: 100%
+}

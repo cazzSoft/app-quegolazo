@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page_title">Únete al equipo</h2>
+
+<p>Para unirte a un equipo debes haber ingresado a ¡Qué Golazo! con tu cuenta</p>
+
+<p class="centrado">
+    <span class="button-wrap">
+        <a href="#" id="btnLoginB" data-popup=".popup-login" class="button button-pill  open-popup">Ingresa a ¡Qué Golazo!</a>
+    </span>
+</p>
+
+
+<input type="hidden" id="txtCodigoBando" value="@ViewBag.codigoBando" />
+@section js{
+    <script src="~/Scripts/skor/bandos/B.cshtml.js"></script>
+}

@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "ver";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Raw(ViewBag.error)
+
+<h2 class="page_title">@ViewBag.bando.nombre</h2>
+
+<div class="page_single layout_fullwidth_padding toolbarpage">
+
+    <div class="row">
+        <div class="col-100">
+            <p>@Html.Raw(ViewBag.bando.descripcion)</p>
+        </div>
+    </div>
+    <p>Creado por: @ViewBag.bando.USR_usuarios.MIS_Personas.nombre1 @ViewBag.bando.USR_usuarios.MIS_Personas.apellido1</p>
+    <p>Ranking Actual: @(ViewBag.bando.posicion ?? "-") &nbsp;  <a href="@Url.Action("Generales", "Posiciones")" class="external linkBlue">Ver posiciones</a></p>
+
+    <div class="row">
+        <div class="col-100 centrado">
+            <img src="~/images/campannas/bandos/@(ViewBag.bando.id).jpg" onerror="this.style.display='none';" />
+        </div>
+    </div>
+
+
+    @if (ViewBag.bando.condiciones != "" && ViewBag.bando.condiciones != null)
+    {
+
+        <div class="buttons-row">
+            <a href="#tabP" class="tab-link active button">Premios</a>
+            <a href="#tabC" class="tab-link  button">Condiciones</a>
+
+        </div>
+        <div class="tabs-animated-wrap">
+            <div class="tabs">
+                <div id="tabP" class="tab active">
+                    <p>@Html.Raw(ViewBag.bando.premios)</p>
+                </div>
+
+                <div id="tabC" class="tab">
+                    <p>@Html.Raw(ViewBag.bando.condiciones)</p>
+                </div>
+
+
+            </div>
+        </div>
+    }
+
+    <br />
+    <a href="http://www.quegolazo.com.ec/cartilla/index/12" class="external button_full button-large">Pronostica el mundial</a>
+
+
+    @*<h4>Participa en Equipos!</h4>
+        <ul class="simple_list">
+            <li>Juega con tus amigos, colegas, vecinos, etc.</li>
+            <li>Compite contra tus amigos y  contra otros equipos.</li>
+            <li>En cada juego o en el <a href="@Url.Action("Generales", "Posiciones")" class=" linkBlue external">Ranking¡Qué Golazo!</a> puedes filtrar los resultados para ver solo a los miembros del equipo.</li>
+            <li>Juega ya!</li>
+            <li>Mira los juegos abiertos aquí, y <a href="@Url.Action("Index", "Inicio")" class="external linkBlue">Participa ya!</a></li>
+        </ul>*@
+
+    <br />
+
+    <div class="buttons-row">
+        <a href="#tabMi" class="tab-link active button">Miembros</a>
+        <a href="#tabPos" class="tab-link  button">Pos. Mundial</a>
+    </div>
+
+    <div class="tabs-animated-wrap">
+        <div class="tabs">
+            <div id="tabMi" class="tab active">
+                <ul id="ulTablaMiembros" class="responsive_table" data-mostrar="0"></ul>
+            </div>
+
+            <div id="tabPos" class="tab">
+                <table class="table" id="tblPosicionesBando" style="width:100%;border:1px solid black;">
+                    <thead id="theadPosicionesBando">
+                        <tr><th>Posición</th><th><strong>Nombre</strong></th><th><strong>Puntos</strong></th><th style="display:none;"></th></tr>
+                    </thead>
+                    <tbody id="tbodyPosicionesBando"></tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    @*<h4>Miembros</h4>
+        <div class="row">
+            <div class="col-100">
+
+            </div>
+        </div>*@
+
+
+
+
+
+
+
+
+    @if (ViewBag.usuarioBando != null)
+    {//significa que pertenece a este grupo
+        <p>
+            <a href="#" id="btnSalirEquipo" data-id="@ViewBag.bando.id" data-nombre="@ViewBag.bando.nombre" class="button button-raised button-caution"><i class="fa fa-trash-alt fa-xs"></i> Salirme de este equipo.</a>
+        </p>
+    }
+
+    @if (ViewBag.bando.esAbierto)
+    {
+        <h5 class="centrado">Invita más personas a este Equipo</h5>
+        <div class="row">
+            <div class="col-50 centrado">
+                <a href="https://api.whatsapp.com/send?text=Únete a '@(ViewBag.bando.nombre)' , mi equipo de pronósticos de ⚽ en ¡Qué Golazo! y pronostica el mundial. Únete aquí 👉 @Uri.EscapeDataString("http://www.quegolazo.com.ec/bando/unirse/" + ViewBag.bando.codigo + "?utm_source=IC&utm_medium=wa")" class="external"><div class="whatsapp">Whatsapp</div></a>
+            </div>
+            <div class="col-50 centrado">
+                <div class="fb-share-button" data-layout="button" data-size="large" data-mobile-iframe="true" data-href="http://www.quegolazo.com.ec/bando/unirse/@(ViewBag.bando.codigo)"><a target="_blank" class="fb-xfbml-parse-ignore">Share</a></div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-100">
+                <p> administrador del equipo debe aceptarte para jugar con este equipo</p>
+            </div>
+        </div>
+    }
+
+
+</div>
+
+<input type="hidden" id="txtNombreBando" value="@ViewBag.bando.nombre" />
+<input type="hidden" id="txtUnionBando" value="@ViewBag.nuevo" />
+<input type="hidden" id="txtIdBando" value="@ViewBag.bando.id" />
+
+@section js{
+    <script src="~/Scripts/skor/bandos/ver.cshtml.js"></script>
+}

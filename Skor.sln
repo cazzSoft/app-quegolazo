@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skor", "Skor\Skor.csproj", "{B600ACD7-ABFD-4570-B124-277F79E8E2E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkorAdmin", "SkorAdmin\SkorAdmin.csproj", "{D85C6C65-CD0E-4B1F-979A-8F1E0C728058}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "htcLib", "htcLib05\htcLib.vbproj", "{D997DF84-0AC3-4DFC-99B0-5232B3730C0E}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "vUsuarios", "vUsuarios\vUsuarios.vbproj", "{AA0D3685-2304-4654-BB75-49CDC601580A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B600ACD7-ABFD-4570-B124-277F79E8E2E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B600ACD7-ABFD-4570-B124-277F79E8E2E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B600ACD7-ABFD-4570-B124-277F79E8E2E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B600ACD7-ABFD-4570-B124-277F79E8E2E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D85C6C65-CD0E-4B1F-979A-8F1E0C728058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D85C6C65-CD0E-4B1F-979A-8F1E0C728058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D85C6C65-CD0E-4B1F-979A-8F1E0C728058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D85C6C65-CD0E-4B1F-979A-8F1E0C728058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D997DF84-0AC3-4DFC-99B0-5232B3730C0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D997DF84-0AC3-4DFC-99B0-5232B3730C0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D997DF84-0AC3-4DFC-99B0-5232B3730C0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D997DF84-0AC3-4DFC-99B0-5232B3730C0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA0D3685-2304-4654-BB75-49CDC601580A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA0D3685-2304-4654-BB75-49CDC601580A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA0D3685-2304-4654-BB75-49CDC601580A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA0D3685-2304-4654-BB75-49CDC601580A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://sigrif.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Skor\\Skor.csproj
+		SccProjectName1 = Skor
+		SccLocalPath1 = Skor
+		SccProjectUniqueName2 = SkorAdmin\\SkorAdmin.csproj
+		SccProjectName2 = SkorAdmin
+		SccLocalPath2 = SkorAdmin
+		SccProjectUniqueName3 = htcLib05\\htcLib.vbproj
+		SccProjectName3 = htcLib05
+		SccLocalPath3 = htcLib05
+		SccProjectUniqueName4 = vUsuarios\\vUsuarios.vbproj
+		SccProjectName4 = vUsuarios
+		SccLocalPath4 = vUsuarios
+	EndGlobalSection
+EndGlobal

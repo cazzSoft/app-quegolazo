@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Raw(ViewBag.error ?? "")
+
+<div class="row">
+    <div class="col text-right">
+        <a href="@Url.Action("Close","General")">Cerrar cartillas</a>
+    </div>
+</div>
+
+<br/>
+<h2>Administración de partidos</h2>
+
+<div class="row">
+    <div class="col">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Partido</th>
+                    <th>Fecha</th>
+                    <th>Descripción</th>
+                    <th>Ubicación</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var partido in ViewBag.Partidos)
+                {
+                    <tr>
+                        <td>@partido.nombre</td>
+                        <td>@partido.Equipos.nombre VS @partido.Equipos1.nombre</td>
+                        <td>@partido.fecha.ToString("dd/MM/yyyy")</td>
+                        <td>@partido.descripcion</td>
+                        <td>@partido.ubicacion</td>
+                        <td><button type="button" data-partido="@partido.id" data-equipo1="@partido.Equipos.nombre" data-equipo2="@partido.Equipos1.nombre" class="btn btn-default califica">Calificar</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col text-center">
+        <button type="button" id="btnRecalificarTodo" class="btn btn-primary">Recalificar todo</button>
+    </div>
+</div>
+
+        <div id="modalPartido" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Calificar el partido</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div class="col-8">
+                                <input type="hidden" id="txtIdPartidoGuardar" value="0" />
+                                <span id="spnNombreEquipo1"></span>
+                            </div>
+                            <div class="col-4">
+                                <input type="text" id="txtScoreEquipo1" class="" style="width:120px;" value="0" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 text-center">
+                                VS
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8">
+                                <span id="spnNombreEquipo2"></span>
+                            </div>
+                            <div class="col-4">
+                                <input type="text" id="txtScoreEquipo2" style="width:120px;" value="0" />
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnGuardarPartido" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        @section scripts{
+            <script src="~/Scripts/skorAdmin/Home.js"></script>
+        }

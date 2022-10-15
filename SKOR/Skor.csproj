@@ -1,0 +1,728 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B600ACD7-ABFD-4570-B124-277F79E8E2E4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Skor</RootNamespace>
+    <AssemblyName>Skor</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BDD\newquery.sql" />
+    <Content Include="BDD\Funciones\FN_PuntosBandos.sql" />
+    <Content Include="BDD\Funciones\FN_PuntosCartillas.sql" />
+    <Content Include="BDD\Funciones\FN_PuntosUsuarios.sql" />
+    <Content Include="BDD\scriptSkorProduccion31102019.sql" />
+    <Content Include="BDD\SPs\SP_AvancesFaseCartilla.sql" />
+    <Content Include="BDD\SPs\SP_BandosUsuario.sql" />
+    <Content Include="BDD\SPs\SP_PosicionesBandos.sql" />
+    <Content Include="BDD\SPs\SP_PosicionesCartilla.sql" />
+    <Content Include="BDD\SPs\SP_PosicionesCartillaBando.sql" />
+    <Content Include="BDD\SPs\SP_PosicionesGenerales.sql" />
+    <Content Include="BDD\SPs\SP_PosicionesGeneralesBando.sql" />
+    <Content Include="BDD\SPs\SP_PROC_CalificaPorPartido.sql" />
+    <Content Include="BDD\SPs\SP_PROC_CreaPronosticos.sql" />
+    <Content Include="BDD\SPs\SP_PROC_RecalculaCartillas.sql" />
+    <Content Include="BDD\SPs\SP_PROC_SetPosicionCierre.sql" />
+    <Content Include="BDD\SPs\SP_PronosticosCartillaUsuario.sql" />
+    <Content Include="BDD\SPs\SP_RevisaCartilla.sql" />
+    <Content Include="BDD\SPs\USR_BuscaUsuario.sql" />
+    <Content Include="BDD\SPs\USR_BuscaUsuarioId.sql" />
+    <Content Include="BDD\SPs\USR_buscaUsuarioMail.sql" />
+    <Content Include="BDD\Tablas\Bandos.sql" />
+    <Content Include="BDD\Tablas\Cartillas.sql" />
+    <Content Include="BDD\Tablas\USR_historialLogins.sql" />
+    <Content Include="BDD\Vistas\USR_usuariosPersonas.sql" />
+    <Content Include="BDD\Vistas\VW_partidos.sql" />
+    <Content Include="Content\buttons.css" />
+    <Content Include="Content\framework7.css" />
+    <Content Include="Content\framework7.ios.colors.css" />
+    <Content Include="Content\framework7.ios.colors.min.css" />
+    <Content Include="Content\framework7.ios.css" />
+    <Content Include="Content\framework7.ios.min.css" />
+    <Content Include="Content\img\icons.png" />
+    <Content Include="Content\img\icons.svg" />
+    <Content Include="Content\img\loader.gif" />
+    <Content Include="Content\my-app.css" />
+    <Content Include="images\bannersHome\index.html" />
+    <Content Include="images\campannas\claro.jpg" />
+    <Content Include="images\campannas\logo_claro.png" />
+    <Content Include="images\campannas\skor.png" />
+    <Content Include="images\rankings\2.gif" />
+    <Content Include="images\rankings\3.gif" />
+    <Content Include="images\rankings\4.gif" />
+    <Content Include="images\rankings\5.gif" />
+    <Content Include="images\rankings\6.gif" />
+    <Content Include="images\rankings\7.gif" />
+    <Content Include="images\rankings\index.html" />
+    <Content Include="images\skor\apple-touch-icon.png" />
+    <Content Include="images\skor\check.png" />
+    <Content Include="images\skor\corona.png" />
+    <Content Include="images\skor\facebook_logo.png" />
+    <Content Include="images\skor\logo_menu.png" />
+    <Content Include="images\skor\pen-checkbox.png" />
+    <Content Include="images\skor\qgolazo-320x460.png" />
+    <Content Include="images\skor\qgolazo-640x920.png" />
+    <Content Include="images\skor\qgolazo.ico" />
+    <Content Include="images\skor\quegolazo_banner.png" />
+    <Content Include="images\skor\twitter_logo.png" />
+    <Content Include="images\skor\user_login.png" />
+    <Content Include="images\skor\whatsapp_logo.png" />
+    <Content Include="Plantillas\Posicion.html" />
+    <Content Include="Plantillas\RecuperaClave.html" />
+    <Content Include="Scripts\hideShowPassword.min.js" />
+    <Content Include="Scripts\jquery.countdown.min.js" />
+    <Content Include="Scripts\skor\Bandos\B.cshtml.js" />
+    <Content Include="Scripts\skor\Bandos\MisBandos.cshtml.js" />
+    <Content Include="Scripts\skor\Bandos\Ver.cshtml.js" />
+    <Content Include="Scripts\skor\Inicio\Index.cshtml.js" />
+    <Content Include="Scripts\skor\MiCartilla\Index.cshtml.js" />
+    <Content Include="Scripts\skor\Posiciones\General.cshtml.js" />
+    <Content Include="Scripts\skor\Posiciones\Index.cshtml.js" />
+    <Content Include="Scripts\skor\Pronostico\Index.cshtml.js" />
+    <Content Include="Scripts\skor\Pronostico\MiPronostico.js" />
+    <Content Include="Models\SkorData.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SkorData.edmx</DependentUpon>
+      <LastGenOutput>SkorData.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SkorData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SkorData.edmx</DependentUpon>
+      <LastGenOutput>SkorData.cs</LastGenOutput>
+    </Content>
+    <Content Include="Plantillas\RegistroUsuario.html" />
+    <Content Include="Scripts\framework7.js" />
+    <Content Include="Scripts\framework7.min.js" />
+    <Content Include="Scripts\framework7.min.js.map" />
+    <Content Include="Scripts\framework7.js.map" />
+    <EntityDeploy Include="Models\SkorData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SkorData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SkorData.edmx.diagram">
+      <DependentUpon>SkorData.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\futbolSkor - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\futbolSkor - FTP1.pubxml" />
+    <None Include="Properties\PublishProfiles\futbolSkor - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\futbolSkor - Web Deploy1.pubxml" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\my-app.js" />
+    <Content Include="Scripts\skor\htclib.js" />
+    <Content Include="Scripts\skor\InformacionCartilla\Index.cshtml.js" />
+    <Content Include="Scripts\skor\Login.js" />
+    <Content Include="style.css" />
+    <Content Include="Global.asax" />
+    <Content Include="images\apple-touch-icon.png" />
+    <Content Include="images\apple-touch-startup-image-320x460.png" />
+    <Content Include="images\apple-touch-startup-image-640x920.png" />
+    <Content Include="images\author.png" />
+    <Content Include="images\avatar.jpg" />
+    <Content Include="images\avatar2.jpg" />
+    <Content Include="images\avatar3.jpg" />
+    <Content Include="images\avatar4.jpg" />
+    <Content Include="images\bg.jpg" />
+    <Content Include="images\bullet.png" />
+    <Content Include="images\comments.png" />
+    <Content Include="images\date.png" />
+    <Content Include="images\icons\black\back.png" />
+    <Content Include="images\icons\black\bike.png" />
+    <Content Include="images\icons\black\blog.png" />
+    <Content Include="images\icons\black\briefcase.png" />
+    <Content Include="images\icons\black\building.png" />
+    <Content Include="images\icons\black\bus.png" />
+    <Content Include="images\icons\black\car.png" />
+    <Content Include="images\icons\black\cart.png" />
+    <Content Include="images\icons\black\categories.png" />
+    <Content Include="images\icons\black\contact.png" />
+    <Content Include="images\icons\black\dribbble.png" />
+    <Content Include="images\icons\black\drink.png" />
+    <Content Include="images\icons\black\electronics.png" />
+    <Content Include="images\icons\black\facebook.png" />
+    <Content Include="images\icons\black\favorites.png" />
+    <Content Include="images\icons\black\features.png" />
+    <Content Include="images\icons\black\food.png" />
+    <Content Include="images\icons\black\form.png" />
+    <Content Include="images\icons\black\gift.png" />
+    <Content Include="images\icons\black\gplus.png" />
+    <Content Include="images\icons\black\home.png" />
+    <Content Include="images\icons\black\instagram.png" />
+    <Content Include="images\icons\black\like.png" />
+    <Content Include="images\icons\black\linkedin.png" />
+    <Content Include="images\icons\black\lock.png" />
+    <Content Include="images\icons\black\logout.png" />
+    <Content Include="images\icons\black\love.png" />
+    <Content Include="images\icons\black\map.png" />
+    <Content Include="images\icons\black\menu.png" />
+    <Content Include="images\icons\black\menu_close.png" />
+    <Content Include="images\icons\black\message.png" />
+    <Content Include="images\icons\black\mobile.png" />
+    <Content Include="images\icons\black\more.png" />
+    <Content Include="images\icons\black\music.png" />
+    <Content Include="images\icons\black\next.png" />
+    <Content Include="images\icons\black\orders.png" />
+    <Content Include="images\icons\black\phone.png" />
+    <Content Include="images\icons\black\photos.png" />
+    <Content Include="images\icons\black\piechart.png" />
+    <Content Include="images\icons\black\pinterest.png" />
+    <Content Include="images\icons\black\plus.png" />
+    <Content Include="images\icons\black\rocket.png" />
+    <Content Include="images\icons\black\search.png" />
+    <Content Include="images\icons\black\settings.png" />
+    <Content Include="images\icons\black\shop.png" />
+    <Content Include="images\icons\black\slider.png" />
+    <Content Include="images\icons\black\tables.png" />
+    <Content Include="images\icons\black\tabs.png" />
+    <Content Include="images\icons\black\toggle.png" />
+    <Content Include="images\icons\black\trash.png" />
+    <Content Include="images\icons\black\twitter.png" />
+    <Content Include="images\icons\black\user.png" />
+    <Content Include="images\icons\black\users.png" />
+    <Content Include="images\icons\black\video.png" />
+    <Content Include="images\icons\blue\back.png" />
+    <Content Include="images\icons\blue\bike.png" />
+    <Content Include="images\icons\blue\blog.png" />
+    <Content Include="images\icons\blue\briefcase.png" />
+    <Content Include="images\icons\blue\building.png" />
+    <Content Include="images\icons\blue\bus.png" />
+    <Content Include="images\icons\blue\car.png" />
+    <Content Include="images\icons\blue\cart.png" />
+    <Content Include="images\icons\blue\categories.png" />
+    <Content Include="images\icons\blue\contact.png" />
+    <Content Include="images\icons\blue\dribbble.png" />
+    <Content Include="images\icons\blue\drink.png" />
+    <Content Include="images\icons\blue\electronics.png" />
+    <Content Include="images\icons\blue\facebook.png" />
+    <Content Include="images\icons\blue\favorites.png" />
+    <Content Include="images\icons\blue\features.png" />
+    <Content Include="images\icons\blue\food.png" />
+    <Content Include="images\icons\blue\form.png" />
+    <Content Include="images\icons\blue\gift.png" />
+    <Content Include="images\icons\blue\gplus.png" />
+    <Content Include="images\icons\blue\home.png" />
+    <Content Include="images\icons\blue\instagram.png" />
+    <Content Include="images\icons\blue\like.png" />
+    <Content Include="images\icons\blue\linkedin.png" />
+    <Content Include="images\icons\blue\lock.png" />
+    <Content Include="images\icons\blue\logout.png" />
+    <Content Include="images\icons\blue\love.png" />
+    <Content Include="images\icons\blue\map.png" />
+    <Content Include="images\icons\blue\menu.png" />
+    <Content Include="images\icons\blue\menu_close.png" />
+    <Content Include="images\icons\blue\message.png" />
+    <Content Include="images\icons\blue\mobile.png" />
+    <Content Include="images\icons\blue\more.png" />
+    <Content Include="images\icons\blue\music.png" />
+    <Content Include="images\icons\blue\next.png" />
+    <Content Include="images\icons\blue\orders.png" />
+    <Content Include="images\icons\blue\phone.png" />
+    <Content Include="images\icons\blue\photos.png" />
+    <Content Include="images\icons\blue\piechart.png" />
+    <Content Include="images\icons\blue\pinterest.png" />
+    <Content Include="images\icons\blue\plus.png" />
+    <Content Include="images\icons\blue\rocket.png" />
+    <Content Include="images\icons\blue\search.png" />
+    <Content Include="images\icons\blue\settings.png" />
+    <Content Include="images\icons\blue\shop.png" />
+    <Content Include="images\icons\blue\slider.png" />
+    <Content Include="images\icons\blue\tables.png" />
+    <Content Include="images\icons\blue\tabs.png" />
+    <Content Include="images\icons\blue\toggle.png" />
+    <Content Include="images\icons\blue\trash.png" />
+    <Content Include="images\icons\blue\twitter.png" />
+    <Content Include="images\icons\blue\user.png" />
+    <Content Include="images\icons\blue\users.png" />
+    <Content Include="images\icons\blue\video.png" />
+    <Content Include="images\icons\red\back.png" />
+    <Content Include="images\icons\red\bike.png" />
+    <Content Include="images\icons\red\blog.png" />
+    <Content Include="images\icons\red\briefcase.png" />
+    <Content Include="images\icons\red\building.png" />
+    <Content Include="images\icons\red\bus.png" />
+    <Content Include="images\icons\red\car.png" />
+    <Content Include="images\icons\red\cart.png" />
+    <Content Include="images\icons\red\categories.png" />
+    <Content Include="images\icons\red\contact.png" />
+    <Content Include="images\icons\red\dribbble.png" />
+    <Content Include="images\icons\red\drink.png" />
+    <Content Include="images\icons\red\electronics.png" />
+    <Content Include="images\icons\red\facebook.png" />
+    <Content Include="images\icons\red\favorites.png" />
+    <Content Include="images\icons\red\features.png" />
+    <Content Include="images\icons\red\food.png" />
+    <Content Include="images\icons\red\form.png" />
+    <Content Include="images\icons\red\gift.png" />
+    <Content Include="images\icons\red\gplus.png" />
+    <Content Include="images\icons\red\home.png" />
+    <Content Include="images\icons\red\instagram.png" />
+    <Content Include="images\icons\red\like.png" />
+    <Content Include="images\icons\red\linkedin.png" />
+    <Content Include="images\icons\red\lock.png" />
+    <Content Include="images\icons\red\logout.png" />
+    <Content Include="images\icons\red\love.png" />
+    <Content Include="images\icons\red\map.png" />
+    <Content Include="images\icons\red\menu.png" />
+    <Content Include="images\icons\red\menu_close.png" />
+    <Content Include="images\icons\red\message.png" />
+    <Content Include="images\icons\red\mobile.png" />
+    <Content Include="images\icons\red\more.png" />
+    <Content Include="images\icons\red\music.png" />
+    <Content Include="images\icons\red\next.png" />
+    <Content Include="images\icons\red\orders.png" />
+    <Content Include="images\icons\red\phone.png" />
+    <Content Include="images\icons\red\photos.png" />
+    <Content Include="images\icons\red\piechart.png" />
+    <Content Include="images\icons\red\pinterest.png" />
+    <Content Include="images\icons\red\plus.png" />
+    <Content Include="images\icons\red\rocket.png" />
+    <Content Include="images\icons\red\search.png" />
+    <Content Include="images\icons\red\settings.png" />
+    <Content Include="images\icons\red\shop.png" />
+    <Content Include="images\icons\red\slider.png" />
+    <Content Include="images\icons\red\tables.png" />
+    <Content Include="images\icons\red\tabs.png" />
+    <Content Include="images\icons\red\toggle.png" />
+    <Content Include="images\icons\red\trash.png" />
+    <Content Include="images\icons\red\twitter.png" />
+    <Content Include="images\icons\red\user.png" />
+    <Content Include="images\icons\red\users.png" />
+    <Content Include="images\icons\red\video.png" />
+    <Content Include="images\icons\white\back.png" />
+    <Content Include="images\icons\white\bike.png" />
+    <Content Include="images\icons\white\blog.png" />
+    <Content Include="images\icons\white\briefcase.png" />
+    <Content Include="images\icons\white\bus.png" />
+    <Content Include="images\icons\white\car.png" />
+    <Content Include="images\icons\white\cart.png" />
+    <Content Include="images\icons\white\categories.png" />
+    <Content Include="images\icons\white\contact.png" />
+    <Content Include="images\icons\white\dribbble.png" />
+    <Content Include="images\icons\white\drink.png" />
+    <Content Include="images\icons\white\electronics.png" />
+    <Content Include="images\icons\white\facebook.png" />
+    <Content Include="images\icons\white\favorites.png" />
+    <Content Include="images\icons\white\features.png" />
+    <Content Include="images\icons\white\food.png" />
+    <Content Include="images\icons\white\form.png" />
+    <Content Include="images\icons\white\gift.png" />
+    <Content Include="images\icons\white\gplus.png" />
+    <Content Include="images\icons\white\home.png" />
+    <Content Include="images\icons\white\instagram.png" />
+    <Content Include="images\icons\white\like.png" />
+    <Content Include="images\icons\white\linkedin.png" />
+    <Content Include="images\icons\white\lock.png" />
+    <Content Include="images\icons\white\logout.png" />
+    <Content Include="images\icons\white\love.png" />
+    <Content Include="images\icons\white\map.png" />
+    <Content Include="images\icons\white\menu.png" />
+    <Content Include="images\icons\white\menu_close.png" />
+    <Content Include="images\icons\white\message.png" />
+    <Content Include="images\icons\white\mobile.png" />
+    <Content Include="images\icons\white\more.png" />
+    <Content Include="images\icons\white\music.png" />
+    <Content Include="images\icons\white\next.png" />
+    <Content Include="images\icons\white\orders.png" />
+    <Content Include="images\icons\white\phone.png" />
+    <Content Include="images\icons\white\photos.png" />
+    <Content Include="images\icons\white\piechart.png" />
+    <Content Include="images\icons\white\pinterest.png" />
+    <Content Include="images\icons\white\plus.png" />
+    <Content Include="images\icons\white\rocket.png" />
+    <Content Include="images\icons\white\search.png" />
+    <Content Include="images\icons\white\settings.png" />
+    <Content Include="images\icons\white\shop.png" />
+    <Content Include="images\icons\white\slider.png" />
+    <Content Include="images\icons\white\tables.png" />
+    <Content Include="images\icons\white\tabs.png" />
+    <Content Include="images\icons\white\toggle.png" />
+    <Content Include="images\icons\white\trash.png" />
+    <Content Include="images\icons\white\twitter.png" />
+    <Content Include="images\icons\white\user.png" />
+    <Content Include="images\icons\white\users.png" />
+    <Content Include="images\icons\white\video.png" />
+    <Content Include="images\loader.gif" />
+    <Content Include="images\navbg\navbg1.jpg" />
+    <Content Include="images\navbg\navbg10.jpg" />
+    <Content Include="images\navbg\navbg2.jpg" />
+    <Content Include="images\navbg\navbg3.jpg" />
+    <Content Include="images\navbg\navbg4.jpg" />
+    <Content Include="images\navbg\navbg5.jpg" />
+    <Content Include="images\navbg\navbg6.jpg" />
+    <Content Include="images\navbg\navbg7.jpg" />
+    <Content Include="images\navbg\navbg8.jpg" />
+    <Content Include="images\navbg\navbg9.jpg" />
+    <Content Include="images\page_photo.jpg" />
+    <Content Include="images\page_photo2.jpg" />
+    <Content Include="images\page_photo3.jpg" />
+    <Content Include="images\photos\photo1.jpg" />
+    <Content Include="images\photos\photo10.jpg" />
+    <Content Include="images\photos\photo11.jpg" />
+    <Content Include="images\photos\photo12.jpg" />
+    <Content Include="images\photos\photo13.jpg" />
+    <Content Include="images\photos\photo14.jpg" />
+    <Content Include="images\photos\photo15.jpg" />
+    <Content Include="images\photos\photo2.jpg" />
+    <Content Include="images\photos\photo3.jpg" />
+    <Content Include="images\photos\photo4.jpg" />
+    <Content Include="images\photos\photo5.jpg" />
+    <Content Include="images\photos\photo6.jpg" />
+    <Content Include="images\photos\photo7.jpg" />
+    <Content Include="images\photos\photo8.jpg" />
+    <Content Include="images\photos\photo9.jpg" />
+    <Content Include="images\subnav.png" />
+    <Content Include="images\swipe_more.png" />
+    <Content Include="images\switch_11.png" />
+    <Content Include="images\switch_11_active.png" />
+    <Content Include="images\switch_12.png" />
+    <Content Include="images\switch_12_active.png" />
+    <Content Include="images\switch_13.png" />
+    <Content Include="images\switch_13_active.png" />
+    <Content Include="images\trans_black.png" />
+    <Content Include="images\trans_black_gradient.png" />
+    <Content Include="images\trans_blue.png" />
+    <Content Include="images\trans_darkblack.png" />
+    <Content Include="images\trans_green.png" />
+    <Content Include="images\trans_pink.png" />
+    <Content Include="images\trans_red.png" />
+    <Content Include="images\trans_violet.png" />
+    <Content Include="images\trans_yellow.png" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Scripts\autocomplete-languages.json" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\InformacionCartilla\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AdministracionController.cs" />
+    <Compile Include="Controllers\BandoController.cs" />
+    <Compile Include="Controllers\CartillaController.cs" />
+    <Compile Include="Controllers\ComoJugarController.cs" />
+    <Compile Include="Controllers\InformacionCartillaController.cs" />
+    <Compile Include="Controllers\InformacionController.cs" />
+    <Compile Include="Controllers\InicioController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MiCartillaController.cs" />
+    <Compile Include="Controllers\MiPronosticoController.cs" />
+    <Compile Include="Controllers\NoticiasController.cs" />
+    <Compile Include="Controllers\PerfilController.cs" />
+    <Compile Include="Controllers\MisPremiosController.cs" />
+    <Compile Include="Controllers\PosicionesController.cs" />
+    <Compile Include="Controllers\PronosticoController.cs" />
+    <Compile Include="Controllers\ResultadoBuscarController.cs" />
+    <Compile Include="Controllers\Util\General.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AvancesFase.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\bandoEquipo.cs" />
+    <Compile Include="Models\Bandos.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mail\RecuperaClave.cs" />
+    <Compile Include="Models\Mail\RegistroUsuario.cs" />
+    <Compile Include="Models\Mail\Mailer.cs" />
+    <Compile Include="Models\Mail\SimpleMail.cs" />
+    <Compile Include="Models\MiCartillaUsuario.cs" />
+    <Compile Include="Models\Cartillas.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CartillasUsuario.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Empresas.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Equipos.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Grupos.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ligas.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MIS_Personas.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Partidos.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PartidosCartilla.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pronostico.cs" />
+    <Compile Include="Models\Pronosticos.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rankings.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resultado.cs" />
+    <Compile Include="Models\SkorData.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SkorData.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SkorData.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SkorData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SkorData.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_AvancesFaseCartilla_Result.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_BandosUsuario_Result.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PosicionesBandos_Result.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PosicionesCartillaBando_Result.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PosicionesCartilla_Result.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PosicionesGeneralesBando_Result.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PosicionesGenerales_Result.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PronosticosCartillaUsuario_Result.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_RevisaCartilla_Result.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USR_usuarios.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsuarioPersona.cs" />
+    <Compile Include="Models\UsuariosBandos.cs">
+      <DependentUpon>SkorData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Pronostico\Index.cshtml" />
+    <Content Include="Views\Noticias\Index.cshtml" />
+    <Content Include="Views\MisPremios\Index.cshtml" />
+    <Content Include="Views\Perfil\Index.cshtml" />
+    <Content Include="Views\MiPronostico\Index.cshtml" />
+    <Content Include="Views\ResultadoBuscar\Index.cshtml" />
+    <Content Include="Views\Administracion\Index.cshtml" />
+    <Content Include="Views\MiCartilla\Index.cshtml" />
+    <Content Include="Views\Posiciones\Index.cshtml" />
+    <Content Include="Views\Inicio\Index.cshtml" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\Cartilla\Index.cshtml" />
+    <Content Include="Views\Cartilla\Buscar.cshtml" />
+    <Content Include="Views\ComoJugar\Index.cshtml" />
+    <Content Include="Views\Bando\Index.cshtml" />
+    <Content Include="Views\Informacion\Patrocinios.cshtml" />
+    <Content Include="Views\Posiciones\Generales.cshtml" />
+    <Content Include="Views\Cartilla\Terminadas.cshtml" />
+    <Content Include="Views\Login\B.cshtml" />
+    <Content Include="Views\Bando\MisBandos.cshtml" />
+    <Content Include="Views\Bando\Ver.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Fonts\" />
+    <Folder Include="images\campannas\banners\" />
+    <Folder Include="images\campannas\iconos\" />
+    <Folder Include="Views\PosicionesGenerales\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\htcLib05\htcLib.vbproj">
+      <Project>{d997df84-0ac3-4dfc-99b0-5232b3730c0e}</Project>
+      <Name>htcLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\vUsuarios\vUsuarios.vbproj">
+      <Project>{aa0d3685-2304-4654-bb75-49cdc601580a}</Project>
+      <Name>vUsuarios</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Plantillas\RecuperaClave.html</ApplicationManifest>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60351</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:60351/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "Información de la cartilla";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2 class="page_title">@ViewBag.cartilla.nombre </h2>
+
+
+<div class="page_single layout_fullwidth_padding">
+
+    <div class="row">
+        <div class="col-100">
+            @ViewBag.cartilla.descripcion
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-100 ">
+            <a href="@(ViewBag.cartilla.urlBanner ?? "#")" target="_blank" class="external"><img class="linea" src="~/images/campannas/banners/@(ViewBag.cartilla.id).jpg" /></a>
+        </div>
+    </div>
+    <br />
+
+@if (ViewBag.cartilla.premios != "" && ViewBag.cartilla.premios != null)
+{
+    <h5>Premios</h5>
+            @Html.Raw(ViewBag.cartilla.premios)
+}
+
+@if (ViewBag.cartilla.condiciones != "" && ViewBag.cartilla.condiciones != null)
+{
+
+    <h5>Condiciones </h5>
+                @Html.Raw(ViewBag.cartilla.condiciones)
+}
+
+
+
+
+            @*<div class="buttons-row">
+                <a href="#tab3" class="tab-link active button">Detalles</a>
+                <a href="#tab4" class="tab-link button">Premios</a>
+                <a href="#tab5" class="tab-link button">Condiciones</a>
+            </div>
+
+            <div class="tabs-simple">
+                <div class="tabs">
+                    <div id="tab3" class="tab active">
+                        <p>
+                            @Html.Raw(ViewBag.cartilla.descripcion)
+                        </p>
+                    </div>
+
+
+
+                    <div id="tab4" class="tab">
+                        <p>
+                            @Html.Raw(ViewBag.cartilla.premios)
+                        </p>
+                    </div>
+
+                    <div id="tab5" class="tab">
+                        <p>
+                            @Html.Raw(ViewBag.cartilla.condiciones)
+                        </p>
+                    </div>
+                </div>
+            </div>*@
+            
+    
+    <br />
+            @if (ViewBag.cartilla.estaCerrada)
+            {
+                <a href="@Url.Action("Index","Posiciones",new { id= ViewBag.cartilla.id})" class="external button_full" id="btnPosiciones">Ver posiciones</a>
+            }
+            else
+            {
+                <a href="#" class="external button_full" id="btnParticipar">Participa</a>
+            }
+
+            <br /><br />
+
+            <h5 class="centrado">Invita a participar</h5>
+            <div class="row">
+                <div class="col-50 centrado">
+                    <a href="https://api.whatsapp.com/send?text=Mira que chévere juego de pronósticos de ⚽ en ¡Qué Golazo!. Juega tú también aquí 👉 @Uri.EscapeDataString("http://www.quegolazo.com.ec/Cartilla/Index/" + ViewBag.cartilla.id + "?utm_source=IC&utm_medium=wa")" class="external"><div class="whatsapp">Whatsapp</div></a>
+                </div>
+                <div class="col-50 centrado">
+                    <div class="fb-share-button" data-layout="button" data-size="large" data-mobile-iframe="true" data-href="http://www.quegolazo.com.ec/cartilla/index/@(ViewBag.cartilla.id)"><a target="_blank" class="fb-xfbml-parse-ignore">Share</a></div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+<input type="hidden" id="txtIdCartilla" value="@ViewBag.cartilla.id" />
+@section js{
+    <script src="~/Scripts/skor/InformacionCartilla/Index.cshtml.js"></script>
+}
+
+
+
+
+
+

@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Posiciomes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page_title">@(ViewBag.cartilla.nombre)</h2>
+
+<div class="page_single layout_fullwidth_padding">
+    <div class="row">
+        <div class="col">
+            @(ViewBag.cartilla.descripcion)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-auto center">
+            <center><a href="@(ViewBag.cartilla.urlBanner ?? "#")" target="_blank" class="external"><img src="~/images/campannas/banners/@(ViewBag.cartilla.id).jpg" /></a></center>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-auto">
+            <br />
+            <p><a href="@Url.Action("Index","InformacionCartilla", new { id= ViewBag.cartilla.id })" class="external button button-block button-rounded button-large">Premios y condiciones</a></p>
+        </div>
+    </div>
+
+    <br />
+
+    <h3 style="color:@(ViewBag.cartilla.estaTerminada ? "#f20612" : "#009e9a");">Resultados @(ViewBag.cartilla.estaTerminada ? "finales" : "parciales") </h3>
+
+    @if (ViewBag.bandos.Count > 0)
+    {
+        <div class="form_row">
+            <label>Ver posiciones en:</label>
+            <select id="slcBandosPosiciones" class="form_select">
+                <option value="0">Clasificación general</option>
+                @foreach (var bando in ViewBag.bandos)
+                {
+                    <option value="@bando.id">@bando.nombre</option>
+                }
+            </select>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-100">
+                <p class="centrado"><img style="display:none;" id="imgBannerBando" src="~/images/campannas/banners/1.jpg" onerror="imgError(this);" /></p>
+            </div>
+        </div>
+    }
+
+
+
+    <div class="row">
+        <div class="col-100">
+            <table class="table" id="tblPosiciones" style="width:100%;border:1px solid black;">
+                <thead id="theadPosiciones">
+                    <tr><th>Posición</th><th><strong>Nombre</strong></th><th><strong>Puntos</strong></th><th style="display:none;"></th></tr>
+                </thead>
+                <tbody id="tbodyPosiciones">
+                    @Html.Raw(ViewBag.filasPosiciones)
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <p class="centrado" style="font-weight:bold;"><a href="#" id="hrfVerMasPosiciones">Ver todos</a></p>
+
+    <br />
+    @if (ViewBag.idCartillaUsuario != null)
+    {
+        <a href="@Url.Action("Index", "MiCartilla", new { id= ViewBag.idCartillaUsuario })" class="external button_full">Ver mi pronóstico</a>
+    }
+    @if (ViewBag.idCurrentUser == 0)
+    {
+
+        <p style="text-align:center;font-weight:bold;"><a href="#" class="open-popup" data-popup=".popup-login">Ingresa para ver tus datos</a></p>
+        <br />
+    }
+
+
+
+</div>
+
+<input type="hidden" id="txtIdCartilla" value="@ViewBag.cartilla.id" />
+@section js{
+    <script src="~/Scripts/skor/Posiciones/Index.cshtml.js"></script>
+}

@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Mi Pronóstico";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2 class="page_title">Mis pronósticos</h2>
+
+<div class="page_single layout_fullwidth_padding toolbarpage">
+
+    @if (ViewBag.cartillasAbiertas.Count > 0 || ViewBag.cartillasCerradas.Count > 0)
+    {
+        if (ViewBag.cartillasAbiertas.Count > 0)
+        {
+            <h5>Cartillas abiertas</h5>
+            <ul class="features_list_detailed">
+                @foreach (var cu in ViewBag.cartillasAbiertas)
+                {
+                    <li>
+                        <div class="feat_small_icon"><img src="~/images/campannas/iconos/@(cu.Cartillas.id).png" alt="" title="" /></div>
+                        <div class="feat_small_details">
+                            <h4><a href="@Url.Action("Index", "Cartilla", new { id = cu.Cartillas.id })" class="external">@(cu.Cartillas.nombre)</a></h4>
+                            <a href="@Url.Action("Index", "Cartilla", new { id = cu.Cartillas.id })" class="external">@(cu.Cartillas.descripcion)</a>
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+        if (ViewBag.cartillasCerradas.Count > 0)
+        {
+            <h5>Cartillas cerradas</h5>
+            <ul class="features_list_detailed">
+                @foreach (var cu in ViewBag.cartillasCerradas)
+                {
+                    <li>
+                        <div class="feat_small_icon"><img src="~/images/campannas/iconos/@(cu.Cartillas.id).png" alt="" title="" /></div>
+                        <div class="feat_small_details">
+                            <h4><a href="@Url.Action("Index", "Cartilla", new { id = cu.Cartillas.id })" class="external">@(cu.Cartillas.nombre)</a></h4>
+                            <a href="@Url.Action("Index", "Cartilla", new { id = cu.Cartillas.id })" class="external">@(cu.Cartillas.descripcion)</a>
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+
+    }
+    else
+    {
+        <p>No estas participando en ninguna cartilla.</p>
+    }
+
+
+</div>

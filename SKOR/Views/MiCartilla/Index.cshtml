@@ -1,0 +1,140 @@
+﻿@{
+    ViewBag.Title = "Mi Cartilla";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h2 class="page_title">@ViewBag.cartilla.nombre</h2>
+
+    <div class="page_single layout_fullwidth_padding">
+        <div class="row">
+            <div class="col">
+                @ViewBag.cartilla.descripcion
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-auto center">
+                <center><a href="@(ViewBag.cartilla.urlBanner ?? "#")" target="_blank" class="external"><img src="~/images/campannas/banners/@(ViewBag.cartilla.id).jpg" /></a></center>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-auto">
+                <br />
+                <p><a href="@Url.Action("Index","InformacionCartilla", new { id= ViewBag.cartilla.id })" class="external button button-block button-rounded button-large">Premios y condiciones</a></p>
+            </div>
+        </div>
+
+        @if (!ViewBag.cartilla.estaCerrada)
+        {
+            <br /><br />
+            <h5 class="centrado">Invita a participar</h5>
+            <div class="row">
+                <div class="col-50 centrado">
+                    <a href="https://api.whatsapp.com/send?text=Mira que chévere juego de pronósticos de ⚽ en ¡Qué Golazo!, pon los tuyos también 👉 @Uri.EscapeDataString("http://www.quegolazo.com.ec/Cartilla/Index/" + ViewBag.cartilla.id + "?utm_source=IC&utm_medium=wa")" class="external"><div class="whatsapp">Whatsapp</div></a>
+                </div>
+                <div class="col-50 centrado">
+                    <div class="fb-share-button" data-layout="button" data-size="large" data-mobile-iframe="true" data-href="http://www.quegolazo.com.ec/cartilla/index/@(ViewBag.cartilla.id)"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.quegolazo.com.ec;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-100">
+                    <p>
+                        <a href="@Url.Action("MisBandos","Bando")" class=" external button button-raised button-primary button-pill">Juega con tus amigos</a>
+                    </p>
+                </div>
+            </div>
+        }
+
+        <br />
+
+        <span style="font-weight:bold;">Resultados</span>
+        <div class="row">
+            <div class="col-100">
+                <table>
+                    <tr><td colspan="3">Fuiste el usuario #<span style="font-weight:bold;">@(ViewBag.cartillaUsuario.posicionCierre)</span> en sellar la cartilla</td></tr>
+                    <tr><td>Puntaje:</td><td>@(ViewBag.cartillaUsuario.puntos ?? 0) puntos</td><td class="centrado"><a href="#" data-popup=".popup-infoPuntaje" class="open-popup info" title="Como se obtiene los puntajes">i</a></td></tr>
+                    <tr><td>Posición:</td><td>@(ViewBag.cartillaUsuario.posicionResultado ?? "-") </td><td class="centrado"><a href="@Url.Action("Index", "Posiciones", new {id= ViewBag.cartilla.id })" class="external linkBlue">Ver posiciones</a></td></tr>
+                </table>
+            </div>
+        </div>
+
+        <br />
+        <div class="row">
+            <div class="col-50">
+                <span style="font-weight:bold;">Mi pronóstico:</span>
+            </div>
+            <div class="col-50">
+                <span><a href="#" id="lnkComparte" class="linkBlue">Compartir</a></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-100" id="divPronC">
+                Cargando...
+                @*<table class="table" style="border:1px solid black; width:100%;">
+                    <thead><tr><th></th><th>Pronóstico</th><th>Real</th><th>Puntaje</th></tr></thead>
+                    <tr><td><img src="~/images/banderas/argentina.png" style="width:20px;display:inline;" align="top" /> Equipo 1</td><td style="text-align:center;">1</td><td style="text-align:center;">2</td><td rowspan="2" style="font-size:12px; font-weight:bold;text-align:center;">8</td></tr>
+                    <tr><td><img src="~/images/banderas/españa.png" style="width:20px;display:inline;" align="top" /> Equipo 2</td><td style="text-align:center;">6</td><td style="text-align:center;">4</td></tr>
+                </table>*@
+                <br />
+
+
+            </div>
+
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-30">
+                <a href="shop.html" id="btnGrupoAnterior" class="prev_shop button button-fill color-blue">Anterior</a>
+            </div>
+            <div class="col-5"></div>
+            <div class="col-30 centrado">
+                <span class="shop_pagenr color-red text-center" id="lblGrupo">Grupo </span>
+            </div>
+            <div class="col-5"></div>
+            <div class="col-30">
+                <a href="#" id="btnGrupoSiguiente" class="next_shop button button-fill color-blue">Siguiente</a>
+            </div>
+        </div>
+
+        <br />
+
+        <strong>Comparte tu pronóstico:</strong>
+        <a href="#" id="btnShareP" class="button button-raised button-primary button-pill">Comparte</a>
+
+        @*<ul class="team_socials">
+            <li><a href="#" data-popup=".popup-compartir" class="open-popup shopfav pull-left"><img src="~/images/icons/black/twitter.png" alt="" title="" /></a></li>
+            <li><a href="#" data-popup=".popup-compartir" class="open-popup shopfav pull-left"><img src="~/images/icons/black/facebook.png" alt="" title="" /></a></li>
+        </ul>*@
+
+    </div>
+
+        <input type="hidden" id="txtIdCartillaUsuario" value="@(ViewBag.cartillaUsuario.id)">
+
+
+<!-- Info Popup -->
+<div class="popup popup-infoPuntaje">
+    <div class="content-block">
+        <h4>Cálculo de puntajes</h4>
+        <p>Ejemplo, un partido que termina  3 - 2</p>
+        <p>
+            <table style="margin:0 auto;">
+                <tr><th>PRONOSTICO</th><th>CASO</th><th>PUNTOS</th></tr>                
+                <tr><td class="centrado">3-2</td><td>Aciertas al marcador</td><td class="centrado">3</td></tr>
+                <tr><td class="centrado">1-0</td><td>Aciertas al gol diferencia</td><td class="centrado">2</td></tr>
+                <tr><td class="centrado">2-0</td><td>Aciertas quien gana (o empate)</td><td class="centrado">1</td></tr>
+                <tr><td class="centrado">1-1 / 1-2</td><td>No aciertas</td><td class="centrado">0</td></tr>
+            </table>
+        </p>
+        <div class="close_popup_button">
+            <a id="closePopupLogin" href="#" class="close-popup"><img src="~/images/icons/black/menu_close.png" alt="" title="" /></a>
+        </div>
+    </div>
+</div>
+
+        @section js{
+            <script src="~/Scripts/skor/MiCartilla/Index.cshtml.js?v=1.1"></script>
+            <script src="~/Scripts/skor/Pronostico/MiPronostico.js"></script>
+        }
