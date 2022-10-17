@@ -33,6 +33,10 @@ namespace Skor.Controllers
                 ViewBag.cartillasAbiertas = cartillasAbiertas;
                 ViewBag.cartillasCerradas = cartillasCerradas;
                 ViewBag.posiciones = posiciones;
+
+                var listaJuegos = new Models.JUEGOS.Metodos.mJuego().JuegosPublicadosLista();
+                ViewBag.ListaJuegosPublicados = listaJuegos;
+
             }
             catch (Exception e)
             {
@@ -40,6 +44,11 @@ namespace Skor.Controllers
             }
 
             return View();
+        }
+        [HttpPost]
+        public JsonResult JuegosPublicados() { //nombre de la ruta
+            var lista = new Models.JUEGOS.Metodos.mJuego().JuegosPublicadosLista();
+            return Json(data: lista);
         }
     }
 }

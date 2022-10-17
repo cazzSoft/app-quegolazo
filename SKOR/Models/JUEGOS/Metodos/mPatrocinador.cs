@@ -1,0 +1,77 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Skor.Models.JUEGOS.Metodos
+{
+	public class mPatrocinador
+	{
+		System.Data.SqlClient.SqlConnection conn = new dbConnection().EntidadSql();
+		ApuestasEntities conex = new ApuestasEntities();
+		public List<Clases.cJuego> PatrocinadorLista_xIdJuego()
+		{
+			List<Clases.cJuego> l = new List<Clases.cJuego>();
+			try
+			{
+
+				using (System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand("apuestas.nombredelprocedimientofiltro", conn))
+				{
+					cmd.CommandType = System.Data.CommandType.StoredProcedure;
+					//cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@IdPersona", idPersona));
+					System.Data.DataTable dt = new System.Data.DataTable();
+					System.Data.SqlClient.SqlDataAdapter da = new System.Data.SqlClient.SqlDataAdapter(cmd);
+					conn.Open();
+					da.Fill(dt);
+					if (int.Parse(dt.Rows.Count.ToString()) > 0)
+					{
+						//System.Data.DataRow item = dt.Rows[0];
+						//i.encryptIds(); //encriptar los ids y llenar los ids en cero
+						//l = i;
+						foreach (System.Data.DataRow item in dt.Rows)
+						{
+							var i = new Clases.cJuego()
+							{
+								IdJuego = int.Parse(item["IdJuego"].ToString()),
+								idJuegoEstado = int.Parse(item["idJuegoEstado"].ToString()),
+								Juego = item["Juego"].ToString(),
+								Codigo = item["JuegoCodigo"].ToString(),
+								ImgNombre = item["JuegoImgNombre"].ToString(),
+								ImgRuta = item["JuegoImgRuta"].ToString(),
+								ImgExt = item["JuegoImgExt"].ToString(),
+								FechaInicio = DateTime.Parse(item["JuegoFechaInicio"].ToString()),
+								FechaFin = DateTime.Parse(item["JuegoFechaFin"].ToString()),
+								Publicado = bool.Parse(item["Publicado"].ToString()),
+								FC = DateTime.Parse(item["FC"].ToString()),
+								FA = DateTime.Parse(item["FA"].ToString()),
+								Eliminado = bool.Parse(item["Eliminado"].ToString()),
+								idU = int.Parse(item["idU"].ToString()),
+								NumPatrocinadores = int.Parse(item["NumPatrocinadores"].ToString()),
+								//PATROCINADORES  = //traer todos los patricinadores de este juegos por el id del juego
+							};
+							l.Add(i);
+
+						}
+
+					}
+
+					conn.Close();
+					return l;
+				}
+
+
+
+			}
+			catch (Exception ex)
+			{
+				conn.Close();
+				return l;
+			}
+			finally
+			{
+				conn.Close();
+			}
+		}
+
+	}
+}

@@ -174,6 +174,16 @@
     <Content Include="images\skor\twitter_logo.png" />
     <Content Include="images\skor\user_login.png" />
     <Content Include="images\skor\whatsapp_logo.png" />
+    <Content Include="Models\ApuestasModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ApuestasModel.edmx</DependentUpon>
+      <LastGenOutput>ApuestasModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ApuestasModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ApuestasModel.edmx</DependentUpon>
+      <LastGenOutput>ApuestasModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Plantillas\Posicion.html" />
     <Content Include="Plantillas\RecuperaClave.html" />
     <Content Include="Scripts\hideShowPassword.min.js" />
@@ -208,6 +218,13 @@
     </EntityDeploy>
     <Content Include="Models\SkorData.edmx.diagram">
       <DependentUpon>SkorData.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\ApuestasModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ApuestasModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ApuestasModel.edmx.diagram">
+      <DependentUpon>ApuestasModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\futbolSkor - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\futbolSkor - FTP1.pubxml" />
@@ -529,6 +546,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\a2022_Apuestas_JuegosPublicados_Lista_Result.cs">
+      <DependentUpon>ApuestasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApuestasModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApuestasModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApuestasModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApuestasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApuestasModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApuestasModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\AvancesFase.cs">
       <DependentUpon>SkorData.tt</DependentUpon>
     </Compile>
@@ -536,6 +571,11 @@
     <Compile Include="Models\Bandos.cs">
       <DependentUpon>SkorData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\JUEGOS\Clases\cJuego.cs" />
+    <Compile Include="Models\JUEGOS\Clases\cPatrocinador.cs" />
+    <Compile Include="Models\JUEGOS\dbConnection.cs" />
+    <Compile Include="Models\JUEGOS\Metodos\mJuego.cs" />
+    <Compile Include="Models\JUEGOS\Metodos\mPatrocinador.cs" />
     <Compile Include="Models\Mail\RecuperaClave.cs" />
     <Compile Include="Models\Mail\RegistroUsuario.cs" />
     <Compile Include="Models\Mail\Mailer.cs" />
