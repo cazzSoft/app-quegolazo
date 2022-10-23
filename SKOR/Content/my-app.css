@@ -181,3 +181,12 @@ a.normal:visited:active {
 .imgRanking {
     max-width: 100%
 }
+
+/* -----------------img juegos---------------- */
+.card-img-top {
+    width: 144px !important;
+}
+.img-juego {
+    width: 144px !important;
+    max-width: 40%;
+}

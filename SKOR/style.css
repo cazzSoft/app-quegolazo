@@ -2577,3 +2577,7 @@ padding:0px 3px;
 p.red {
     color: #f20612 !important;
 }
+/* -----------------img juegos---------------- */
+.card-img-top{
+    width:144px !important;
+}

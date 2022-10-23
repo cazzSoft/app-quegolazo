@@ -18,12 +18,15 @@
     <meta property="og:description" content="Que Golazo - La polla mundialista del Ecuador " />
     <meta property="og:image" content="http://www.quegolazo.com.ec/images/skor/logoFB.png" />
     <meta property="fb:app_id" content="2090418881241769" />
-        
+
     <link rel="apple-touch-icon" href="~/images/skor/apple-touch-icon.png" />
     <link href="~/images/skor/skor-320x460.png" media="(device-width: 320px)" rel="apple-touch-startup-image">
     <link href="~/images/skor/skor-640x920.png" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 
     <link rel="shortcut icon" href="~/images/skor/qgolazo.ico">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
     <title>Qué Golazo - La polla mundialista del Ecuador</title>
 
     @Styles.Render("~/Content/css")
@@ -98,11 +101,14 @@
 
             <div class="pages">
                 <div data-page="features" class="page no-navbar">
-                    <div class="page-content">
-
+                    <d
+                       
                         <div class="navbarpages">
-                            <div class="navbar_left" style="width:90px;">
-                                <div class="logo_text"><a href="@Url.Action("Index", "Inicio")" class="external"><img src="~/images/skor/logo_menu.png" alt="" title="" style="width:90px;" /></a></div>
+                           
+                            <div class="float-start" >
+                                <a href="@Url.Action("Index", "Inicio")" >
+                                    <img src="~/images/skor/logo_menu.png" width="110" class="d-inline-block align-text-top" />
+                                </a>
                             </div>
 
                             <a href="#" data-panel="left" class="open-panel">
@@ -123,22 +129,23 @@
                             }
 
 
-                                </div>
-
+                        </div>
+                        
                         <div id="pages_maincontent">
                             @RenderBody()
-
-                            <div class="row like-footer">
+                            
+                            <div class="row like-footer"  style="background-color: #484848; position: fixed; width: 100%; height: 70px; bottom: 0; font-style: italic; color:#fff; ">
                                 <div class="col-100">
                                     <span>Síguenos: </span>
-                                    <a href="https://www.facebook.com/QueGolazoEC/" target="_blank" class="external"><img src="~/images/skor/facebook_logo.png" /></a> 
+                                    <a href="https://www.facebook.com/QueGolazoEC/" target="_blank" class="external"><img src="~/images/skor/facebook_logo.png" /></a>
                                     <a href="https://twitter.com/QueGolazoEC" target="_blank" class="external"><img style="margin-left:15px;" src="~/images/skor/twitter_logo.png" /></a>
                                 </div>
-                                </div>
+                            </div> 
+                           
                         </div>
-                    
-                    
-                        
+
+
+
 
                     </div>
                 </div>
