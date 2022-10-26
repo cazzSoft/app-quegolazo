@@ -69,77 +69,53 @@
                 </h3>
             </div>
         </div>   
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-3">
-                            <img src="~/images/banderas/brasil.png" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Juego de andalucia</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                <a href="#" class="btn btn-danger">Jugar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-3">
-                            <img src="~/images/banderas/brasil.png" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Juego del pichincha</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                <a href="#" class="btn btn-primary">Jugar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-3">
-                            <img src="~/images/banderas/brasil.png" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Juego del pichincha</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                <a href="#" class="btn btn-primary">Jugar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-3">
-                            <img src="~/images/banderas/brasil.png" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Juego del pichincha</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                <a href="#" class="btn btn-primary">Jugar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+		<div class="row row-cols-1 row-cols-md-3 g-4">
+			@* recorrido del bucle para llenar los juegos *@
+			@foreach (var juego in ViewBag.ListaJuegosPublicados)
+			{
+				<div class="col">
+					<div class="card mb-3" style="max-width: 540px;">
+						<div class="row g-0">
+							<div class="col-md-3">
+								@if (juego.PATROCINADORES != null)
+								{
+									foreach (var patrocinador in juego.PATROCINADORES)
+									{
+				                        <img src="@patrocinador.ImgRuta" class="img-fluid rounded-start" alt="@patrocinador.RazonSocial">
+									}
+								}
+								else { 
+							        <img src="@juego.ImgRuta" class="img-fluid rounded-start" alt="@juego.ImgRuta">
+                                }
 
-        </div>
+
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<h5 class="card-title"> @juego.Juego </h5>
+									<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+									@if (juego.PATROCINADORES != null)
+                                    {
+                                        <p class="card-text">Patrocinador(es):</p>
+                                        <ul>
+                                            
+                                            @foreach (var patrocinador in juego.PATROCINADORES)
+                                            {
+                                                <li>@patrocinador.RazonSocial</li>
+                                            }
+
+                                        </ul>
+                                    }
+									<p class="card-text"><small class="text-muted"> Este juego inicia el @juego.FechaInicio  - termina el @juego.FechaFin </small></p>
+									<a  href='@Url.Action("Ejemplo","Inicio")' class="btn btn-primary">Jugar</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+
+		</div>
 
         @if (ViewBag.cartillasAbiertas.Count > 0)
         {
@@ -230,10 +206,7 @@
             </span>
         </p>
 
-        @foreach (var juego in ViewBag.ListaJuegosPublicados)
-        {
-            <p>@juego.Juego</p>
-        }
+        
 
 
     </div>

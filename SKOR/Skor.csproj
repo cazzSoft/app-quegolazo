@@ -572,6 +572,7 @@
       <DependentUpon>SkorData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\JUEGOS\Clases\cJuego.cs" />
+    <Compile Include="Models\JUEGOS\Clases\cJuegoEstado.cs" />
     <Compile Include="Models\JUEGOS\Clases\cPatrocinador.cs" />
     <Compile Include="Models\JUEGOS\dbConnection.cs" />
     <Compile Include="Models\JUEGOS\Metodos\mJuego.cs" />
@@ -696,6 +697,7 @@
     <Content Include="Views\Login\B.cshtml" />
     <Content Include="Views\Bando\MisBandos.cshtml" />
     <Content Include="Views\Bando\Ver.cshtml" />
+    <Content Include="Views\Inicio\Ejemplo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

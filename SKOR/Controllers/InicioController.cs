@@ -50,5 +50,11 @@ namespace Skor.Controllers
             var lista = new Models.JUEGOS.Metodos.mJuego().JuegosPublicadosLista();
             return Json(data: lista);
         }
+
+        public ActionResult Ejemplo() {
+            //validaciones
+            return View();
+        }
+
     }
 }
