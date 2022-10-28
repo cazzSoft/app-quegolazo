@@ -8,7 +8,7 @@ namespace Skor.Models.JUEGOS.Metodos
 	public class mJuego
 	{
 		System.Data.SqlClient.SqlConnection conn = new dbConnection().EntidadSql();
-		ApuestasEntities conex = new ApuestasEntities();
+		//ApuestasEntities conex = new ApuestasEntities();
 		public List<Clases.cJuego> JuegosPublicadosLista( )
 		{
 			List<Clases.cJuego> l = new List<Clases.cJuego>();
