@@ -63,7 +63,7 @@ namespace Skor.Controllers
                 meta.resultado_detalle = ex.Message;
 			}
 
-            return Json(data: new { data = data, code = code, meta = meta }  , new JsonRequestBehavior( )  );
+            return Json(data: new { data = data, code = code, meta = meta });//, new JsonRequestBehavior( )  );
             //return Json(data: new { data = 2 , code = code , meta = new { idregistro = idregistro, resultado = resultado, resultado_detalle = resultado_detalle } }  , new JsonRequestBehavior( )  );
         }
     }
