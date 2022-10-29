@@ -149,6 +149,7 @@
     <Content Include="Content\img\icons.png" />
     <Content Include="Content\img\icons.svg" />
     <Content Include="Content\img\loader.gif" />
+    <Content Include="Content\js\gInicio.js" />
     <Content Include="Content\my-app.css" />
     <Content Include="images\bannersHome\index.html" />
     <Content Include="images\campannas\claro.jpg" />
@@ -533,6 +534,7 @@
     <Compile Include="Controllers\InformacionCartillaController.cs" />
     <Compile Include="Controllers\InformacionController.cs" />
     <Compile Include="Controllers\InicioController.cs" />
+    <Compile Include="Controllers\JuegoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MiCartillaController.cs" />
     <Compile Include="Controllers\MiPronosticoController.cs" />
@@ -573,9 +575,13 @@
     </Compile>
     <Compile Include="Models\JUEGOS\Clases\cJuego.cs" />
     <Compile Include="Models\JUEGOS\Clases\cJuegoEstado.cs" />
+    <Compile Include="Models\JUEGOS\Clases\cJuegoPagos.cs" />
     <Compile Include="Models\JUEGOS\Clases\cPatrocinador.cs" />
+    <Compile Include="Models\JUEGOS\Clases\cPersona.cs" />
+    <Compile Include="Models\JUEGOS\Clases\cResultado.cs" />
     <Compile Include="Models\JUEGOS\dbConnection.cs" />
     <Compile Include="Models\JUEGOS\Metodos\mJuego.cs" />
+    <Compile Include="Models\JUEGOS\Metodos\mJuegoPagos.cs" />
     <Compile Include="Models\JUEGOS\Metodos\mPatrocinador.cs" />
     <Compile Include="Models\Mail\RecuperaClave.cs" />
     <Compile Include="Models\Mail\RegistroUsuario.cs" />
@@ -710,6 +716,7 @@
     <Folder Include="Fonts\" />
     <Folder Include="images\campannas\banners\" />
     <Folder Include="images\campannas\iconos\" />
+    <Folder Include="Views\Juego\" />
     <Folder Include="Views\PosicionesGenerales\" />
   </ItemGroup>
   <ItemGroup>
