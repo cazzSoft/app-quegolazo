@@ -1,6 +1,6 @@
 ﻿@{
-                ViewBag.Title = "Skor - Inicio";
-                Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Skor - Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @Html.Raw(ViewBag.error ?? "")
@@ -10,9 +10,9 @@
     <h2 class="page_title azul">
         Bienvenido
         @if (ViewBag.usuario != null)
-		{
-        <strong> @ViewBag.usuario.MIS_Personas.nombre1 </strong>
-		}
+        {
+            <strong> @ViewBag.usuario.MIS_Personas.nombre1 </strong>
+        }
         a ¡Qué Golazo!
     </h2>
 
@@ -63,85 +63,105 @@
 
         @* 'panel para mostrar lista de juegos' *@
         <div class="row">
-            <div class="col">
-                <h3 class=" azul">
+            <div class="col mb-3 mt-4">
+                <h4 class=" azul" style="font-weight: bold;">
                     Sección de juegos
-                </h3>
+                </h4>
+
             </div>
-        </div>   
+        </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-3">
-                            <img src="~/images/banderas/brasil.png" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Juego de andalucia</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                <a href="#" class="btn btn-danger">Jugar</a>
+            @* recorrido del bucle para llenar los juegos *@
+            @foreach (var juego in ViewBag.ListaJuegosPublicados)
+            {
+
+                if (juego.Bloqueo == false)
+                {
+                    <div class="col m-auto">
+                        <div class="card mb-3 shadow-lg p-3 mb-5 bg-body rounded" style="max-width: 540px;">
+                            <div class="row ">
+                                <div class="col-md-3 m-auto text-center">
+                                    @if (juego.PATROCINADORES != null)
+                                    {
+                                        foreach (var patrocinador in juego.PATROCINADORES)
+                                        {
+
+                                            if (patrocinador.ImgRuta != null && patrocinador.ImgRuta != "")
+                                            {
+                                                <img src="@patrocinador.ImgRuta" class="img-fluid rounded-start p-1 mt-2 m-auto" alt="@patrocinador.RazonSocial">
+                                            }
+                                            else
+                                            {
+                                                <img src="~/Content/img_juego/juego.png" class="img-fluid rounded-start p-1 mt-2 m-auto" alt="QG">
+
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                        if (juego.ImgRuta != null && juego.ImgRuta != "")
+                                        {
+                                            <img src="@juego.ImgRuta" class="img-fluid rounded-start p-1 mt-2 m-auto" alt="sss">
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Content/img_juego/juego.png" class="img-fluid rounded-start p-1 mt-2 m-auto" alt="QG">
+                                        }
+
+                                    }
+                                </div>
+                                <div class="col-md-8 ">
+                                    <div class="card-body">
+                                        <h5 class="card-title"> @juego.Juego </h5>
+                                        <p class="card-text">Participa y gana un celular</p>
+                                        @if (juego.PATROCINADORES != null)
+                                        {
+                                        <p class="card-text">
+                                            Patrocinador(es):
+                                            @foreach (var patrocinador in juego.PATROCINADORES)
+                                            {
+                                            <span class="badge bg-light text-dark">@patrocinador.RazonSocial</span>
+                                            }
+                                        </p>
+                                            
+
+                                                
+
+                                            
+                                        }
+                                        <p class="card-text"><small class="text-muted"> Este juego inicia el @juego.FechaInicio  - termina el @juego.FechaFin </small></p>
+                                        
+                                        <div class="row">
+                                            <div class="col-6  d-grid gap-2">
+                                                @if (juego.ESTADO.JuegoEstado == "PRIVADO")
+                                                {
+                                                    <button type="button" class="open-popup  btn btn-danger  " data-popup=".popup-code">
+                                                        Jugar
+                                                    </button>
+                                                }
+                                                else
+                                                {
+                                                    <a href='@Url.Action("Ejemplo","Inicio")' class="btn btn-danger ">Jugar</a>
+                                                }
+                                            </div>
+                                            <div class="col-6 text-end ">
+                                                <span class="badge rounded-pill bg-light  text-dark mt-2">@juego.ESTADO.JuegoEstado</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-3">
-                            <img src="~/images/banderas/brasil.png" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Juego del pichincha</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                <a href="#" class="btn btn-primary">Jugar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-3">
-                            <img src="~/images/banderas/brasil.png" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Juego del pichincha</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                <a href="#" class="btn btn-primary">Jugar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-3">
-                            <img src="~/images/banderas/brasil.png" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Juego del pichincha</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                <a href="#" class="btn btn-primary">Jugar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                }
+
+            }
 
         </div>
 
-        @if (ViewBag.cartillasAbiertas.Count > 0)
+        @*@if (ViewBag.cartillasAbiertas.Count > 0)
         {
             <h5 class="titulo">Cartillas abiertas - Participa: </h5>
             <ul class="features_list_detailed">
@@ -165,9 +185,9 @@
                     </li>
                 }
             </ul>
-        }
+        }*@
 
-        @if (ViewBag.cartillasCerradas.Count > 0)
+        @*@if (ViewBag.cartillasCerradas.Count > 0)
         {
             <h5 class="titulo">Cartillas cerradas - Mira los resultados:</h5>
             <ul class="features_list_detailed">
@@ -182,9 +202,7 @@
                                 <div class="feat_small_details">
                                     <h4>@(cu.nombre)</h4>
                                 </div>
-                                @*<div style="clear:both;margin-top:50px;">
-                                    <p>@(cu.descripcion)</p>
-                                </div>*@
+
                             </div>
                         </a>
                     </li>
@@ -196,13 +214,13 @@
                     <a href="@Url.Action("Terminadas", "Cartilla")" class="button button-pill external">Revisa juegos pasados</a>
                 </span>
             </p>
-        }
+        }*@
 
         <br /><br />
         <h5 class="titulo">Ranking ¡Qué Golazo!</h5>
 
         <ul class="responsive_table">
-            <li class="table_row"><div class="table_section_14" style="width:8%;">Pos.</div><div class="table_section_14" style="width:78%;">Nombre</div><div class="table_section_14" style="width:8%;">Pts.</div></li>
+            <li class="table_row bg-danger"><div class="table_section_14" style="width:8%;">Pos.</div><div class="table_section_14" style="width:78%;">Nombre</div><div class="table_section_14" style="width:8%;">Pts.</div></li>
             @{
                 var contador = 0;
             }
@@ -210,7 +228,7 @@
             {
                 contador += 1;
                 <li class="table_row">
-                    <div class="table_section_14" style="width:8%;">@posicion.posicion</div>
+                    <div class="table_section_14 " style="width:8%;">@posicion.posicion</div>
                     <div class="table_section_14" style="width:78%;">
                         @posicion.nombreCompleto
                         @if (contador == 1)
@@ -229,19 +247,14 @@
                 <a href="@Url.Action("Generales", "Posiciones")" class="button button-pill external">Ver más</a>
             </span>
         </p>
-
-        @foreach (var juego in ViewBag.ListaJuegosPublicados)
-        {
-            <p>@juego.Juego</p>
-        }
-
+       
 
     </div>
-      
-
-				
 
 
+    
+
+    
 
     @section js{
         <script src="~/Scripts/jquery.countdown.min.js"></script>

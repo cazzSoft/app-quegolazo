@@ -26,7 +26,8 @@
     <link rel="shortcut icon" href="~/images/skor/qgolazo.ico">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <title>Qué Golazo - La polla mundialista del Ecuador</title>
 
     @Styles.Render("~/Content/css")
@@ -58,8 +59,8 @@
 
 
                 @*<li><a href="#" class="close-panel"><img src="~/images/icons/red/gift.png" alt="" title="" /><span>Mis premios</span></a></li>
-        <li><a href="#" data-popup=".popup-login" class="open-popup close-panel"><img src="~/images/icons/red/tabs.png" alt="" title="" /><span>Noticias</span></a></li>
-        <li><a href="#" data-popup=".popup-login" class="open-popup close-panel"><img src="~/images/icons/red/settings.png" alt="" title="" /><span>Mi Perfil</span></a></li>*@
+                    <li><a href="#" data-popup=".popup-login" class="open-popup close-panel"><img src="~/images/icons/red/tabs.png" alt="" title="" /><span>Noticias</span></a></li>
+                    <li><a href="#" data-popup=".popup-login" class="open-popup close-panel"><img src="~/images/icons/red/settings.png" alt="" title="" /><span>Mi Perfil</span></a></li>*@
 
                 <li><a href="@Url.Action("Index", "About")" class="external close-panel"><img src="~/images/icons/red/mobile.png" alt="" title=""><span>Acerca de ¡Qué Golazo!</span></a></li>
                 <li><a href="@Url.Action("Patrocinios", "Informacion")" class="external close-panel"><img src="~/images/icons/red/shop.png" alt="" title=""><span>Patrocinios</span></a></li>
@@ -101,53 +102,49 @@
 
             <div class="pages">
                 <div data-page="features" class="page no-navbar">
-                    <d
-                       
-                        <div class="navbarpages">
-                           
-                            <div class="float-start" >
-                                <a href="@Url.Action("Index", "Inicio")" >
-                                    <img src="~/images/skor/logo_menu.png" width="110" class="d-inline-block align-text-top" />
-                                </a>
-                            </div>
 
-                            <a href="#" data-panel="left" class="open-panel">
-                                <div class="navbar_right"><img src="~/images/icons/red/menu.png" alt="" title="" /></div>
+
+                    <div class="navbarpages">
+
+                        <div class="float-start">
+                            <a href="@Url.Action("Index", "Inicio")">
+                                <img src="~/images/skor/logo_menu.png" width="110" class="d-inline-block align-text-top p-2 ml-5" />
                             </a>
-                            @if (user.id == 0)
-                            {
-                                <a href="#" data-popup=".popup-login" class="open-popup">
-                                    <div class="navbar_right whitebg"><img id="imgLogoUser" src="~/images/icons/white/user.png" alt="" title="" /></div>
-                                </a>
-                            }
-                            else
-                            {
-                                firstLetter = user.nombreCompleto != null ? user.nombreCompleto.ToUpper()[0].ToString() : "U";
-                                <div class="navbar_right whitebg">
-                                    <div class="circle-text"><div>@(firstLetter)</div></div>
-                                </div>
-                            }
-
-
-                        </div>
-                        
-                        <div id="pages_maincontent">
-                            @RenderBody()
-                            
-                            <div class="row like-footer"  style="background-color: #484848; position: fixed; width: 100%; height: 70px; bottom: 0; font-style: italic; color:#fff; ">
-                                <div class="col-100">
-                                    <span>Síguenos: </span>
-                                    <a href="https://www.facebook.com/QueGolazoEC/" target="_blank" class="external"><img src="~/images/skor/facebook_logo.png" /></a>
-                                    <a href="https://twitter.com/QueGolazoEC" target="_blank" class="external"><img style="margin-left:15px;" src="~/images/skor/twitter_logo.png" /></a>
-                                </div>
-                            </div> 
-                           
                         </div>
 
-
+                        <a href="#" data-panel="left" class="open-panel">
+                            <div class="navbar_right"><img src="~/images/icons/red/menu.png" alt="" title="" /></div>
+                        </a>
+                        @if (user.id == 0)
+                        {
+                            <a href="#" data-popup=".popup-login" class="open-popup">
+                                <div class="navbar_right whitebg"><img id="imgLogoUser" src="~/images/icons/white/user.png" alt="" title="" /></div>
+                            </a>
+                        }
+                        else
+                        {
+                            firstLetter = user.nombreCompleto != null ? user.nombreCompleto.ToUpper()[0].ToString() : "U";
+                            <div class="navbar_right whitebg">
+                                <div class="circle-text"><div>@(firstLetter)</div></div>
+                            </div>
+                        }
 
 
                     </div>
+
+                    <div id="pages_maincontent">
+                        @RenderBody()
+
+                        <div class="row like-footer" style="background-color: #484848; position: fixed; width: 100%; height: 70px; bottom: 0; font-style: italic; color:#fff; ">
+                            <div class="col-100">
+                                <span>Síguenos: </span>
+                                <a href="https://www.facebook.com/QueGolazoEC/" target="_blank" class="external"><img src="~/images/skor/facebook_logo.png" /></a>
+                                <a href="https://twitter.com/QueGolazoEC" target="_blank" class="external"><img style="margin-left:15px;" src="~/images/skor/twitter_logo.png" /></a>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
 
@@ -169,12 +166,12 @@
             <br />
             <p>Si ya tienes una cuenta, ingresa:</p>
             <div class="loginform">
-                    <input type="text" name="txtNombreUsuario" id="txtNombreUsuario" value="" class="form_input required" placeholder="Correo" />
-                    <input type="password" name="txtClaveUsuario" id="txtClaveUsuario" value="" class="form_input required password" placeholder="Clave" />
-                    <label><input type="checkbox" id="chkSeePassoword" /> Ver clave</label>
-                    <p id="msgLogin" class="red"></p>
-                    <div class="forgot_pass"><a href="#" data-popup=".popup-forgot" class="open-popup">¿Olvidó su clave?</a></div>
-                    <input type="button" name="btnLogin" class="form_submit" id="btnLogin" value="Entrar" />
+                <input type="text" name="txtNombreUsuario" id="txtNombreUsuario" value="" class="form_input required" placeholder="Correo" />
+                <input type="password" name="txtClaveUsuario" id="txtClaveUsuario" value="" class="form_input required password" placeholder="Clave" />
+                <label><input type="checkbox" id="chkSeePassoword" /> Ver clave</label>
+                <p id="msgLogin" class="red"></p>
+                <div class="forgot_pass"><a href="#" data-popup=".popup-forgot" class="open-popup">¿Olvidó su clave?</a></div>
+                <input type="button" name="btnLogin" class="form_submit" id="btnLogin" value="Entrar" />
 
                 <div class="signup_bottom">
                     <p>¿No tienes una cuenta?</p>
@@ -193,20 +190,20 @@
             <h4>Registro</h4>
             <div class="loginform">
 
-                    <input type="text" name="txtCorreoRegistro" id="txtCorreoRegistro" value="" class="form_input required" placeholder="Correo" />
-                    <input type="text" name="txtNombreRegistro" id="txtNombreRegistro" value="" class="form_input required" placeholder="Nombre" />
-                    <input type="text" name="txtApellidoRegistro" id="txtApellidoRegistro" value="" class="form_input required" placeholder="Apellido" />
-                    <input type="text" name="txtTelefonoRegistro" id="txtTelefonoRegistro" value="" class="form_input" placeholder="Teléfono celular - 09xxxxxxxx (Opcional)" />
-                    <input type="password" name="txtClaveRegistro" id="txtClaveRegistro" value="" class="form_input required" placeholder="Crea una clave para ¡Qué Golazo!" />
-                
-                    <label><input type="checkbox" id="chkSeePasswordRegistro" /> Ver clave</label>
-                    <input type="button" name="btnRegistrar" class="form_submit" id="btnRegistrar" value="Crear Cuenta" />
+                <input type="text" name="txtCorreoRegistro" id="txtCorreoRegistro" value="" class="form_input required" placeholder="Correo" />
+                <input type="text" name="txtNombreRegistro" id="txtNombreRegistro" value="" class="form_input required" placeholder="Nombre" />
+                <input type="text" name="txtApellidoRegistro" id="txtApellidoRegistro" value="" class="form_input required" placeholder="Apellido" />
+                <input type="text" name="txtTelefonoRegistro" id="txtTelefonoRegistro" value="" class="form_input" placeholder="Teléfono celular - 09xxxxxxxx (Opcional)" />
+                <input type="password" name="txtClaveRegistro" id="txtClaveRegistro" value="" class="form_input required" placeholder="Crea una clave para ¡Qué Golazo!" />
+
+                <label><input type="checkbox" id="chkSeePasswordRegistro" /> Ver clave</label>
+                <input type="button" name="btnRegistrar" class="form_submit" id="btnRegistrar" value="Crear Cuenta" />
 
                 @*<h5>- Redes sociales? -</h5>
-                <div class="signup_social">
-                    <a href="http://www.facebook.com/" class="signup_facebook external">FACEBOOK</a>
-                    <a href="http://www.twitter.com/" class="signup_twitter external">TWITTER</a>
-                </div>*@
+                    <div class="signup_social">
+                        <a href="http://www.facebook.com/" class="signup_facebook external">FACEBOOK</a>
+                        <a href="http://www.twitter.com/" class="signup_twitter external">TWITTER</a>
+                    </div>*@
             </div>
             <div class="close_popup_button">
                 <a href="#" class="close-popup"><img src="~/images/icons/black/menu_close.png" alt="" title="" /></a>
@@ -434,10 +431,36 @@
             <div class="close_popup_button"><a href="#" class="close-popup"><img src="~/images/icons/black/menu_close.png" alt="" title="" /></a></div>
         </div>
     </div>
+
+
+    <!-- code Popup -->
+    <div class="popup popup-code shadow-lg p-3 mb-5 bg-body rounded">
+        <div class="content-block">
+
+            <div class="close_popup_button">
+                <a id="closePopupLogin" href="#" class="close-popup"><img src="~/images/icons/black/menu_close.png" alt="" title="" /></a>
+            </div>
+            <div class="row">
+                <div col-md-8 col-sm-12>
+                    <div class="form-groud ">
+                        <div class="alert alert-success text-center text-muted shadow-lg p-3 mb-5 bg-body rounded" role="alert">
+                            <h2> Para ingresar a este juego debes de ingresar un código</h2>
+                        </div>
+                        <input class="form-control form-control-lg" type="number" placeholder="Ingresa código" aria-label=".form-control-lg example">
+                    </div>
+                    
+                </div>
+                <div class="d-grid gap-2 col-6 mx-auto mt-4 ">
+                    <button type="button" class="btn btn-secondary btn-lg close-popup">Enviar código</button>
+                </div>
+            </div>
+
+        </div>
         
+    </div>
 
 
-    <input type="hidden" id="txtIdUsuario" value="@(user.id)"/>
+    <input type="hidden" id="txtIdUsuario" value="@(user.id)" />
     <script>
         var SITEROOT = '@System.Configuration.ConfigurationManager.AppSettings["SITEROOT"]';
     </script>
@@ -445,10 +468,14 @@
     @RenderSection("js", required: false)
     <script src="~/Scripts/skor/Login.js"></script>
     <script src="~/Scripts/hideShowPassword.min.js"></script>
-    
+
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117502331-1"></script>
+    <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117502331-1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>-->
+    @*<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>*@
+    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>-->
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -460,7 +487,7 @@
 
     <div id="fb-root"></div>
     <script>
-(function (d, s, id) {
+        (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
@@ -468,6 +495,6 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
 
-   
+
 </body>
 </html>

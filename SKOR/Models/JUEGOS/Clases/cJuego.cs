@@ -22,7 +22,9 @@ namespace Skor.Models.JUEGOS.Clases
 		public bool Eliminado { get; set; }
 		public int idU { get; set; }
 		public int NumPatrocinadores { get; set; }
+		public bool Bloqueo { get; set; }
 
+		public cJuegoEstado ESTADO;
 		public	List<cPatrocinador> PATROCINADORES;
 
 	}
