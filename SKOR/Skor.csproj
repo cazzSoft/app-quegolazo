@@ -140,6 +140,7 @@
     <Content Include="BDD\Tablas\USR_historialLogins.sql" />
     <Content Include="BDD\Vistas\USR_usuariosPersonas.sql" />
     <Content Include="BDD\Vistas\VW_partidos.sql" />
+    <Content Include="bin\usrConfig.xml" />
     <Content Include="Content\buttons.css" />
     <Content Include="Content\framework7.css" />
     <Content Include="Content\framework7.ios.colors.css" />
