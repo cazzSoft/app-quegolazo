@@ -25,4 +25,14 @@ $(document).ready(function () {
         
     }, 1000);
 
+    
+    
+
 });
+
+function validate_juego(idj) {
+   //validar si el juego ha sido cancelado
+    console.log(idj);
+    myApp.popup('.popup-code');
+    
+}
