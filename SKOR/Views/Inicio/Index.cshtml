@@ -129,14 +129,14 @@
                                                 <div class="col-6  d-grid gap-2">
                                                     @if (juego.ESTADO.JuegoEstado == "PRIVADO")
                                                     {
-                                                        <button type="button" class="open-popup  btn btn-danger  " data-popup=".popup-code">
+                                                        <button type="button" onclick="juego_private(@juego.IdJuego)"  class=" btn btn-danger" >
                                                             Jugar
                                                         </button>
                                                     }
                                                     else
                                                     {
                                                         @*<a href='@Url.Action("Ejemplo","Inicio")' class="btn btn-danger ">Jugar</a>*@
-                                                        <button type="button" class="btn btn-danger" onclick="validate_juego(@juego.IdJuego)" >
+                                                        <button type="button" class="btn btn-danger" onclick="juego_public(@juego.IdJuego)" >
                                                             Jugar
                                                         </button>
                                                     }
