@@ -22,7 +22,7 @@
         {
             <div class="row">
                 <div class="col-100">
-                    <p>
+                    
                         @if (ViewBag.usuario.ranking == 1)
                         {
                         <p>No tienes <a href="@Url.Action("Generales", "Posiciones")" class="linkBlue external">ranking</a> todavía</p>
@@ -45,41 +45,19 @@
                 <p>Un juego de pronóstico GRATUITO y ENTRETENIDO que te hará vivir intensamente la emoción de cada partido del Mundial de Fútbol 2018 y otros torneos importantes.</p>
             }
 
-        <h1 class="btn btn-block" id="prueba">hola prueba</h1>
-        <p><img id="imgBannerRotativo" src="~/images/bannersHome/1.jpg" alt="" /></p>
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
+    
+        <div class="row class_">
             <div class="col-100">
-                <a href="@Url.Action("Index", "Cartilla", new { id = 12 })" class="external">
+                <a href="#" class="external">
                     <div id="divContador">
                         <p>El mundial de fútbol empezará en</p>
-                        <span id="clock"></span>
-                        <p style="font-size:18px;">PRONOSTICA YA!!!</p>
+                        <span class="h2 p-2 mb-3" id="countdown"></span>
+                        <p class="mt-2" style="font-size:18px;">PRONOSTICA YA!!!</p>
                     </div>
                 </a>
             </div>
         </div>
-
+       
         @* 'panel para mostrar lista de juegos' *@
         <div class="row">
             <div class="col mb-3 mt-4">
