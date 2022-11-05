@@ -22,9 +22,9 @@
         {
             <div class="row">
                 <div class="col-100">
-                    
-                        @if (ViewBag.usuario.ranking == 1)
-                        {
+
+                    @if (ViewBag.usuario.ranking == 1)
+                    {
                         <p>No tienes <a href="@Url.Action("Generales", "Posiciones")" class="linkBlue external">ranking</a> todavía</p>
                     }
                     else
@@ -37,15 +37,15 @@
                         <p class="centrado"><img src="~/images/rankings/@(ViewBag.usuario.ranking).gif" class="imgRanking;"></p>
                     }
 
-                    </div>
                 </div>
-            }
-            else
-            {
-                <p>Un juego de pronóstico GRATUITO y ENTRETENIDO que te hará vivir intensamente la emoción de cada partido del Mundial de Fútbol 2018 y otros torneos importantes.</p>
-            }
+            </div>
+        }
+        else
+        {
+            <p>Un juego de pronóstico GRATUITO y ENTRETENIDO que te hará vivir intensamente la emoción de cada partido del Mundial de Fútbol 2018 y otros torneos importantes.</p>
+        }
 
-    
+
         <div class="row class_">
             <div class="col-100">
                 <a href="#" class="external">
@@ -57,7 +57,7 @@
                 </a>
             </div>
         </div>
-       
+
         @* 'panel para mostrar lista de juegos' *@
         <div class="row">
             <div class="col mb-3 mt-4">
@@ -129,13 +129,16 @@
                                                 <div class="col-6  d-grid gap-2">
                                                     @if (juego.ESTADO.JuegoEstado == "PRIVADO")
                                                     {
-                                                        <button type="button" class="open-popup  btn btn-danger  " data-popup=".popup-code">
+                                                        <button type="button" onclick="juego_private(@juego.IdJuego)"  class=" btn btn-danger" >
                                                             Jugar
                                                         </button>
                                                     }
                                                     else
                                                     {
-                                                        <a href='@Url.Action("Ejemplo","Inicio")' class="btn btn-danger ">Jugar</a>
+                                                        @*<a href='@Url.Action("Ejemplo","Inicio")' class="btn btn-danger ">Jugar</a>*@
+                                                        <button type="button" class="btn btn-danger" onclick="juego_public(@juego.IdJuego)" >
+                                                            Jugar
+                                                        </button>
                                                     }
                                                 </div>
                                                 <div class="col-6 text-end ">
@@ -169,9 +172,7 @@
                 }
 
             }
-            <div class="col">
-                <div id="pp-button"></div>
-            </div>
+           
         </div>
 
         @*@if (ViewBag.cartillasAbiertas.Count > 0)
@@ -261,6 +262,30 @@
             </span>
         </p>
 
+        <!-- page Popup -->
+        <div class="popup popup-page shadow-lg p-3 mb-5 bg-body rounded">
+            <div class="content-block">
+
+                <div class="close_popup_button">
+                    <a id="closePopupLogin" href="#" class="close-popup"><img src="~/images/icons/black/menu_close.png" alt="" title="" /></a>
+                </div>
+                <div class="row">
+                    <div col-md-8 col-sm-12>
+                        <div class="form-groud ">
+                            <div class="alert alert-success text-center text-muted shadow-lg p-3 mb-5 bg-body rounded" role="alert">
+                                <h2> Elige el metodo de pago</h2>
+                            </div>
+                            <div class="col text-center">
+                                <div id="pp-button"></div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="d-grid gap-2 col-6 mx-auto mt-4 ">
+                        <button type="button" class="btn btn-secondary btn-lg close-popup">Enviar código</button>
+                    </div>*@
+                </div>
+            </div>
+        </div>
 
         @*<h2>@vUsuarios.web.TraeUsuarioRegistrado().idPersona</h2>*@
 

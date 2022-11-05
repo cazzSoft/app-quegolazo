@@ -150,6 +150,7 @@
     <Content Include="Content\img\icons.png" />
     <Content Include="Content\img\icons.svg" />
     <Content Include="Content\img\loader.gif" />
+    <Content Include="Content\img_juego\juego.png" />
     <Content Include="Content\js\gInicio.js" />
     <Content Include="Content\my-app.css" />
     <Content Include="images\bannersHome\index.html" />
@@ -228,6 +229,16 @@
     <Content Include="Models\ApuestasModel.edmx.diagram">
       <DependentUpon>ApuestasModel.edmx</DependentUpon>
     </Content>
+    <Content Include="bin\roslyn\csc.exe.config" />
+    <Content Include="bin\roslyn\csc.rsp" />
+    <Content Include="bin\roslyn\csi.rsp" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\vbc.exe.config" />
+    <Content Include="bin\roslyn\vbc.rsp" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="bin\Skor.dll.config" />
+    <Content Include="bin\vUsuarios.dll.config" />
     <None Include="Properties\PublishProfiles\futbolSkor - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\futbolSkor - FTP1.pubxml" />
     <None Include="Properties\PublishProfiles\futbolSkor - Web Deploy.pubxml" />
@@ -718,6 +729,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img_patrocinador\" />
     <Folder Include="Fonts\" />
     <Folder Include="images\campannas\banners\" />
     <Folder Include="images\campannas\iconos\" />
