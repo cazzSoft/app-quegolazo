@@ -41,7 +41,7 @@ namespace Skor.Models.JUEGOS.Metodos
 								ImgExt = item["JuegoImgExt"].ToString(),
 								FechaInicio = DateTime.Parse(item["JuegoFechaInicio"].ToString()),
 								FechaFin = DateTime.Parse(item["JuegoFechaFin"].ToString()),
-								Publicado = bool.Parse(item["Publicado"].ToString()),
+								Publicado = bool.Parse(item["JuegoPublicado"].ToString()),
 								FC = DateTime.Parse(item["FC"].ToString()),
 								FA = DateTime.Parse(item["FA"].ToString()),
 								Eliminado = bool.Parse(item["Eliminado"].ToString()),
