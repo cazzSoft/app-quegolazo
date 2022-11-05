@@ -45,9 +45,28 @@
                 <p>Un juego de pronóstico GRATUITO y ENTRETENIDO que te hará vivir intensamente la emoción de cada partido del Mundial de Fútbol 2018 y otros torneos importantes.</p>
             }
 
-
+        <h1 class="btn btn-block" id="prueba">hola prueba</h1>
         <p><img id="imgBannerRotativo" src="~/images/bannersHome/1.jpg" alt="" /></p>
-
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-100">
@@ -117,40 +136,54 @@
                                         <p class="card-text">Participa y gana un celular</p>
                                         @if (juego.PATROCINADORES != null)
                                         {
-                                        <p class="card-text">
-                                            Patrocinador(es):
-                                            @foreach (var patrocinador in juego.PATROCINADORES)
-                                            {
-                                            <span class="badge bg-light text-dark">@patrocinador.RazonSocial</span>
-                                            }
-                                        </p>
-                                            
-
-                                                
-
-                                            
+                                            <p class="card-text">
+                                                Patrocinador(es):
+                                                @foreach (var patrocinador in juego.PATROCINADORES)
+                                                {
+                                                    <span class="badge bg-light text-dark">@patrocinador.RazonSocial</span>
+                                                }
+                                            </p>
                                         }
                                         <p class="card-text"><small class="text-muted"> Este juego inicia el @juego.FechaInicio  - termina el @juego.FechaFin </small></p>
-                                        
-                                        <div class="row">
-                                            <div class="col-6  d-grid gap-2">
-                                                @if (juego.ESTADO.JuegoEstado == "PRIVADO")
-                                                {
-                                                    <button type="button" class="open-popup  btn btn-danger  " data-popup=".popup-code">
+                                        @if (ViewBag.usuario != null)
+                                        {
+                                            <div class="row">
+                                                <div class="col-6  d-grid gap-2">
+                                                    @if (juego.ESTADO.JuegoEstado == "PRIVADO")
+                                                    {
+                                                        <button type="button" class="open-popup  btn btn-danger  " data-popup=".popup-code">
+                                                            Jugar
+                                                        </button>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href='@Url.Action("Ejemplo","Inicio")' class="btn btn-danger ">Jugar</a>
+                                                    }
+                                                </div>
+                                                <div class="col-6 text-end ">
+                                                    <span class="badge rounded-pill bg-light  text-dark mt-2">@juego.ESTADO.JuegoEstado</span>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="row">
+                                                <div class="col-6  d-grid gap-2">
+
+                                                    <a href="#" data-popup=".popup-login" class="open-popup btn btn-danger">
                                                         Jugar
-                                                    </button>
-                                                }
-                                                else
-                                                {
-                                                    <a href='@Url.Action("Ejemplo","Inicio")' class="btn btn-danger ">Jugar</a>
-                                                }
+                                                    </a>
+                                                    @*<a href='@Url.Action("Ejemplo","Inicio")' class="btn btn-danger ">Jugar</a>*@
+
+                                                </div>
+                                                <div class="col-6 text-end ">
+                                                    <span class="badge rounded-pill bg-light  text-dark mt-2">@juego.ESTADO.JuegoEstado</span>
+                                                </div>
                                             </div>
-                                            <div class="col-6 text-end ">
-                                                <span class="badge rounded-pill bg-light  text-dark mt-2">@juego.ESTADO.JuegoEstado</span>
-                                            </div>
-                                        </div>
+                                        }
+
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -158,7 +191,9 @@
                 }
 
             }
-
+            <div class="col">
+                <div id="pp-button"></div>
+            </div>
         </div>
 
         @*@if (ViewBag.cartillasAbiertas.Count > 0)
@@ -247,21 +282,66 @@
                 <a href="@Url.Action("Generales", "Posiciones")" class="button button-pill external">Ver más</a>
             </span>
         </p>
-       
+
 
     </div>
 
 
-    
 
-    
+
+
 
     @section js{
         <script src="~/Scripts/jquery.countdown.min.js"></script>
         <script src="~/Scripts/skor/Inicio/Index.cshtml.js?ver=1.0.0"></script>
         <script src="~/Content/js/gInicio.js"></script>
+        <script src="https://pay.payphonetodoesposible.com/api/button/js?appId=ee6c47pA1UiGpWVKnsy3w"></script>
+        <script>
+            window.onload = function () {
+                payphone.Button({
 
-        
+                    //token obtenido desde la consola de developer
+                    token: "dNIXKR-p2CSC-LduEtb-apgojyYEnpwsABABlJqaD1UxVfrW7Te3VZcTwBuSCcWSfnj7Dpu2pccUEg1Q1r-OAWvp4rDjtdSKxhtWGYA-FbK98FVNCprXiyYUBGqDAosQ7PCOhwvVvEmXmDchNT9bVgDtzQ1hdZqZ0vUmqhrf3SwcnAHrEuX40OQavpgREOjAqNQA_3VDVF-tC2JMDbfRC7CdKs_ZcVbkUnH35f6wSSlkIG_hICpANDTFWFjtrt-GCXX98Q6mctqmmft9NsWgGA4_nejjeFXnaBlhjGbW9B71yF2S6b5uKdtleT3OzqXwzBDkDAmUR1fiQs7a0_0boHmHj2Y",
+
+                    //PARÁMETROS DE CONFIGURACIÓN
+                    btnHorizontal: true,
+                    btnCard: true,
+                    context: "iframe",
+
+                    createOrder: function (actions) {
+
+                        //Se ingresan los datos de la transaccion ej. monto, impuestos, etc
+                        return actions.prepare({
+
+                            amount: 400,
+                            amountWithoutTax: 400,
+                            currency: "USD",
+                            clientTransactionId: "pruebaExpress1"
+                        });
+
+                    },
+                    onComplete: function (model, actions) {
+
+                        //Se confirma el pago realizado
+                        actions.confirm({
+                            id: model.id,
+                            clientTxId: model.clientTxId
+                        }).then(function (value) {
+
+                            //EN ESTA SECCIÓN SE RECIBE LA RESPUESTA Y SE MUESTRA AL USUARIO
+
+                            if (value.transactionStatus == "Approved") {
+                                alert("Pago " + value.transactionId + " recibido, estado " + value.transactionStatus);
+                            }
+                        }).catch(function (err) {
+                            console.log(err);
+                        });
+
+                    }
+                }).render("#pp-button");
+
+            }
+        </script>
 
     }
 
