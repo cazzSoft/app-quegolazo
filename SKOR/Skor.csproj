@@ -574,13 +574,16 @@
     <Compile Include="Models\Bandos.cs">
       <DependentUpon>SkorData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\JUEGOS\Clases\cCartilla.cs" />
     <Compile Include="Models\JUEGOS\Clases\cJuego.cs" />
+    <Compile Include="Models\JUEGOS\Clases\cJuegoCartilla.cs" />
     <Compile Include="Models\JUEGOS\Clases\cJuegoEstado.cs" />
     <Compile Include="Models\JUEGOS\Clases\cJuegoPagos.cs" />
     <Compile Include="Models\JUEGOS\Clases\cPatrocinador.cs" />
     <Compile Include="Models\JUEGOS\Clases\cPersona.cs" />
     <Compile Include="Models\JUEGOS\Clases\cResultado.cs" />
     <Compile Include="Models\JUEGOS\dbConnection.cs" />
+    <Compile Include="Models\JUEGOS\Metodos\mCartilla.cs" />
     <Compile Include="Models\JUEGOS\Metodos\mJuego.cs" />
     <Compile Include="Models\JUEGOS\Metodos\mJuegoPagos.cs" />
     <Compile Include="Models\JUEGOS\Metodos\mPatrocinador.cs" />
@@ -705,6 +708,7 @@
     <Content Include="Views\Bando\MisBandos.cshtml" />
     <Content Include="Views\Bando\Ver.cshtml" />
     <Content Include="Views\Inicio\Ejemplo.cshtml" />
+    <Content Include="Views\Juego\MisCatillas.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -717,7 +721,6 @@
     <Folder Include="Fonts\" />
     <Folder Include="images\campannas\banners\" />
     <Folder Include="images\campannas\iconos\" />
-    <Folder Include="Views\Juego\" />
     <Folder Include="Views\PosicionesGenerales\" />
   </ItemGroup>
   <ItemGroup>
