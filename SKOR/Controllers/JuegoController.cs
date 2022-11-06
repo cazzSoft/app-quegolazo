@@ -3,11 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Skor.Models;
 
 namespace Skor.Controllers
 {
 	public class JuegoController : Controller
 	{
+		public ActionResult Carti()
+		{
+			List<Cartillas> cartillas, cartillasCerradas, cartillasAbiertas;
+			
+
+			try
+			{
+				
+				using (var baseSk = new Models.skorEntities())
+				{
+					cartillas = (from camp in baseSk.Cartillas where camp.estaTerminada == false && camp.estaActiva == true select camp).ToList();
+					cartillasAbiertas = cartillas.Where(camp => camp.estaCerrada == false).OrderByDescending(c => c.id).ToList();
+					
+				}
+
+				ViewBag.cartillasAbiertas = cartillasAbiertas;
+	
+
+			}
+			catch (Exception e)
+			{
+				ViewBag.error = e.Message;
+			}
+			return View();
+		}
+
 		// GET: Juego
 		public ActionResult Index()
 		{
@@ -18,6 +45,7 @@ namespace Skor.Controllers
 			var form = Request.Form;
 			int IDPERSONA = 0;
 			int IDJUEGO = 0;
+			var id = form.Get("idjuego");
 			var USUARIO = vUsuarios.web.TraeUsuarioRegistrado();
 			if (form.Get("idjuego")==null || USUARIO == null )
 			{

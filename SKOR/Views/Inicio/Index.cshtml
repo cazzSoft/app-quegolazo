@@ -51,13 +51,17 @@
                 <a href="#" class="external">
                     <div id="divContador">
                         <p>El mundial de fútbol empezará en</p>
-                        <span class="h4 p-2 mb-3 font-weight-bold" id="cuenta"></span>
-
+                        <span class="h4 p-2 mb-3 font-weight-bold" id="cuenta1"></span>
+                        <div id="cuenta"></div>
                         <p class="mt-2" style="font-size:18px;">PRONOSTICA YA!!!</p>
                     </div>
                 </a>
             </div>
         </div>
+
+       
+
+
 
         @* 'panel para mostrar lista de juegos' *@
         <div class="row">
@@ -136,7 +140,7 @@
                                                     }
                                                     else
                                                     {
-                                                        @*<a href='@Url.Action("Ejemplo","Inicio")' class="btn btn-danger ">Jugar</a>*@
+                                                        @*<a href='@Url.Action("Carti","Juego")' class="btn btn-danger ">Jugar2</a>*@
                                                         <button type="button" class="btn btn-danger" onclick="juego_public(@juego.IdJuego)">
                                                             Jugar
                                                         </button>
@@ -177,59 +181,59 @@
         </div>
 
         @*@if (ViewBag.cartillasAbiertas.Count > 0)
-            {
-                <h5 class="titulo">Cartillas abiertas - Participa: </h5>
-                <ul class="features_list_detailed">
-                    @foreach (var cu in ViewBag.cartillasAbiertas)
-                    {
-                        <li>
-                            <a href="@Url.Action("Index", "Cartilla", new { id = cu.id })" class="external">
-                                <div class="button-cartilla">
-                                    <div class="feat_small_icon">
-                                        <img src="~/images/campannas/iconos/@(cu.id).png" alt="" title="" />
-                                    </div>
-                                    <div class="feat_small_details">
-                                        <h4>@(cu.nombre)</h4>
-                                    </div>
-                                    <div style="clear:both;margin-top:50px;">
-                                        <p>@(cu.descripcion)</p>
-                                        <p>Juega hasta: <span style="font-weight:bold;">@(cu.fechaCierre.ToString("dd-MMM"))</span></p>
-                                    </div>
+        {
+            <h5 class="titulo">Cartillas abiertas - Participa: </h5>
+            <ul class="features_list_detailed">
+                @foreach (var cu in ViewBag.cartillasAbiertas)
+                {
+                    <li>
+                        <a href="@Url.Action("Index", "Cartilla", new { id = cu.id })" class="external">
+                            <div class="button-cartilla">
+                                <div class="feat_small_icon">
+                                    <img src="~/images/campannas/iconos/@(cu.id).png" alt="" title="" />
                                 </div>
-                            </a>
-                        </li>
-                    }
-                </ul>
-            }*@
+                                <div class="feat_small_details">
+                                    <h4>@(cu.nombre)</h4>
+                                </div>
+                                <div style="clear:both;margin-top:50px;">
+                                    <p>@(cu.descripcion)</p>
+                                    <p>Juega hasta: <span style="font-weight:bold;">@(cu.fechaCierre.ToString("dd-MMM"))</span></p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                }
+            </ul>
+        }*@
 
         @*@if (ViewBag.cartillasCerradas.Count > 0)
-            {
-                <h5 class="titulo">Cartillas cerradas - Mira los resultados:</h5>
-                <ul class="features_list_detailed">
-                    @foreach (var cu in ViewBag.cartillasCerradas)
-                    {
-                        <li>
-                            <a href="@Url.Action("Index", "Cartilla", new { id = cu.id })" class="external">
-                                <div class="button-cartilla_no">
-                                    <div class="feat_small_icon">
-                                        <img src="~/images/campannas/iconos/@(cu.id).png" alt="" title="" />
-                                    </div>
-                                    <div class="feat_small_details">
-                                        <h4>@(cu.nombre)</h4>
-                                    </div>
-
+        {
+            <h5 class="titulo">Cartillas cerradas - Mira los resultados:</h5>
+            <ul class="features_list_detailed">
+                @foreach (var cu in ViewBag.cartillasCerradas)
+                {
+                    <li>
+                        <a href="@Url.Action("Index", "Cartilla", new { id = cu.id })" class="external">
+                            <div class="button-cartilla_no">
+                                <div class="feat_small_icon">
+                                    <img src="~/images/campannas/iconos/@(cu.id).png" alt="" title="" />
                                 </div>
-                            </a>
-                        </li>
-                    }
-                </ul>
+                                <div class="feat_small_details">
+                                    <h4>@(cu.nombre)</h4>
+                                </div>
 
-                <p class="centrado">
-                    <span class="button-wrap">
-                        <a href="@Url.Action("Terminadas", "Cartilla")" class="button button-pill external">Revisa juegos pasados</a>
-                    </span>
-                </p>
-            }*@
+                            </div>
+                        </a>
+                    </li>
+                }
+            </ul>
+
+            <p class="centrado">
+                <span class="button-wrap">
+                    <a href="@Url.Action("Terminadas", "Cartilla")" class="button button-pill external">Revisa juegos pasados</a>
+                </span>
+            </p>
+        }*@
 
         <br /><br />
         <h5 class="titulo">Ranking ¡Qué Golazo!</h5>
@@ -282,8 +286,8 @@
                         </div>
                     </div>
                     @*<div class="d-grid gap-2 col-6 mx-auto mt-4 ">
-                            <button type="button" class="btn btn-secondary btn-lg close-popup">Enviar código</button>
-                        </div>*@
+                        <button type="button" class="btn btn-secondary btn-lg close-popup">Enviar código</button>
+                    </div>*@
                 </div>
             </div>
         </div>
@@ -293,7 +297,10 @@
 
     </div>
 
-
+    @section css{
+        <link href="~/Content/css/estilos.css" rel="stylesheet" />
+           
+    }
 
 
     @section js{

@@ -142,6 +142,7 @@
     <Content Include="BDD\Vistas\VW_partidos.sql" />
     <Content Include="bin\usrConfig.xml" />
     <Content Include="Content\buttons.css" />
+    <Content Include="Content\css\estilos.css" />
     <Content Include="Content\framework7.css" />
     <Content Include="Content\framework7.ios.colors.css" />
     <Content Include="Content\framework7.ios.colors.min.css" />
@@ -152,6 +153,7 @@
     <Content Include="Content\img\loader.gif" />
     <Content Include="Content\img_juego\juego.png" />
     <Content Include="Content\js\gInicio.js" />
+    <Content Include="Content\js\simplyCountdown.min.js" />
     <Content Include="Content\my-app.css" />
     <Content Include="images\bannersHome\index.html" />
     <Content Include="images\campannas\claro.jpg" />
@@ -720,6 +722,7 @@
     <Content Include="Views\Bando\Ver.cshtml" />
     <Content Include="Views\Inicio\Ejemplo.cshtml" />
     <Content Include="Views\Juego\MisCatillas.cshtml" />
+    <Content Include="Views\Juego\Carti.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

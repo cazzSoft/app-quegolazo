@@ -11,13 +11,13 @@ $(document).ready(function () {
         seconds: 0, // Default is 0 [0-59] integer
         words: { //words displayed into the countdown
             days: 'Día',
-            hours: 'h',
-            minutes: 'm',
-            seconds: 's',
+            hours: 'Hora',
+            minutes: 'Minuto',
+            seconds: 'Segundo',
             pluralLetter: 's'
         },
-        plural: false, //use plurals
-        inline: true, //set to true to get an inline basic countdown like : 24 days, 4 hours, 2 minutes, 5 seconds
+        plural: true, //use plurals
+        inline: false, //set to true to get an inline basic countdown like : 24 days, 4 hours, 2 minutes, 5 seconds
         inlineClass: 'simply-countdown-inline', //inline css span class in case of inline = true
         // in case of inline set to false
         enableUtc: true, //Use UTC as default
@@ -67,8 +67,12 @@ function validate_juego(id,Pop) {
                 console.log(id);
                 if (data.meta.resultado == 'SI') {//el juego ya esta pagado
                     //redireccionar
-                    console.log(url);
-                    location.href = url+"/Index/Cartilla/85";
+                    var idjuego = id;
+                    console.log(url + "/Juego/Carti/");
+                    alert(url + "/Juego/Carti" )
+                    location.href = url + "/Juego/Carti";
+
+                   
                 } else if (data.meta.resultado == 'NO') {
                     myApp.popup(`${Pop}`);
                 }
