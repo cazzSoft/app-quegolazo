@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "Carti";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Raw(ViewBag.error ?? "")
+@if (ViewBag.error == null)
+{
+
+     <div class="container-fluid ">
+         <div class="row mt-5">
+             <div class="col-md-11 col-sm-12 m-auto">
+                 <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                     <ol class="breadcrumb">
+                         <li class="breadcrumb-item h5"><a href="#" onclick="redirect()">Inicio</a></li>
+                         <li class="breadcrumb-item  h5 text-secondary titulo" aria-current="page">cartillas abiertas </li>
+                     </ol>
+                 </nav>
+             </div>
+             
+             <div class="row mt-2">
+                 <div class="col-md-11 col-sm-12 m-auto">
+                     <div class="card">
+                         <div class="card-body">
+                             <div class="d-flex flex-row bd-highlight mb-3">
+                                 @foreach (var cu in ViewBag.cartillasabiertas)
+                                 {
+                                     <a href="@Url.Action("Index", "Cartilla", new { id = cu.id })" class="external">
+                                         <div class="p-2 bd-highlight">
+                                             <div class="card shadow-sm p-3 mb-5 bg-body rounded border-success" style="width: 18rem;">
+                                                 <div class="card-body">
+                                                     <h5 class="card-title p-0"> <h4>@(cu.nombre)</h4></h5>
+                                                     @*<h6 class="card-subtitle mb-2 text-muted">Juega has 22-22-22</h6>*@
+                                                     <p class="card-text">@(cu.descripcion)</p>
+                                                     <a href="#" class="card-link">Card link</a>
+                                                     <span class="card-link badge rounded-pill bg-danger"> Cartilla cerrada</span>
+                                                     
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </a>
+                                  }
+
+                                 </div>
+                             
+                             
+
+                             @*<ul class="features_list_detailed">
+                                @foreach (var cu in ViewBag.cartillasabiertas)
+                                {
+                                    <li>
+                                        <a href="@Url.Action("Index", "Cartilla", new { id = cu.id })" class="external">
+                                            <div class="button-cartilla">
+                                                <div class="feat_small_icon">
+                                                    <img src="~/images/campannas/iconos/@(cu.id).png" alt="" title="" />
+                                                </div>
+                                                <div class="feat_small_details">
+                                                    <h4>@(cu.nombre)</h4>
+                                                </div>
+                                                <div style="clear:both;margin-top:50px;">
+                                                    <p>@(cu.descripcion)</p>
+                                                    <p>juega hasta: <span style="font-weight:bold;">ddd</span></p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>*@
+                         </div>
+                     </div>
+                 </div>
+             </div>
+    
+             @*espacio publicitario*@
+             <div class="row">
+                 <div class="col-md-11 col-sm-12 m-auto">
+                     <div class="card text-center shadow-none">
+                         <div class="card-header text-center">
+                             <p class="text-center m-auto h4"> cooperativa xd</p>
+                         </div>
+                         <div class="card-body text-center">
+                             <h5 class="card-title">Special title treatment</h5>
+
+                             @*Producto que quieran ofrecer **@
+                             <div class="row row-cols-1 row-cols-md-4 ">
+                                 <div class="col m-auto">
+                                     <div class="card h-100 shadow-lg p-3 mb-5 bg-body rounded">
+                                         <img src="~/images/campannas/claro.jpg" class="card-img-top m-auto" alt="...">
+                                         <div class="card-body">
+                                             <h5 class="card-title">Card title</h5>
+                                             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div class="col m-auto">
+                                     <div class="card h-100 shadow-lg p-3 mb-5 bg-body rounded">
+                                         <img src="~/images/campannas/claro.jpg" class="card-img-top m-auto" alt="...">
+                                         <div class="card-body">
+                                             <h5 class="card-title">Card title</h5>
+                                             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                         </div>
+                                     </div>
+                                 </div>
+
+
+                             </div>  
+
+                             @*<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>*@
+                             <a href="#" class="link">Go somewhere</a>
+                         </div>
+                         
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+
+@section js{
+    <script>
+        var url = window.location.protocol + '//' + window.location.host;
+        function redirect() {
+            location.href = url + "/Inicio/Index";
+        }
+    </script>   
+ }
+
+           
+
+ }
+

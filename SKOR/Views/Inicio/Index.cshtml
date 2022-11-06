@@ -42,7 +42,7 @@
         }
         else
         {
-            <p>Un juego de pronóstico GRATUITO y ENTRETENIDO que te hará vivir intensamente la emoción de cada partido del Mundial de Fútbol 2018 y otros torneos importantes.</p>
+            <p>Un juego de PRONÒSTICO y ENTRETENIDO que te hará vivir intensamente la emoción de cada partido del Mundial de Fútbol 2022 y otros torneos importantes.</p>
         }
 
 
@@ -51,12 +51,17 @@
                 <a href="#" class="external">
                     <div id="divContador">
                         <p>El mundial de fútbol empezará en</p>
-                        <span class="h2 p-2 mb-3" id="countdown"></span>
+                        <span class="h4 p-2 mb-3 font-weight-bold" id="cuenta1"></span>
+                        <div id="cuenta"></div>
                         <p class="mt-2" style="font-size:18px;">PRONOSTICA YA!!!</p>
                     </div>
                 </a>
             </div>
         </div>
+
+       
+
+
 
         @* 'panel para mostrar lista de juegos' *@
         <div class="row">
@@ -129,14 +134,14 @@
                                                 <div class="col-6  d-grid gap-2">
                                                     @if (juego.ESTADO.JuegoEstado == "PRIVADO")
                                                     {
-                                                        <button type="button" onclick="juego_private(@juego.IdJuego)"  class=" btn btn-danger" >
+                                                        <button type="button" onclick="juego_private(@juego.IdJuego)" class=" btn btn-danger">
                                                             Jugar
                                                         </button>
                                                     }
                                                     else
                                                     {
-                                                        @*<a href='@Url.Action("Ejemplo","Inicio")' class="btn btn-danger ">Jugar</a>*@
-                                                        <button type="button" class="btn btn-danger" onclick="juego_public(@juego.IdJuego)" >
+                                                        @*<a href='@Url.Action("Carti","Juego")' class="btn btn-danger ">Jugar2</a>*@
+                                                        <button type="button" class="btn btn-danger" onclick="juego_public(@juego.IdJuego)">
                                                             Jugar
                                                         </button>
                                                     }
@@ -172,7 +177,7 @@
                 }
 
             }
-           
+
         </div>
 
         @*@if (ViewBag.cartillasAbiertas.Count > 0)
@@ -273,7 +278,7 @@
                     <div col-md-8 col-sm-12>
                         <div class="form-groud ">
                             <div class="alert alert-success text-center text-muted shadow-lg p-3 mb-5 bg-body rounded" role="alert">
-                                <h2> Elige el metodo de pago</h2>
+                                <h2> Elige el método de pago </h2>
                             </div>
                             <div class="col text-center">
                                 <div id="pp-button"></div>
@@ -292,9 +297,10 @@
 
     </div>
 
-
-
-
+    @section css{
+        <link href="~/Content/css/estilos.css" rel="stylesheet" />
+           
+    }
 
 
     @section js{
@@ -302,6 +308,7 @@
         <script src="~/Scripts/skor/Inicio/Index.cshtml.js?ver=1.0.0"></script>
         <script src="~/Content/js/gInicio.js"></script>
         <script src="https://pay.payphonetodoesposible.com/api/button/js?appId=ee6c47pA1UiGpWVKnsy3w"></script>
+        <script src="~/Content/js/simplyCountdown.min.js"></script>
         <script>
             window.onload = function () {
                 payphone.Button({

@@ -2,28 +2,37 @@
 var url = window.location.protocol + '//' + window.location.host;
 $(document).ready(function () {
     
-    var countDDate = new Date(),
-    endday = new Date(), days = 17;
-    countDDate.setDate(countDDate.getDate() - (countDDate.getDay() + 2) % 7);
-    endday.setDate(countDDate.getDate() + days);
-    endday.getTime();
-    countDiv = document.getElementById('countdown');
-
-
-    var x = setInterval(function () {
-        var now = new Date().getTime();
-        var daterest = endday - now;
-        var days = Math.floor(daterest / (1000 * 60 * 60 * 24)),
-            hours = Math.floor((daterest % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-            minutes = Math.floor((daterest % (1000 * 60 * 60)) / (1000 * 60)),
-            seconds = Math.floor((daterest % (1000 * 60)) / 1000);
-        if (days == 0) {
+    simplyCountdown('#cuenta', {
+        year: 2022, // required
+        month: 11, // required
+        day: 20, // required
+        hours: 0, // Default is 0 [0-23] integer
+        minutes: 0, // Default is 0 [0-59] integer
+        seconds: 0, // Default is 0 [0-59] integer
+        words: { //words displayed into the countdown
+            days: 'Día',
+            hours: 'Hora',
+            minutes: 'Minuto',
+            seconds: 'Segundo',
+            pluralLetter: 's'
+        },
+        plural: true, //use plurals
+        inline: false, //set to true to get an inline basic countdown like : 24 days, 4 hours, 2 minutes, 5 seconds
+        inlineClass: 'simply-countdown-inline', //inline css span class in case of inline = true
+        // in case of inline set to false
+        enableUtc: true, //Use UTC as default
+        onEnd: function () {
+            document.getElementById('portada').classList.add('oculta');
             $('.class_').remove();
-        } else {
-            countDiv.innerHTML = days + " diás " + hours + ":" + minutes + ":" + seconds + " ";
-        }
-        
-    }, 1000);
+            return;
+        }, //Callback on countdown end, put your own function here
+        refresh: 1000, // default refresh every 1s
+        sectionClass: 'simply-section', //section css class
+        amountClass: 'simply-amount', // amount css class
+        wordClass: 'simply-word', // word css class
+        zeroPad: false,
+        countUp: false
+    });
 
 });
 
@@ -58,8 +67,12 @@ function validate_juego(id,Pop) {
                 console.log(id);
                 if (data.meta.resultado == 'SI') {//el juego ya esta pagado
                     //redireccionar
-                    console.log(url);
-                    location.href = url+"/Index/Cartilla/85";
+                    var idjuego = id;
+                    console.log(url + "/Juego/Carti/");
+                    alert(url + "/Juego/Carti" )
+                    location.href = url + "/Juego/Carti";
+
+                   
                 } else if (data.meta.resultado == 'NO') {
                     myApp.popup(`${Pop}`);
                 }
