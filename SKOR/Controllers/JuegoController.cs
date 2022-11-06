@@ -14,6 +14,29 @@ namespace Skor.Controllers
 			return View();
 		}
 
+		public ActionResult MisCatillas() {
+			var form = Request.Form;
+			int IDPERSONA = 0;
+			int IDJUEGO = 0;
+			var USUARIO = vUsuarios.web.TraeUsuarioRegistrado();
+			if (form.Get("idjuego")==null || USUARIO == null )
+			{
+				return RedirectToAction("Index", "Inicio");
+			}
+			if ( string.IsNullOrEmpty(form.Get("idjuego")) || string.IsNullOrEmpty( Convert.ToString( USUARIO.idPersona) ))
+			{
+				return RedirectToAction("Index", "Inicio");
+			}
+
+			IDPERSONA = Convert.ToInt32( USUARIO.idPersona);
+			IDJUEGO = int.Parse(form.Get("idjuego"));
+
+			var CARTILLAS = new Models.JUEGOS.Metodos.mCartilla().CartillaLista_xIdPersona_xIdJuego(idPersona: IDPERSONA, idJuego: IDJUEGO);
+			ViewBag.CARTILLAS = CARTILLAS;
+
+			return View();
+		}
+
 		//public ActionResult CartillasDelJuego 
 		#region Juegos_Pagados
 		[HttpPost]
@@ -176,7 +199,6 @@ namespace Skor.Controllers
 			return Json(data: new { data = data, code = code, meta = meta }  /*new JsonRequestBehavior( )*/  );
 			//return Json(data: new { data = 2 , code = code , meta = new { idregistro = idregistro, resultado = resultado, resultado_detalle = resultado_detalle } }  , new JsonRequestBehavior( )  );
 		}
-
 
 		#endregion
 
