@@ -97,7 +97,7 @@ namespace Skor.Controllers
 				var USUARIO = vUsuarios.web.TraeUsuarioRegistrado();
 				if (USUARIO == null || form.Get("idjuego") == null || form.Get("valor") == null)
 				{
-
+					code = 204;
 				}
 				else
 				{

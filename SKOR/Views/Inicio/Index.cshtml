@@ -42,7 +42,7 @@
         }
         else
         {
-            <p>Un juego de pronóstico GRATUITO y ENTRETENIDO que te hará vivir intensamente la emoción de cada partido del Mundial de Fútbol 2018 y otros torneos importantes.</p>
+            <p>Un juego de PRONÒSTICO y ENTRETENIDO que te hará vivir intensamente la emoción de cada partido del Mundial de Fútbol 2022 y otros torneos importantes.</p>
         }
 
 
@@ -51,7 +51,8 @@
                 <a href="#" class="external">
                     <div id="divContador">
                         <p>El mundial de fútbol empezará en</p>
-                        <span class="h2 p-2 mb-3" id="countdown"></span>
+                        <span class="h4 p-2 mb-3 font-weight-bold" id="cuenta"></span>
+
                         <p class="mt-2" style="font-size:18px;">PRONOSTICA YA!!!</p>
                     </div>
                 </a>
@@ -129,14 +130,14 @@
                                                 <div class="col-6  d-grid gap-2">
                                                     @if (juego.ESTADO.JuegoEstado == "PRIVADO")
                                                     {
-                                                        <button type="button" onclick="juego_private(@juego.IdJuego)"  class=" btn btn-danger" >
+                                                        <button type="button" onclick="juego_private(@juego.IdJuego)" class=" btn btn-danger">
                                                             Jugar
                                                         </button>
                                                     }
                                                     else
                                                     {
                                                         @*<a href='@Url.Action("Ejemplo","Inicio")' class="btn btn-danger ">Jugar</a>*@
-                                                        <button type="button" class="btn btn-danger" onclick="juego_public(@juego.IdJuego)" >
+                                                        <button type="button" class="btn btn-danger" onclick="juego_public(@juego.IdJuego)">
                                                             Jugar
                                                         </button>
                                                     }
@@ -172,63 +173,63 @@
                 }
 
             }
-           
+
         </div>
 
         @*@if (ViewBag.cartillasAbiertas.Count > 0)
-        {
-            <h5 class="titulo">Cartillas abiertas - Participa: </h5>
-            <ul class="features_list_detailed">
-                @foreach (var cu in ViewBag.cartillasAbiertas)
-                {
-                    <li>
-                        <a href="@Url.Action("Index", "Cartilla", new { id = cu.id })" class="external">
-                            <div class="button-cartilla">
-                                <div class="feat_small_icon">
-                                    <img src="~/images/campannas/iconos/@(cu.id).png" alt="" title="" />
+            {
+                <h5 class="titulo">Cartillas abiertas - Participa: </h5>
+                <ul class="features_list_detailed">
+                    @foreach (var cu in ViewBag.cartillasAbiertas)
+                    {
+                        <li>
+                            <a href="@Url.Action("Index", "Cartilla", new { id = cu.id })" class="external">
+                                <div class="button-cartilla">
+                                    <div class="feat_small_icon">
+                                        <img src="~/images/campannas/iconos/@(cu.id).png" alt="" title="" />
+                                    </div>
+                                    <div class="feat_small_details">
+                                        <h4>@(cu.nombre)</h4>
+                                    </div>
+                                    <div style="clear:both;margin-top:50px;">
+                                        <p>@(cu.descripcion)</p>
+                                        <p>Juega hasta: <span style="font-weight:bold;">@(cu.fechaCierre.ToString("dd-MMM"))</span></p>
+                                    </div>
                                 </div>
-                                <div class="feat_small_details">
-                                    <h4>@(cu.nombre)</h4>
-                                </div>
-                                <div style="clear:both;margin-top:50px;">
-                                    <p>@(cu.descripcion)</p>
-                                    <p>Juega hasta: <span style="font-weight:bold;">@(cu.fechaCierre.ToString("dd-MMM"))</span></p>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                }
-            </ul>
-        }*@
+                            </a>
+                        </li>
+                    }
+                </ul>
+            }*@
 
         @*@if (ViewBag.cartillasCerradas.Count > 0)
-        {
-            <h5 class="titulo">Cartillas cerradas - Mira los resultados:</h5>
-            <ul class="features_list_detailed">
-                @foreach (var cu in ViewBag.cartillasCerradas)
-                {
-                    <li>
-                        <a href="@Url.Action("Index", "Cartilla", new { id = cu.id })" class="external">
-                            <div class="button-cartilla_no">
-                                <div class="feat_small_icon">
-                                    <img src="~/images/campannas/iconos/@(cu.id).png" alt="" title="" />
-                                </div>
-                                <div class="feat_small_details">
-                                    <h4>@(cu.nombre)</h4>
-                                </div>
+            {
+                <h5 class="titulo">Cartillas cerradas - Mira los resultados:</h5>
+                <ul class="features_list_detailed">
+                    @foreach (var cu in ViewBag.cartillasCerradas)
+                    {
+                        <li>
+                            <a href="@Url.Action("Index", "Cartilla", new { id = cu.id })" class="external">
+                                <div class="button-cartilla_no">
+                                    <div class="feat_small_icon">
+                                        <img src="~/images/campannas/iconos/@(cu.id).png" alt="" title="" />
+                                    </div>
+                                    <div class="feat_small_details">
+                                        <h4>@(cu.nombre)</h4>
+                                    </div>
 
-                            </div>
-                        </a>
-                    </li>
-                }
-            </ul>
+                                </div>
+                            </a>
+                        </li>
+                    }
+                </ul>
 
-            <p class="centrado">
-                <span class="button-wrap">
-                    <a href="@Url.Action("Terminadas", "Cartilla")" class="button button-pill external">Revisa juegos pasados</a>
-                </span>
-            </p>
-        }*@
+                <p class="centrado">
+                    <span class="button-wrap">
+                        <a href="@Url.Action("Terminadas", "Cartilla")" class="button button-pill external">Revisa juegos pasados</a>
+                    </span>
+                </p>
+            }*@
 
         <br /><br />
         <h5 class="titulo">Ranking ¡Qué Golazo!</h5>
@@ -273,7 +274,7 @@
                     <div col-md-8 col-sm-12>
                         <div class="form-groud ">
                             <div class="alert alert-success text-center text-muted shadow-lg p-3 mb-5 bg-body rounded" role="alert">
-                                <h2> Elige el metodo de pago</h2>
+                                <h2> Elige el método de pago </h2>
                             </div>
                             <div class="col text-center">
                                 <div id="pp-button"></div>
@@ -281,8 +282,8 @@
                         </div>
                     </div>
                     @*<div class="d-grid gap-2 col-6 mx-auto mt-4 ">
-                        <button type="button" class="btn btn-secondary btn-lg close-popup">Enviar código</button>
-                    </div>*@
+                            <button type="button" class="btn btn-secondary btn-lg close-popup">Enviar código</button>
+                        </div>*@
                 </div>
             </div>
         </div>
@@ -295,13 +296,12 @@
 
 
 
-
-
     @section js{
         <script src="~/Scripts/jquery.countdown.min.js"></script>
         <script src="~/Scripts/skor/Inicio/Index.cshtml.js?ver=1.0.0"></script>
         <script src="~/Content/js/gInicio.js"></script>
         <script src="https://pay.payphonetodoesposible.com/api/button/js?appId=ee6c47pA1UiGpWVKnsy3w"></script>
+        <script src="~/Content/js/simplyCountdown.min.js"></script>
         <script>
             window.onload = function () {
                 payphone.Button({
