@@ -73,6 +73,7 @@ function validate_juego(id,Pop) {
                     //location.href = url + "/Juego/MisCartillas";
                    
                     location.href = url + `/Juego/MisCartillas/?idjuego=${id}`;
+                    //location.href = url + `/MiCartilla/index/?id=${id}`;
                     //$.redirect('/Juego/MisCartillas',  { idjuego: id, });
                
                 } else if (data.meta.resultado == 'NO') {
