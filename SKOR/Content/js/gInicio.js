@@ -67,11 +67,7 @@ function validate_juego(id,Pop) {
                 console.log(id);
                 if (data.meta.resultado == 'SI') {//el juego ya esta pagado
                     //redireccionar
-                    var idjuego = id;
-                    
-                    //location.href = url + "/Juego/MisCatillas";
-                    Response.Redirect("/Juego/MisCatillas", false);
-                   
+                    location.href = url + `/Juego/MisCartillas/?idjuego=${id}`;
                 } else if (data.meta.resultado == 'NO') {
                     myApp.popup(`${Pop}`);
                 }

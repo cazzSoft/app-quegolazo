@@ -721,7 +721,7 @@
     <Content Include="Views\Bando\MisBandos.cshtml" />
     <Content Include="Views\Bando\Ver.cshtml" />
     <Content Include="Views\Inicio\Ejemplo.cshtml" />
-    <Content Include="Views\Juego\MisCatillas.cshtml" />
+    <Content Include="Views\Juego\MisCartillas.cshtml" />
     <Content Include="Views\Juego\Carti.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
