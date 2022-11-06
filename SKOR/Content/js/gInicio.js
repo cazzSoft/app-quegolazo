@@ -68,11 +68,13 @@ function validate_juego(id,Pop) {
                 if (data.meta.resultado == 'SI') {//el juego ya esta pagado
                     //redireccionar
                     var idjuego = id;
-                    console.log(url + "/Juego/Carti/");
-                    alert(url + "/Juego/Carti" )
-                    location.href = url + "/Juego/Carti";
-
+                    console.log(url + "/Juego/MisCartillas/");
+                    //alert(url + "/Juego/MisCartillas" )
+                    //location.href = url + "/Juego/MisCartillas";
                    
+                    location.href = url + `/Juego/MisCartillas/?idjuego=${id}`;
+                    //$.redirect('/Juego/MisCartillas',  { idjuego: id, });
+               
                 } else if (data.meta.resultado == 'NO') {
                     myApp.popup(`${Pop}`);
                 }

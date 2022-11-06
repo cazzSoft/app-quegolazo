@@ -40,24 +40,24 @@ namespace Skor.Controllers
 		{
 			return View();
 		}
-
-		public ActionResult MisCatillas() {
-			var form = Request.Form;
+		
+		public ActionResult MisCartillas(int idjuego=0) {
+			//var form = Request.Form;
 			int IDPERSONA = 0;
 			int IDJUEGO = 0;
-			var id = form.Get("idjuego");
+
 			var USUARIO = vUsuarios.web.TraeUsuarioRegistrado();
-			if (form.Get("idjuego")==null || USUARIO == null )
+			if (USUARIO == null || idjuego == 0)
 			{
 				return RedirectToAction("Index", "Inicio");
 			}
-			if ( string.IsNullOrEmpty(form.Get("idjuego")) || string.IsNullOrEmpty( Convert.ToString( USUARIO.idPersona) ))
+			if (string.IsNullOrEmpty(Convert.ToString(USUARIO.idPersona)))
 			{
 				return RedirectToAction("Index", "Inicio");
 			}
 
-			IDPERSONA = Convert.ToInt32( USUARIO.idPersona);
-			IDJUEGO = int.Parse(form.Get("idjuego"));
+			IDPERSONA = Convert.ToInt32(USUARIO.idPersona);
+			IDJUEGO = idjuego;
 
 			var CARTILLAS = new Models.JUEGOS.Metodos.mCartilla().CartillaLista_xIdPersona_xIdJuego(idPersona: IDPERSONA, idJuego: IDJUEGO);
 			ViewBag.CARTILLAS = CARTILLAS;
