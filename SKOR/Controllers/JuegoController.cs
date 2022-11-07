@@ -234,5 +234,78 @@ namespace Skor.Controllers
 
 		#endregion
 
+		[HttpPost]
+		public JsonResult Juegos_ValidarJuegoCodigo()
+		{ //nombre de la ruta
+
+			var meta = new Models.JUEGOS.Clases.cResultado()
+			{
+				idregistro = 0,
+				resultado = "NO",
+				resultado_detalle = "Error",
+			};
+			int code = 500;
+			var data = new object();
+
+			var form = Request.Form;
+			int IDPERSONA = 0;
+			int IDJUEGO = 0;
+			int IDUSUARIO = 0;
+			string CODIGO = "";
+			var item = new Models.JUEGOS.Clases.cJuego();
+			try
+			{
+				var USUARIO = vUsuarios.web.TraeUsuarioRegistrado();
+				if (USUARIO == null || form.Get("idjuego") == null || form.Get("codigo") == null)
+				{
+					code = 204;
+					data = item;
+				}
+				else if ( string.IsNullOrEmpty(form.Get("idjuego"))  )
+				{
+					code = 204;
+					data = item;
+				}
+				else
+				{
+
+					IDPERSONA = Convert.ToInt32(USUARIO.idPersona); //int.Parse( form.Get("idpersona").ToString() );
+					IDJUEGO = int.Parse(form.Get("idjuego").ToString());
+					IDUSUARIO = Convert.ToInt32(USUARIO.id); //int.Parse( form.Get("idusuario").ToString() );
+					CODIGO =  form.Get("codigo").ToString() ; //VALOR PAGADO
+					var juego = new Models.JUEGOS.Metodos.mJuego().JuegoLista_xId(idJuego: IDJUEGO);
+					if (juego.Codigo == CODIGO)
+					{
+						meta = new Models.JUEGOS.Clases.cResultado() {
+							idregistro = juego.IdJuego,
+							resultado = "SI",
+							resultado_detalle = "Código valido."
+						};
+					}
+					else {
+						meta = new Models.JUEGOS.Clases.cResultado()
+						{
+							idregistro = 0,
+							resultado = "NO",
+							resultado_detalle = "Código invalido."
+						};
+					}
+					//new Models.JUEGOS.Metodos.mJuegoPagos().JuegoPagoValidarPago(idPersona: IDPERSONA, idJuego: IDJUEGO);
+					data = item;
+					code = 200;
+				}
+
+
+			}
+			catch (Exception ex)
+			{
+				meta.resultado_detalle = ex.Message;
+			}
+
+			return Json(data: new { data = data, code = code, meta = meta }  /*new JsonRequestBehavior( )*/  );
+			//return Json(data: new { data = 2 , code = code , meta = new { idregistro = idregistro, resultado = resultado, resultado_detalle = resultado_detalle } }  , new JsonRequestBehavior( )  );
+		}
+
+
 	}
 }
