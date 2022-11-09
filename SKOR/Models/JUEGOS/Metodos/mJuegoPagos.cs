@@ -289,6 +289,7 @@ namespace Skor.Models.JUEGOS.Metodos
 					cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@IdJuego", _item.idJuego));
 					cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@Valor", _item.Valor));
 					cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@IdU", _item.idU));
+					cmd.Parameters.Add(new System.Data.SqlClient.SqlParameter("@IdTransacion", _item.idTransacion));
 
 					System.Data.DataTable dt = new System.Data.DataTable();
 					System.Data.SqlClient.SqlDataAdapter da = new System.Data.SqlClient.SqlDataAdapter(cmd);

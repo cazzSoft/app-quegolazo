@@ -11,7 +11,7 @@ namespace Skor.Controllers
 	{
 		public ActionResult Carti()
 		{
-			List<Cartillas> cartillas, cartillasCerradas, cartillasAbiertas;
+			List<Cartillas> cartillas, cartillasAbiertas;
 			try
 			{
 				
@@ -46,6 +46,7 @@ namespace Skor.Controllers
 				int IDJUEGO = 0;
 
 				var USUARIO = vUsuarios.web.TraeUsuarioRegistrado();
+
 				if (USUARIO == null || idjuego == 0)
 				{
 					return RedirectToAction("Index", "Inicio");
@@ -57,7 +58,7 @@ namespace Skor.Controllers
 
 				IDPERSONA = Convert.ToInt32(USUARIO.idPersona);
 				IDJUEGO = idjuego;
-
+				//IDPERSONA = USUARIO.idPersona;
 				var CARTILLAS = new Models.JUEGOS.Metodos.mCartilla().CartillaLista_xIdPersona_xIdJuego(idPersona: IDPERSONA, idJuego: IDJUEGO);
 				ViewBag.CARTILLAS = CARTILLAS;
 			}
@@ -87,15 +88,18 @@ namespace Skor.Controllers
 			var form = Request.Form;
 			int IDPERSONA = 0;
 			int IDJUEGO = 0;
+			int IdTransacion = 0;
 			int IDUSUARIO = 0;
-			decimal VALOR = 0;
+			decimal VALOR = 4;
 			var item = new Models.JUEGOS.Clases.cJuegoPagos();
 			try
 			{
 				var USUARIO = vUsuarios.web.TraeUsuarioRegistrado();
-				if (USUARIO == null || form.Get("idjuego") == null || form.Get("valor") == null)
+				var idj=form.Get("idjuego");
+				var idt = form.Get("clientTransactionId");
+				if (USUARIO == null || form.Get("idjuego") == null || form.Get("clientTransactionId") == null)
 				{
-
+					code = 204;
 				}
 				else
 				{
@@ -103,7 +107,9 @@ namespace Skor.Controllers
 					IDPERSONA = Convert.ToInt32(USUARIO.idPersona); //int.Parse( form.Get("idpersona").ToString() );
 					IDJUEGO = int.Parse(form.Get("idjuego").ToString());
 					IDUSUARIO = Convert.ToInt32(USUARIO.id); //int.Parse( form.Get("idusuario").ToString() );
-					VALOR = decimal.Parse(form.Get("valor").ToString()); //VALOR PAGADO
+					IdTransacion = int.Parse(form.Get("clientTransactionId").ToString()); //VALOR PAGADO
+					
+
 
 					item = new Models.JUEGOS.Clases.cJuegoPagos()
 					{
@@ -111,7 +117,10 @@ namespace Skor.Controllers
 						idJuego = IDJUEGO,
 						idUsuario = IDUSUARIO,
 						Valor = VALOR,
+						idTransacion = IdTransacion,
+						idU= IDUSUARIO
 					};
+
 					meta = new Models.JUEGOS.Metodos.mJuegoPagos().JuegoPagoIngreso(_item: item);
 					data = item;
 					code = 200;

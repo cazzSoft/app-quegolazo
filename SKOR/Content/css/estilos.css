@@ -28,16 +28,21 @@
 	font-weight: 300;
 	font-size: 1vw;
 }
+#divContador p {
+	font-size: 1.4vw;
+}
 @media (min-width:100px) and (max-width: 767.98px) {
 	.simply-word {
 		font-weight: 300;
 		font-size: 95%;
 	}
+
+	#divContador p {
+		font-size: 16px;
+	}
 }
 
-#divContador p {
-	font-size: 1.4vw;
-}
+
 
 
 

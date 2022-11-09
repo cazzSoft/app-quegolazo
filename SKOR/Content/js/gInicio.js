@@ -36,6 +36,8 @@ $(document).ready(function () {
 
 });
 
+
+
 //funcion para kuegos publicos
 function juego_public(id) {
     validate_juego(id, '.popup-page');
@@ -43,7 +45,6 @@ function juego_public(id) {
 
 //funcion para juegos privado
 function juego_private(id) {
-    //validate_code(idj, codigo)
     validate_juego(id, '.popup-code');
 }
 
@@ -64,12 +65,19 @@ function validate_juego(id,Pop) {
         success: function (data) {
 
             if (data.code == 200) {
-                console.log(id);
+               
                 if (data.meta.resultado == 'SI') {//el juego ya esta pagado
                     //redireccionar
                     location.href = url + `/Juego/MisCartillas/?idjuego=${id}`;
+                    //location.href = url + `/Juego/Carti`;
                 } else if (data.meta.resultado == 'NO') {
+                    boton_pagos(id);
                     myApp.popup(`${Pop}`);
+                    clientTransactionId_ = id;
+                    if (Pop == '.popup-code') {
+                        //seteamos valores del juego 
+                        $('#id_juego').val(id);
+                    }
                 }
             }
         },
@@ -81,20 +89,112 @@ function validate_juego(id,Pop) {
 }
 
 
-//validar codigo de juegos privados 
-function validate_code(idj,codigo) {
+//metodo de pago
+function boton_pagos(idj) {
+    var clientTransactionId_ = idj+11;
+    $('#pp-button').html(" ");
+    payphone.Button({
+
+        //token obtenido desde la consola de developer
+        token: "dNIXKR-p2CSC-LduEtb-apgojyYEnpwsABABlJqaD1UxVfrW7Te3VZcTwBuSCcWSfnj7Dpu2pccUEg1Q1r-OAWvp4rDjtdSKxhtWGYA-FbK98FVNCprXiyYUBGqDAosQ7PCOhwvVvEmXmDchNT9bVgDtzQ1hdZqZ0vUmqhrf3SwcnAHrEuX40OQavpgREOjAqNQA_3VDVF-tC2JMDbfRC7CdKs_ZcVbkUnH35f6wSSlkIG_hICpANDTFWFjtrt-GCXX98Q6mctqmmft9NsWgGA4_nejjeFXnaBlhjGbW9B71yF2S6b5uKdtleT3OzqXwzBDkDAmUR1fiQs7a0_0boHmHj2Y",
+
+        //PARÁMETROS DE CONFIGURACIÓN
+        btnHorizontal: false,
+        btnCard: true,
+        context: "",
+
+        createOrder: function (actions) {
+
+            //Se ingresan los datos de la transaccion ej. monto, impuestos, etc
+            return actions.prepare({
+
+                amount: 400,
+                amountWithoutTax: 400,
+                currency: "USD",
+                clientTransactionId: clientTransactionId_// @vUsuarios.web.TraeUsuarioRegistrado().idPersona
+            });
+
+        },
+        onComplete: function (model, actions) {
+
+            //Se confirma el pago realizado
+            actions.confirm({
+                id: model.id,
+                clientTxId: model.clientTxId
+            }).then(function (value) {
+
+                //EN ESTA SECCIÓN SE RECIBE LA RESPUESTA Y SE MUESTRA AL USUARIO
+
+                if (value.transactionStatus == "Approved") {
+                    alert("Pago " + value.transactionId + " recibido, estado " + value.transactionStatus);
+                    comfirmar_pago(value.transactionId, clientTransactionId_-11);
+                }
+            }).catch(function (err) {
+                console.log(err);
+            });
+
+        }
+    }).render("#pp-button");
+}
+
+
+//confirm pago
+function comfirmar_pago(transactionId,idj) {
+    var FrmData = {
+        idjuego: idj,
+        clientTransactionId: transactionId,
+    };
+
     $.ajax({
-        url: "/cita/pacienteUpdate",
-        /*method: "POST",*/
+        url: "/Juego/JuegosPagos_Ingreso",
+        method: "POST",
+        async: false,
         data: FrmData,
         dataType: "json",
         success: function (data) {
 
-            if (data.length != 0) {
-                if (data) {//el juego ya esta pagado
-                    return 'true';
-                } else {
-                    return 'false';
+            if (data.code == 200) {
+
+                if (data.meta.resultado == 'SI') {//ingresado
+                    //redireccionar
+                    location.href = url + `/Juego/MisCartillas/?idjuego=${idj}`;
+                } else if (data.meta.resultado == 'NO') {
+                    alert('Intente nuevamente. Algo salio mal..');
+                }
+            }
+        },
+
+        error: function (data) {
+            console.log(data);
+        },
+    });
+}
+//validar codigo de juegos privados 
+function validate_code() {
+    var FrmData = {
+        idjuego: $('#id_juego').val(),
+        codigo: $('#code_juego').val(),
+    };
+
+    $.ajax({
+        url: "/Juego/Juegos_ValidarJuegoCodigo",
+        method: "POST",
+        async: false,
+        data: FrmData,
+        dataType: "json",
+        success: function (data) {
+
+            if (data.code == 200) {
+               
+                if (data.meta.resultado == 'SI') {//el codigo si coinside con el juego
+                    //redireccionar
+                    //location.href = url + `/Juego/MisCartillas/?idjuego=${id}`;
+                    myApp.popup(`.popup-page`);
+                    $('.info').addClass('d-none');
+                    clientTransactionId_ = $('#id_juego').val();
+                } else if (data.meta.resultado == 'NO') {
+                    $('.info').html('Código invalido');
+                    $('.info').removeClass('d-none');
                 }
             }
         },

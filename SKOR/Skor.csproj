@@ -16,7 +16,7 @@
     <AssemblyName>Skor</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44399</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -155,6 +155,38 @@
     <Content Include="Content\js\gInicio.js" />
     <Content Include="Content\js\simplyCountdown.min.js" />
     <Content Include="Content\my-app.css" />
+    <Content Include="images\banderas\alemania.png" />
+    <Content Include="images\banderas\arabiasaudita.png" />
+    <Content Include="images\banderas\argentina.png" />
+    <Content Include="images\banderas\australia.png" />
+    <Content Include="images\banderas\belgica.png" />
+    <Content Include="images\banderas\brasil.png" />
+    <Content Include="images\banderas\colombia.png" />
+    <Content Include="images\banderas\coreadelsur.png" />
+    <Content Include="images\banderas\costarica.png" />
+    <Content Include="images\banderas\croacia.png" />
+    <Content Include="images\banderas\dinamarca.png" />
+    <Content Include="images\banderas\egipto.png" />
+    <Content Include="images\banderas\españa.png" />
+    <Content Include="images\banderas\francia.png" />
+    <Content Include="images\banderas\inglaterra.png" />
+    <Content Include="images\banderas\iran.png" />
+    <Content Include="images\banderas\islandia.png" />
+    <Content Include="images\banderas\japon.png" />
+    <Content Include="images\banderas\marruecos.png" />
+    <Content Include="images\banderas\mexico.png" />
+    <Content Include="images\banderas\nigeria.png" />
+    <Content Include="images\banderas\panama.png" />
+    <Content Include="images\banderas\peru.png" />
+    <Content Include="images\banderas\polonia.png" />
+    <Content Include="images\banderas\portugal.png" />
+    <Content Include="images\banderas\rusia.png" />
+    <Content Include="images\banderas\senegal.png" />
+    <Content Include="images\banderas\serbia.png" />
+    <Content Include="images\banderas\suecia.png" />
+    <Content Include="images\banderas\suiza.png" />
+    <Content Include="images\banderas\tunez.png" />
+    <Content Include="images\banderas\uruguay.png" />
     <Content Include="images\bannersHome\index.html" />
     <Content Include="images\campannas\claro.jpg" />
     <Content Include="images\campannas\logo_claro.png" />

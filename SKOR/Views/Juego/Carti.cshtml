@@ -22,6 +22,48 @@
                  <div class="col-md-11 col-sm-12 m-auto">
                      <div class="card">
                          <div class="card-body">
+                             @*espacio publicitario*@
+                             <div class="row">
+                                 <div class="col-md-11 col-sm-12 m-auto">
+                                     <div class="card text-center shadow-none">
+                                         <div class="card-header text-center">
+                                             <p class="text-center m-auto h4"> JUEGO DE QUE GOLAZO</p>
+                                         </div>
+                                         <div class="card-body text-center">
+                                             <h5 class="card-title">Special title treatment</h5>
+
+                                             @*Producto que quieran ofrecer **@
+                                             @*<div class="row row-cols-1 row-cols-md-4 ">
+                                                <div class="col m-auto">
+                                                    <div class="card h-100 shadow-lg p-3 mb-5 bg-body rounded">
+                                                        <img src="~/images/campannas/claro.jpg" class="card-img-top m-auto" alt="...">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Card title</h5>
+                                                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col m-auto">
+                                                    <div class="card h-100 shadow-lg p-3 mb-5 bg-body rounded">
+                                                        <img src="~/images/campannas/claro.jpg" class="card-img-top m-auto" alt="...">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Card title</h5>
+                                                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>*@
+
+                                             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                             <a href="#" class="link">Go somewhere1</a>
+                                         </div>
+
+                                     </div>
+                                 </div>
+                             </div>
+
                              <div class="d-flex flex-row bd-highlight mb-3">
                                  @foreach (var cu in ViewBag.cartillasabiertas)
                                  {
@@ -32,86 +74,22 @@
                                                      <h5 class="card-title p-0"> <h4>@(cu.nombre)</h4></h5>
                                                      @*<h6 class="card-subtitle mb-2 text-muted">Juega has 22-22-22</h6>*@
                                                      <p class="card-text">@(cu.descripcion)</p>
-                                                     <a href="#" class="card-link">Card link</a>
-                                                     <span class="card-link badge rounded-pill bg-danger"> Cartilla cerrada</span>
-                                                     
+                                                     @*<a href="#" class="card-link">@cu</a>*@
+                                                 <span class="card-link badge rounded-pill bg-danger">Juega hasta: @(cu.fechaCierre.ToString("dd-MMM"))</span>
+
                                                  </div>
                                              </div>
                                          </div>
                                      </a>
-                                  }
+                                 }
 
-                                 </div>
-                             
-                             
-
-                             @*<ul class="features_list_detailed">
-                                @foreach (var cu in ViewBag.cartillasabiertas)
-                                {
-                                    <li>
-                                        <a href="@Url.Action("Index", "Cartilla", new { id = cu.id })" class="external">
-                                            <div class="button-cartilla">
-                                                <div class="feat_small_icon">
-                                                    <img src="~/images/campannas/iconos/@(cu.id).png" alt="" title="" />
-                                                </div>
-                                                <div class="feat_small_details">
-                                                    <h4>@(cu.nombre)</h4>
-                                                </div>
-                                                <div style="clear:both;margin-top:50px;">
-                                                    <p>@(cu.descripcion)</p>
-                                                    <p>juega hasta: <span style="font-weight:bold;">ddd</span></p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                }
-                            </ul>*@
+                             </div>
                          </div>
                      </div>
                  </div>
              </div>
     
-             @*espacio publicitario*@
-             <div class="row">
-                 <div class="col-md-11 col-sm-12 m-auto">
-                     <div class="card text-center shadow-none">
-                         <div class="card-header text-center">
-                             <p class="text-center m-auto h4"> cooperativa xd</p>
-                         </div>
-                         <div class="card-body text-center">
-                             <h5 class="card-title">Special title treatment</h5>
-
-                             @*Producto que quieran ofrecer **@
-                             <div class="row row-cols-1 row-cols-md-4 ">
-                                 <div class="col m-auto">
-                                     <div class="card h-100 shadow-lg p-3 mb-5 bg-body rounded">
-                                         <img src="~/images/campannas/claro.jpg" class="card-img-top m-auto" alt="...">
-                                         <div class="card-body">
-                                             <h5 class="card-title">Card title</h5>
-                                             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                         </div>
-                                     </div>
-                                 </div>
-                                 <div class="col m-auto">
-                                     <div class="card h-100 shadow-lg p-3 mb-5 bg-body rounded">
-                                         <img src="~/images/campannas/claro.jpg" class="card-img-top m-auto" alt="...">
-                                         <div class="card-body">
-                                             <h5 class="card-title">Card title</h5>
-                                             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                         </div>
-                                     </div>
-                                 </div>
-
-
-                             </div>  
-
-                             @*<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>*@
-                             <a href="#" class="link">Go somewhere</a>
-                         </div>
-                         
-                     </div>
-                 </div>
-             </div>
+            
          </div>
      </div>
 
