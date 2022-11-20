@@ -1,19 +1,115 @@
 ﻿
 @{
-	ViewBag.Title = "MisCatillas";
-	Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "MisCatillas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>MisCatillas</h2>
+@Html.Raw(ViewBag.error ?? "")
+@if (ViewBag.error == null)
+{
 
 
-@section js{
-	<script src="~/Scripts/jquery.countdown.min.js"></script>
-	<script src="~/Scripts/skor/Inicio/Index.cshtml.js?ver=1.0.0"></script>
-	<script src="~/Content/js/gInicio.js"></script>
-	<script src="https://pay.payphonetodoesposible.com/api/button/js?appId=ee6c47pA1UiGpWVKnsy3w"></script>
-	<script>
-		
-	</script>
+<div class="container-fluid ">
+        <div class="row mt-5">
+            <div class="col-md-11 col-sm-12 m-auto">
+                <nav  aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item h5"><a href="#" onclick="redirect()"><i class="fas fa-angle-left"></i> Inicio</a></li>
+                        <li class="breadcrumb-item  h5 text-danger titulo" aria-current="page">cartillas abiertas </li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-md-11 col-sm-12 m-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            @*espacio publicitario*@
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 m-auto">
+                                    
+                                    <div class="card text-center shadow-none">
+                                        <div class="card-header text-center bg-dark">
+                                            <p class="text-center m-auto h4 text-light"> 
+                                                @if (ViewBag.CARTILLAS[0].JUEGOCARTILLA.JUEGO != null) { @(ViewBag.CARTILLAS[0].JUEGOCARTILLA.JUEGO.Juego)  } 
+                                            </p>
+                                        </div>
+
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title">
+                                                Participa ahora. ¡Son $500,000 en premios en efectivo!
+                                            </h5>
+                                             <p class="card-text"><b>Este juego esta patrocinado por:</b></p>
+                                            @*Patrocinadores **@
+                                        <div class="row row-cols-1 row-cols-md-4 ">
+                                            @if (ViewBag.CARTILLAS[0].JUEGOCARTILLA.JUEGO.PATROCINADORES != null)
+                                            {
+                                                foreach (var pt in ViewBag.CARTILLAS[0].JUEGOCARTILLA.JUEGO.PATROCINADORES) 
+                                                { 
+                                                   <div class="col m-auto ">
+                                                      <div class="card h-100 shadow-none p-3 mb-5 bg-body rounded" >
+                                                          <img src="@pt.ImgRuta" class="card-img-top m-auto" alt="...">
+                                                          <div class="card-body">
+                                                             <h5 class="card-title">@pt.RazonSocial</h5>
+                                                             <p class="card-text">@pt.ImgNombre.</p>
+                                                          </div>
+                                                      </div>
+                                                   </div> 
+                                                }
+                                             }
+                                            
+                                        </div>
+
+                                            @*<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                            <a href="#" class="link">Go somewhere1</a>*@
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-row bd-highlight mb-3">
+                                @foreach (var cu in ViewBag.CARTILLAS)
+                                {
+                                    <a href="@Url.Action("Index", "Cartilla", new { id = cu.IdCartilla })" class="external">
+                                        <div class="p-2 bd-highlight">
+                                            <div class="card shadow-sm p-3 mb-5 bg-light rounded border-dark " style="width: 18rem;">
+                                                <div class="card-body">
+                                                    <h5 class="card-title p-0"> <h4>@(cu.Nombre)</h4></h5>
+                                                    @*<h6 class="card-subtitle mb-2 text-muted">Juega has 22-22-22</h6>*@
+                                                    <p class="card-text">@(cu.Descripcion)</p>
+                                                    @*<a href="#" class="card-link">@cu</a>*@
+                                                    <span class="card-link badge rounded-pill bg-success">Juega hasta: @(cu.FechaCierre.ToString("yyy-dd-MMM"))</span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    @section js{
+        <script>
+            var url = window.location.protocol + '//' + window.location.host;
+            function redirect() {
+                location.href = url + "/Inicio/Index";
+            }
+        </script>
+
+    }
+
+
 
 }
+
+

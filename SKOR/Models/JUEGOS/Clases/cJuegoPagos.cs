@@ -17,6 +17,7 @@ namespace Skor.Models.JUEGOS.Clases
 		public DateTime FA { get; set; }
 		public bool Eliminado { get; set; }
 		public int idU { get; set; }
+		public int idTransacion { get; set; }
 
 		public cJuego JUEGO;
 		public cPersona PERSONA;

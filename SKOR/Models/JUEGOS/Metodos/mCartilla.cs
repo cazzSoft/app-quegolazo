@@ -46,52 +46,52 @@ namespace Skor.Models.JUEGOS.Metodos
 								Premios = item["CartillaPremios"].ToString(),
 								URLBanner = item["CarillaURLBanner"].ToString(),
 
-								JUEGOCARTILLA = new Clases.cJuegoCartilla()
-								{
-									idCartilla = int.Parse(item["idCartilla"].ToString()),
-									idJuego = int.Parse(item["idJuego"].ToString()),
-									IdJuegoCartilla = int.Parse(item["IdJuegoCartilla"].ToString()),
+                                JUEGOCARTILLA = new Clases.cJuegoCartilla()
+                                {
+                                    idCartilla = int.Parse(item["idCartilla"].ToString()),
+                                    idJuego = int.Parse(item["idJuego"].ToString()),
+                                    IdJuegoCartilla = int.Parse(item["IdJuegoCartilla"].ToString()),
 
-									FC = DateTime.Parse(item["FC"].ToString()),
-									FA = DateTime.Parse(item["FA"].ToString()),
-									Eliminado = bool.Parse(item["Eliminado"].ToString()),
-									idU = int.Parse(item["idU"].ToString()),
+                                    FC = DateTime.Parse(item["FC"].ToString()),
+                                    FA = DateTime.Parse(item["FA"].ToString()),
+                                    Eliminado = bool.Parse(item["Eliminado"].ToString()),
+                                    idU = int.Parse(item["idU"].ToString()),
 
-									JUEGO = new Clases.cJuego()
-									{
-										IdJuego = int.Parse(item["idJuego"].ToString()),
-										idJuegoEstado = int.Parse(item["idJuegoEstado"].ToString()),
-										Juego = item["Juego"].ToString(),
-										Codigo = item["JuegoCodigo"].ToString(),
-										ImgNombre = item["JuegoImgNombre"].ToString(),
-										ImgRuta = item["JuegoImgRuta"].ToString(),
-										ImgExt = item["JuegoImgExt"].ToString(),
-										FechaInicio = DateTime.Parse(item["JuegoFechaInicio"].ToString()),
-										FechaFin = DateTime.Parse(item["JuegoFechaFin"].ToString()),
-										Publicado = bool.Parse(item["JuegoPublicado"].ToString()),
-										FC = DateTime.Parse(item["FC"].ToString()),
-										FA = DateTime.Parse(item["FA"].ToString()),
-										Eliminado = bool.Parse(item["Eliminado"].ToString()),
-										idU = int.Parse(item["idU"].ToString()),
-										NumPatrocinadores = int.Parse(item["NumPatrocinadores"].ToString()),
-										Bloqueo = bool.Parse(item["Bloqueo"].ToString()),
-										PATROCINADORES = int.Parse(item["NumPatrocinadores"].ToString()) > 0 ? new Metodos.mPatrocinador().PatrocinadorLista_xIdJuego(idjuego: int.Parse(item["IdJuego"].ToString())) : new List<Clases.cPatrocinador>(),  //traer todos los patricinadores de este juegos por el id del juego
+                                    JUEGO = new Clases.cJuego()
+                                    {
+                                        IdJuego = int.Parse(item["idJuego"].ToString()),
+                                        idJuegoEstado = int.Parse(item["idJuegoEstado"].ToString()),
+                                        Juego = item["Juego"].ToString(),
+                                        Codigo = item["JuegoCodigo"].ToString(),
+                                        ImgNombre = item["JuegoImgNombre"].ToString(),
+                                        ImgRuta = item["JuegoImgRuta"].ToString(),
+                                        ImgExt = item["JuegoImgExt"].ToString(),
+                                        FechaInicio = DateTime.Parse(item["JuegoFechaInicio"].ToString()),
+                                        FechaFin = DateTime.Parse(item["JuegoFechaFin"].ToString()),
+                                        Publicado = bool.Parse(item["JuegoPublicado"].ToString()),
+                                        FC = DateTime.Parse(item["FC"].ToString()),
+                                        FA = DateTime.Parse(item["FA"].ToString()),
+                                        Eliminado = bool.Parse(item["Eliminado"].ToString()),
+                                        idU = int.Parse(item["idU"].ToString()),
+                                        NumPatrocinadores = int.Parse(item["NumPatrocinadores"].ToString()),
+                                        Bloqueo = bool.Parse(item["Bloqueo"].ToString()),
+                                        PATROCINADORES = int.Parse(item["NumPatrocinadores"].ToString()) > 0 ? new Metodos.mPatrocinador().PatrocinadorLista_xIdJuego(idjuego: int.Parse(item["IdJuego"].ToString())) : new List<Clases.cPatrocinador>(),  //traer todos los patricinadores de este juegos por el id del juego
 
-										//objeto del estado del juego
-										ESTADO = new Clases.cJuegoEstado()
-										{
-											IdJuegoEstado = int.Parse(item["idJuegoEstado"].ToString()),
-											JuegoEstado = item["JuegoEstado"].ToString(),
+                                        //objeto del estado del juego
+                                        ESTADO = new Clases.cJuegoEstado()
+                                        {
+                                            IdJuegoEstado = int.Parse(item["idJuegoEstado"].ToString()),
+                                            JuegoEstado = item["JuegoEstado"].ToString(),
 
-											FC = DateTime.Parse(item["FC"].ToString()),
-											FA = DateTime.Parse(item["FA"].ToString()),
-											Eliminado = bool.Parse(item["Eliminado"].ToString()),
-											idU = int.Parse(item["idU"].ToString()),
+                                            FC = DateTime.Parse(item["FC"].ToString()),
+                                            FA = DateTime.Parse(item["FA"].ToString()),
+                                            Eliminado = bool.Parse(item["Eliminado"].ToString()),
+                                            idU = int.Parse(item["idU"].ToString()),
 
-										}
-									}
-								}
-							}
+                                        }
+                                    }
+                                }
+                            }
 							;
 							l.Add(i);
 
