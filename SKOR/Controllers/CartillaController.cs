@@ -130,7 +130,7 @@ namespace Skor.Controllers
         }
 
 
-        public JsonResult Participar(int idCartilla)
+        public JsonResult Participar(int idCartilla,int idJuego)
         {
             vUsuarios.usuario usuarioActual;
             Resultado ret;
@@ -168,6 +168,13 @@ namespace Skor.Controllers
                         /*SqlParameter parameter1 = new SqlParameter("@idCartillaUsuario", cu.id);
                         baseSk.Database.ExecuteSqlCommand("exec SP_PROC_CreaPronosticos @idCartillaUsuario", parameter1);*/
                         baseSk.SP_PROC_CreaPronosticos(cu.id);
+                        var resultado =  new Models.JUEGOS.Metodos.mCartillasUsuario().CartillaUsuario_ActualizarIdJuego(cu.id, idJuego);
+                        if (resultado.idregistro > 0)
+                        {
+                        }
+                        else { 
+                        
+                        }
 
                         ret = new Resultado(true, cu.id);
                     }
