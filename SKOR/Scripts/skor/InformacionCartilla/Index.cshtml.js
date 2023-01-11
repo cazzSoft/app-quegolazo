@@ -2,19 +2,22 @@
 
 $(document).ready(function () {
     var idCartilla = $("#txtIdCartilla").val();
-    pgInformacionCartilla.inicializar(idCartilla);
+    var idJuego = $("#txtIdJuego").val();
+    pgInformacionCartilla.inicializar(idCartilla, idJuego);
 });
 
 var pgInformacionCartilla = {
 
     idCartilla: 0,
 
-    inicializar: function (idCar_) {
+    inicializar: function (idCar_,idJue_) {
         //click del 
         this.idCartilla = idCar_;
+        this.idJuego = idJue_;
         pgInformacionCartilla.binds();       
 
     },
+
 
     binds: function () {
 
@@ -35,7 +38,7 @@ var pgInformacionCartilla = {
         else {
             htclibjs.Ajax({
                 url: "/Cartilla/Participar",
-                data: JSON.stringify({ idcartilla: pgInformacionCartilla.idCartilla }),
+                data: JSON.stringify({ idcartilla: pgInformacionCartilla.idCartilla, idjuego: pgInformacionCartilla.idJuego }),
                 success: function (r) {
                     console.log(r);
                     if (r.exitoso == true) {

@@ -11,7 +11,7 @@ namespace Skor.Controllers
     public class CartillaController : Controller
     {
         // GET: Cartilla
-        public ActionResult Index()
+        public ActionResult Index(int id=0, int idj=0)
         {
             int idCartilla, idUsuario;
             vUsuarios.usuario elUser;
@@ -19,6 +19,7 @@ namespace Skor.Controllers
 
             try {
                 idCartilla = Convert.ToInt32(Url.RequestContext.RouteData.Values["id"] ?? "0");
+            
                 elUser = vUsuarios.web.TraeUsuarioRegistrado();
                 if (elUser == null)
                 {
@@ -38,8 +39,9 @@ namespace Skor.Controllers
                     if (cartillaResult.idCartillaUsuario == null)
                     {
                         //abierta y no estoy registrado
-                        return RedirectToAction("Index", "InformacionCartilla", new { id = idCartilla });
-                        
+                        return RedirectToAction("Index", "InformacionCartilla", new { id = idCartilla ,idj= idj });
+                        //return RedirectToAction("Index", "InformacionCartilla", new { id = idCartilla });
+
                     }
                     else {
                         //abierta y estoy jugando
@@ -47,6 +49,7 @@ namespace Skor.Controllers
                         {
                             //sellada, voy a pagina de ver
                             return RedirectToAction("Index", "MiCartilla", new { id = cartillaResult.idCartillaUsuario });
+
                         }
                         else
                         {
@@ -130,7 +133,7 @@ namespace Skor.Controllers
         }
 
 
-        public JsonResult Participar(int idCartilla)
+        public JsonResult Participar(int idCartilla, int idJuego)
         {
             vUsuarios.usuario usuarioActual;
             Resultado ret;

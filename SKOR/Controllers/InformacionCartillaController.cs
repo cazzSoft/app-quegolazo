@@ -1,8 +1,4 @@
-﻿using Skor.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System;
 using System.Web.Mvc;
 
 namespace Skor.Controllers
@@ -10,15 +6,20 @@ namespace Skor.Controllers
     public class InformacionCartillaController : Controller
     {
         // GET: Cartilla
-        public ActionResult Index()
+        public ActionResult Index(int id = 0, int idj = 0)
         {
             int idCartilla;
+            int idJuego;
 
-            try {
+            try
+            {
                 idCartilla = Convert.ToInt32(Url.RequestContext.RouteData.Values["id"] ?? "0");
-                ViewBag.cartilla = Util.General.getCartilla(idCartilla);
+                idJuego = idj;
+                ViewBag.cartilla = Util.General.getCartilla(idCartilla); 
+                ViewBag.idJuego = idJuego;
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 ViewBag.error = e.Message;
             }
 

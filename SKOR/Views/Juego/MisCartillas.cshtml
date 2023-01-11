@@ -71,7 +71,7 @@
                             <div class="d-flex flex-row bd-highlight mb-3">
                                 @foreach (var cu in ViewBag.CARTILLAS)
                                 {
-                                    <a href="@Url.Action("Index", "Cartilla", new { id = cu.IdCartilla })" class="external">
+                                    <a href="@Url.Action("Index", "Cartilla", new { id = cu.IdCartilla, idj=ViewBag.CARTILLAS[0].JUEGOCARTILLA.JUEGO.IdJuego })" class="external"> 
                                         <div class="p-2 bd-highlight">
                                             <div class="card shadow-sm p-3 mb-5 bg-light rounded border-dark " style="width: 18rem;">
                                                 <div class="card-body">

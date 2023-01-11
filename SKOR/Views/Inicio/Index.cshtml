@@ -50,7 +50,7 @@
         }
 
 
-        <div class="row class_">
+        <div class="row class_" hidden>
             <div class="col-100">
                 <a href="#" class="external">
                     <div id="divContador">
@@ -92,15 +92,21 @@
                                         foreach (var patrocinador in juego.PATROCINADORES)
                                         {
 
-                                            if (patrocinador.ImgRuta != null && patrocinador.ImgRuta != "")
+                                            if (patrocinador.ImgRuta != null)
                                             {
-                                                <img src="@patrocinador.ImgRuta" class="img-fluid rounded-start p-1 mt-2 m-auto" alt="@patrocinador.RazonSocial">
-                                            }
-                                            else
-                                            {
-                                                <img src="~/Content/img_juego/juego.png" class="img-fluid rounded-start p-1 mt-2 m-auto" alt="QG">
+                                                if (@patrocinador.ImgRuta.Length == 0)
+                                                {
+                                                    <img src="~/Content/img_juego/juego.png" class="img-fluid rounded-start p-1 mt-2 m-auto" alt="QG">}
+                                                else
+                                                {
+                                                    <img src="@patrocinador.ImgRuta" class="img-fluid rounded-start p-1 mt-2 m-auto" alt="@patrocinador.RazonSocial">
+                                                }
 
                                             }
+
+
+
+
                                         }
                                     }
                                     else
@@ -120,17 +126,28 @@
                                 <div class="col-md-8 ">
                                     <div class="card-body">
                                         <h5 class="card-title"> @juego.Juego </h5>
-                                        <p class="card-text">Participa y gana un celular</p>
+                                        <p class="card-text">@juego.JuegoDescripcion</p>
                                         @if (juego.PATROCINADORES != null)
                                         {
                                             <p class="card-text">
                                                 Patrocinador(es):
+
+
                                                 @foreach (var patrocinador in juego.PATROCINADORES)
                                                 {
-                                                    <span class="badge bg-light text-dark">@patrocinador.RazonSocial</span>
-                                                }
-                                            </p>
-                                        }
+                                                    if (@patrocinador.RazonSocial.Length > 1)
+                                                    {
+                                                        <span class="badge bg-light text-dark">@patrocinador.RazonSocial</span>
+                                                    }
+                                                    else
+                                                    {
+
+                                                        <span class="badge bg-light text-dark">QG</span>
+                                                    }
+                                                    
+                                                  }
+                                                </p>
+                                            }
                                         <p class="card-text"><small class="text-muted"> Este juego inicia el @juego.FechaInicio  - termina el @juego.FechaFin </small></p>
                                         @if (ViewBag.usuario != null)
                                         {

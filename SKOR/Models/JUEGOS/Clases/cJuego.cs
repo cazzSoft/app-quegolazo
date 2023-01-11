@@ -11,6 +11,7 @@ namespace Skor.Models.JUEGOS.Clases
 		public string Juego { get; set; }
 		public int idJuegoEstado { get; set; }
 		public string Codigo { get; set; }
+		public string JuegoDescripcion { get; set; }
 		public string ImgNombre { get; set; }
 		public string ImgRuta { get; set; }
 		public string ImgExt { get; set; }

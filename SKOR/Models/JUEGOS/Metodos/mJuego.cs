@@ -36,6 +36,7 @@ namespace Skor.Models.JUEGOS.Metodos
 								idJuegoEstado = int.Parse(item["idJuegoEstado"].ToString()),
 								Juego = item["Juego"].ToString(),
 								Codigo = item["JuegoCodigo"].ToString(),
+								JuegoDescripcion= item["JuegoDescripcion"].ToString(),
 								ImgNombre = item["JuegoImgNombre"].ToString(),
 								ImgRuta = item["JuegoImgRuta"].ToString(),
 								ImgExt = item["JuegoImgExt"].ToString(),
