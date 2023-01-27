@@ -28,10 +28,10 @@ namespace Skor.Controllers
                 else {
                     idUsuario = (int)elUser.id;
                 }
-                
 
+                int idJuego = idj;
                 using (var baseSk = new skorEntities()) {
-                    cartillaResult = baseSk.SP_RevisaCartilla(idCartilla, idUsuario).FirstOrDefault();
+                    cartillaResult = baseSk.SP_RevisaCartilla(idCartilla, idUsuario, idJuego).FirstOrDefault();
                 }
                 
                 if (!(cartillaResult.estaCerrada ?? false))//estaAbierta
@@ -148,7 +148,7 @@ namespace Skor.Controllers
                 using (var baseSk = new Models.skorEntities())
                 {
                     //busco si este usr ya tiene esa cartilla
-                    cuVigente = (from cr in baseSk.CartillasUsuario where cr.idCartilla == idCartilla && cr.idUsuario == usuarioActual.id select cr).FirstOrDefault();
+                    cuVigente = (from cr in baseSk.CartillasUsuario where cr.idCartilla == idCartilla && cr.idUsuario == usuarioActual.id  select cr).FirstOrDefault();
 
                     //DESCOMENTAR ACA: sacando la cartilla de a CU?
                     //if (cuVigente.id <0 )   //.cartilla.estaCerrada)
@@ -171,6 +171,13 @@ namespace Skor.Controllers
                         /*SqlParameter parameter1 = new SqlParameter("@idCartillaUsuario", cu.id);
                         baseSk.Database.ExecuteSqlCommand("exec SP_PROC_CreaPronosticos @idCartillaUsuario", parameter1);*/
                         baseSk.SP_PROC_CreaPronosticos(cu.id);
+                        var resultado =  new Models.JUEGOS.Metodos.mCartillasUsuario().CartillaUsuario_ActualizarIdJuego(cu.id, idJuego);
+                        if (resultado.idregistro > 0)
+                        {
+                        }
+                        else { 
+                        
+                        }
 
                         ret = new Resultado(true, cu.id);
                     }

@@ -628,7 +628,9 @@
     <Compile Include="Models\JUEGOS\Clases\cPersona.cs" />
     <Compile Include="Models\JUEGOS\Clases\cResultado.cs" />
     <Compile Include="Models\JUEGOS\dbConnection.cs" />
+    <Compile Include="Models\JUEGOS\eResultado.cs" />
     <Compile Include="Models\JUEGOS\Metodos\mCartilla.cs" />
+    <Compile Include="Models\JUEGOS\Metodos\mCartillasUsuario.cs" />
     <Compile Include="Models\JUEGOS\Metodos\mJuego.cs" />
     <Compile Include="Models\JUEGOS\Metodos\mJuegoPagos.cs" />
     <Compile Include="Models\JUEGOS\Metodos\mPatrocinador.cs" />

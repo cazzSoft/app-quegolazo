@@ -60,7 +60,16 @@ namespace Skor.Controllers
 				IDJUEGO = idjuego;
 				//IDPERSONA = USUARIO.idPersona;
 				var CARTILLAS = new Models.JUEGOS.Metodos.mCartilla().CartillaLista_xIdPersona_xIdJuego(idPersona: IDPERSONA, idJuego: IDJUEGO);
-				ViewBag.CARTILLAS = CARTILLAS;
+
+                if (CARTILLAS.Count!=0)
+                {
+					ViewBag.CARTILLAS = CARTILLAS;
+                }
+                else
+                {
+					ViewBag.CARTILLAS = null;
+				}
+				
 			}
 			catch (Exception e)
             {

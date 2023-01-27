@@ -61,7 +61,7 @@ namespace Skor.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_PROC_CreaPronosticos", idCartillaUsuarioParameter);
         }
     
-        public virtual ObjectResult<SP_RevisaCartilla_Result> SP_RevisaCartilla(Nullable<int> idCartilla, Nullable<int> idUsuario)
+        public virtual ObjectResult<SP_RevisaCartilla_Result> SP_RevisaCartilla(Nullable<int> idCartilla, Nullable<int> idUsuario, Nullable<int> idJuego = 0)
         {
             var idCartillaParameter = idCartilla.HasValue ?
                 new ObjectParameter("idCartilla", idCartilla) :
@@ -70,8 +70,12 @@ namespace Skor.Models
             var idUsuarioParameter = idUsuario.HasValue ?
                 new ObjectParameter("idUsuario", idUsuario) :
                 new ObjectParameter("idUsuario", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_RevisaCartilla_Result>("SP_RevisaCartilla", idCartillaParameter, idUsuarioParameter);
+
+            var idJuegoParameter = idJuego.HasValue ?
+               new ObjectParameter("idJuego", idJuego) :
+               new ObjectParameter("idJuego", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_RevisaCartilla_Result>("SP_RevisaCartilla", idCartillaParameter, idUsuarioParameter, idJuegoParameter);
         }
     
         public virtual ObjectResult<SP_PosicionesCartilla_Result> SP_PosicionesCartilla(Nullable<int> idCartilla, Nullable<int> idUsuario, Nullable<int> cuanto)

@@ -31,7 +31,9 @@ namespace Skor.Models
         public Nullable<int> posicionCierre { get; set; }
         public Nullable<int> posicionResultado { get; set; }
         public Nullable<int> posicionFinal { get; set; }
-    
+
+        public Nullable<int> idJuego { get; set; }
+
         public virtual Cartillas Cartillas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pronosticos> Pronosticos { get; set; }

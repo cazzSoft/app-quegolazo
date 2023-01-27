@@ -3,7 +3,7 @@ var url = window.location.protocol + '//' + window.location.host;
 $(document).ready(function () {
     
     simplyCountdown('#cuenta', {
-        year: 2022, // required
+        year: 2023, // required
         month: 11, // required
         day: 20, // required
         hours: 0, // Default is 0 [0-23] integer
@@ -126,7 +126,7 @@ function boton_pagos(idj) {
                 //EN ESTA SECCIÓN SE RECIBE LA RESPUESTA Y SE MUESTRA AL USUARIO
 
                 if (value.transactionStatus == "Approved") {
-                    alert("Pago " + value.transactionId + " recibido, estado " + value.transactionStatus);
+                   /* alert("Pago " + value.transactionId + " recibido, estado " + value.transactionStatus);*/
                     comfirmar_pago(value.transactionId, clientTransactionId_-11);
                 }
             }).catch(function (err) {
